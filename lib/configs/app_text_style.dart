@@ -31,7 +31,7 @@ class AppTextStyle {
   static init(BuildContext context) {
     const bold = FontWeight.bold;
     const baseStyle = TextStyle();
-    final color = Theme.of(context).colorScheme.onPrimaryContainer;
+    final color = Theme.of(context).colorScheme.onBackground;
 
     h1 = baseStyle.copyWith(fontSize: 36, color: color);
     h1b = h1!.copyWith(fontWeight: bold);

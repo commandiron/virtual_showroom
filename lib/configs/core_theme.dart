@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 final colorSchemeDark = ColorScheme.dark(
-  primary: const Color(0xffF48B0B),
-  primaryContainer: const Color(0xff1F1F1F),
-  onPrimaryContainer: Colors.white,
-  secondaryContainer: const Color(0xff242424),
-  onSecondaryContainer: Colors.grey.shade200
+  primary: const Color(0xff137CC0),
+  background: Color(0xff242424),
+  onBackground: Colors.white,
+  primaryContainer: Colors.white
 );
 
 final themeDark = ThemeData(
@@ -16,11 +15,10 @@ final themeDark = ThemeData(
 );
 
 final colorSchemeLight = ColorScheme.light(
-  primary: const Color(0xffF48B0B),
-  primaryContainer: Colors.grey.shade50,
-  onPrimaryContainer: Colors.black,
-  secondaryContainer: Colors.grey.shade100,
-  onSecondaryContainer: Colors.grey.shade800
+  primary: const Color(0xff137CC0),
+  background: Colors.white,
+  onBackground: Colors.black,
+  primaryContainer: Color(0xff242424),
 );
 
 final themeLight = ThemeData(
