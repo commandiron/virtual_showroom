@@ -9,7 +9,6 @@ class ProjectInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     final estimatedTotalDuration = Project.project1.estimatedFinishDate.difference(Project.project1.startDate).inDays;
     final passedTime = DateTime.now().difference(Project.project1.startDate).inDays;
 

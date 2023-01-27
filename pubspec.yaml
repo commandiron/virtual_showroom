@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.0
   circle_progress_bar: ^0.1.1
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   flutter_test:
