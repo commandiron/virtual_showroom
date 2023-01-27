@@ -10,7 +10,7 @@ class MyFooter extends StatelessWidget {
     return Container(
       height: 20,
       width: double.infinity,
-      color: Theme.of(context).colorScheme.primaryContainer,
+      color: Theme.of(context).colorScheme.background,
       padding: AppPadding.allXS,
       alignment: Alignment.center,
       child: FittedBox(

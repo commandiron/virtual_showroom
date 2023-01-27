@@ -14,7 +14,7 @@ class GeneralView extends StatelessWidget {
       itemBuilder: (context, index, realIndex) {
         return CarouselItem(
           imageUrl: Project.project1.generalViewImagePaths[index],
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.onBackground,
           fit: BoxFit.cover,
         );
       },

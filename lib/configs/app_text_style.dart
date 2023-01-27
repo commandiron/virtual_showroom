@@ -28,30 +28,31 @@ class AppTextStyle {
 
   static init(BuildContext context) {
     const bold = FontWeight.bold;
+    final color = Theme.of(context).colorScheme.onBackground;
     const baseStyle = TextStyle();
 
-    h1 = baseStyle.copyWith(fontSize: 36);
+    h1 = baseStyle.copyWith(fontSize: 36, color: color);
     h1b = h1!.copyWith(fontWeight: bold);
 
-    h2 = baseStyle.copyWith(fontSize: 22);
+    h2 = baseStyle.copyWith(fontSize: 22, color: color);
     h2b = h2!.copyWith(fontWeight: bold);
 
-    h3 = baseStyle.copyWith(fontSize: 18);
+    h3 = baseStyle.copyWith(fontSize: 18, color: color);
     h3b = h3!.copyWith(fontWeight: bold);
 
-    b1 = baseStyle.copyWith(fontSize: 16);
+    b1 = baseStyle.copyWith(fontSize: 16, color: color);
     b1b = b1!.copyWith(fontWeight: bold);
 
-    b2 = baseStyle.copyWith(fontSize: 14);
+    b2 = baseStyle.copyWith(fontSize: 14, color: color);
     b2b = b2!.copyWith(fontWeight: bold);
 
-    b3 = baseStyle.copyWith(fontSize: 12);
+    b3 = baseStyle.copyWith(fontSize: 12, color: color);
     b3b = b3!.copyWith(fontWeight: bold);
 
-    l1 = baseStyle.copyWith(fontSize: 10);
+    l1 = baseStyle.copyWith(fontSize: 10, color: color);
     l1b = l1!.copyWith(fontWeight: bold);
 
-    l2 = baseStyle.copyWith(fontSize: 8);
+    l2 = baseStyle.copyWith(fontSize: 8, color: color);
     l2b = l2!.copyWith(fontWeight: bold);
   }
 }

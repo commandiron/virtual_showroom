@@ -19,7 +19,7 @@ class CarouselItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: color,
+      color: Theme.of(context).colorScheme.onBackground,
       shadowColor: shadowColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),

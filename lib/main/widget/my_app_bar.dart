@@ -13,7 +13,7 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Theme.of(context).colorScheme.primaryContainer,
+      color: Theme.of(context).colorScheme.onBackground,
       child: Row(
         children: [
           Expanded(
@@ -41,7 +41,9 @@ class MyAppBar extends StatelessWidget {
                 child: FittedBox(
                   child: Text(
                     "İletişim",
-                    style: AppTextStyle.b2
+                    style: AppTextStyle.b2?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary
+                    )
                   )
                 )
               ),

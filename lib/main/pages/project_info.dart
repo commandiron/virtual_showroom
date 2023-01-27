@@ -1,6 +1,7 @@
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
+import 'package:virtual_showroom/configs/app_text_style.dart';
 import '../../model/project.dart';
 
 class ProjectInfo extends StatelessWidget {
@@ -19,7 +20,7 @@ class ProjectInfo extends StatelessWidget {
         SizedBox(
           width: 128,
           child: CircleProgressBar(
-            backgroundColor:  Theme.of(context).colorScheme.onPrimary,
+            backgroundColor:  Theme.of(context).colorScheme.onBackground.withOpacity(0.35),
             foregroundColor: Theme.of(context).colorScheme.primary,
             animationDuration: Duration(milliseconds: 2000),
             value: passedTime / estimatedTotalDuration,
@@ -29,13 +30,14 @@ class ProjectInfo extends StatelessWidget {
                 fractionDigits: 0,
                 unit: '%',
                 duration: Duration(milliseconds: 2000),
-                curve: Curves.fastOutSlowIn
+                curve: Curves.fastOutSlowIn,
+                style: AppTextStyle.b1!,
               ),
             ),
           ),
         ),
         AppSpace.verticalL!,
-        const Text("Proje Bilgileri"),
+        Text("Proje Bilgileri", style: AppTextStyle.b1!,),
       ],
     );
   }
