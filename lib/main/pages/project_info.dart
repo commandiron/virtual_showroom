@@ -27,7 +27,14 @@ class ProjectInfo extends StatelessWidget {
               return Text('${value.toInt()}%');
             },
           ),
-        )
+        ),
+        Text("C-40 Beton - Kayalık Zemin"),
+        Text("Prekast cephe"),
+        Text("Akıllı Ev"),
+        Text("Daireye ait 2 araçlık otopark yeri "),
+        Text("Deniz Manzarası"),
+        Text("Merkezi Sistem yerden ısıtma"),
+        Text("Her bölgeye enerji sağlanayan jeneratör"),
       ],
     );
   }

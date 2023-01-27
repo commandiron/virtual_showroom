@@ -30,24 +30,14 @@ class _MainScreenState extends State<MainScreen> {
           const MyAppBar(),
           AppSpace.verticalM!,
           const ProjectTitle(),
-          Expanded(
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                MyPage(pageIndex: _pageIndex),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: MyNavigationBar(
-                    pageIndex: _pageIndex,
-                    onPressed: (pageIndex) {
-                      setState(() {
-                        _pageIndex = pageIndex;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
+          MyPage(pageIndex: _pageIndex),
+          MyNavigationBar(
+            pageIndex: _pageIndex,
+            onPressed: (pageIndex) {
+              setState(() {
+                _pageIndex = pageIndex;
+              });
+            },
           ),
           const MyFooter()
         ],

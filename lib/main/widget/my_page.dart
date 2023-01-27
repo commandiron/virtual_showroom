@@ -9,15 +9,17 @@ class MyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-        duration: const Duration(milliseconds: 600),
-        child: PageItem.pages.elementAt(pageIndex).view
+    return Expanded(
+      child: AnimatedSwitcher(
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          duration: const Duration(milliseconds: 600),
+          child: PageItem.pages.elementAt(pageIndex).view
+      ),
     );
   }
 }
