@@ -10,10 +10,12 @@ class GeneralView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
-      itemCount: Project.project1.imagePaths.length,
+      itemCount: Project.project1.generalViewImagePaths.length,
       itemBuilder: (context, index, realIndex) {
         return CarouselItem(
-          imageUrl: Project.project1.imagePaths[index],
+          imageUrl: Project.project1.generalViewImagePaths[index],
+          color: Theme.of(context).colorScheme.primaryContainer,
+          fit: BoxFit.cover,
         );
       },
       options: CarouselOptions(

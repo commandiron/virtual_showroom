@@ -20,8 +20,8 @@ class ShowCategoryItem extends StatelessWidget {
           child: ElevatedButton(
             style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
               backgroundColor: enabled
-                  ? MaterialStateProperty.all(Theme.of(context).colorScheme.primary)
-                  : MaterialStateProperty.all(Theme.of(context).colorScheme.primaryContainer)
+                ? MaterialStateProperty.all(Theme.of(context).colorScheme.primary)
+                : MaterialStateProperty.all(Theme.of(context).colorScheme.primaryContainer)
             ),
             onPressed: onPressed,
             child: Column(
@@ -29,19 +29,16 @@ class ShowCategoryItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: AppPadding.horizontalM!.add(EdgeInsets.only(top: 16)),
+                    padding: AppPadding.allS!.add(EdgeInsets.only(top: 4)),
                     child: Image.asset(
                       showCategory.logoImagePath,
-                      color: enabled
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
                   )
                 ),
                 Container(
                   height: 30,
                   padding: AppPadding.horizontalS!,
-                  alignment: Alignment.center,
+                  alignment: Alignment.topCenter,
                   child: FittedBox(
                     child: Text(
                       showCategory.title,

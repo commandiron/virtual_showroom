@@ -1,25 +1,29 @@
 class Project {
   String companyImagePath;
-  String coverImagePath;
   String name;
-  List<String> imagePaths;
+  List<String> generalViewImagePaths;
+  List<String> planImagePaths;
 
   Project(
     {
       required this.companyImagePath,
-      required this.coverImagePath,
       required this.name,
-      required this.imagePaths,
+      required this.generalViewImagePaths,
+      required this.planImagePaths,
     }
   );
 
   static Project project1 = Project(
     companyImagePath: "assets/demirli_ins_logo.png",
-    coverImagePath: "assets/image_1.jpg",
     name: "Suadiye | Oran Apartmanı",
-    imagePaths: [
+    generalViewImagePaths: [
       "assets/image_1.jpg",
       "assets/image_2.jpg"
-    ]
+    ],
+    planImagePaths: [
+      "assets/image_3.jpeg",
+      "assets/image_4.jpg",
+      "assets/image_5.jpg"
+    ],
   );
 }

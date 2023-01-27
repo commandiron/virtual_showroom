@@ -20,8 +20,6 @@ class _MainScreenState extends State<MainScreen> {
 
   int _currentPage = 0;
 
-  final PageController _pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
 
@@ -40,12 +38,15 @@ class _MainScreenState extends State<MainScreen> {
             AppSpace.verticalM!,
             SizedBox(
               height: MediaQuery.of(context).size.height / 1.6,
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: ShowCategory.showCategories.length,
-                itemBuilder: (context, index) {
-                  return ShowCategory.showCategories[index].view;
+              child: AnimatedSwitcher(
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
                 },
+                duration: const Duration(milliseconds: 600),
+                child: ShowCategory.showCategories.elementAt(_currentPage).view
               ),
             ),
             Expanded(
@@ -61,11 +62,6 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           _currentPage = showCategory.pageIndex;
                         });
-                        _pageController.animateToPage(
-                          showCategory.pageIndex,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.fastOutSlowIn
-                        );
                       },
                     )
                   ).toList()
