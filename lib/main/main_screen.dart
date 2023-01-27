@@ -32,11 +32,6 @@ class _MainScreenState extends State<MainScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.red
-          )
-        ),
         child: Column(
           children: [
             const MyAppBar(),
@@ -77,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            MyFooter()
+            const MyFooter()
           ],
         ),
       )

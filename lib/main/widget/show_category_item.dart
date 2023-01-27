@@ -35,7 +35,6 @@ class ShowCategoryItem extends StatelessWidget {
                       color: enabled
                         ? Theme.of(context).colorScheme.onPrimary
                         : Theme.of(context).colorScheme.onPrimaryContainer,
-                      colorBlendMode: BlendMode.srcATop,
                     ),
                   )
                 ),
