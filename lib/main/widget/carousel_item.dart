@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CarouselItem extends StatelessWidget {
   const CarouselItem(
     {
-      required this.imageUrl,
+      required this.imagePath,
       required this.color,
       this.shadowColor,
       required this.fit,
@@ -11,7 +11,7 @@ class CarouselItem extends StatelessWidget {
     }
   ) : super(key: key);
 
-  final String imageUrl;
+  final String imagePath;
   final Color? color;
   final Color? shadowColor;
   final BoxFit? fit;
@@ -23,7 +23,7 @@ class CarouselItem extends StatelessWidget {
       shadowColor: shadowColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(imageUrl, fit: fit),
+        child: Image.asset(imagePath, fit: fit),
       ),
     );
   }

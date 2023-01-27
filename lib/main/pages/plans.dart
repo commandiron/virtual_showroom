@@ -13,7 +13,7 @@ class Plans extends StatelessWidget {
       itemCount: Project.project1.planImagePaths.length,
       itemBuilder: (context, index, realIndex) {
         return CarouselItem(
-          imageUrl: Project.project1.planImagePaths[index],
+          imagePath: Project.project1.planImagePaths[index],
           color: Colors.transparent,
           shadowColor: Colors.transparent,
           fit: BoxFit.fitWidth,
