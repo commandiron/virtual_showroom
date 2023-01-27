@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/main/widget/my_footer.dart';
 import 'package:virtual_showroom/main/widget/show_category_item.dart';
@@ -34,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
           AppSpace.verticalM!,
           Expanded(
             child: Align(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.center,
               child: AnimatedSwitcher(
                 transitionBuilder: (Widget child, Animation<double> animation) {
                   return FadeTransition(
@@ -48,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: AppPadding.allS,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: ShowCategory.showCategories.map(

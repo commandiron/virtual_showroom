@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
@@ -17,12 +18,11 @@ class ShowCategoryItem extends StatelessWidget {
         aspectRatio: 1,
         child: Padding(
           padding: AppPadding.allXS!,
-          child: ElevatedButton(
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-              backgroundColor: enabled
-                ? MaterialStateProperty.all(Theme.of(context).colorScheme.primary)
-                : MaterialStateProperty.all(Theme.of(context).colorScheme.primaryContainer)
-            ),
+          child: CupertinoButton(
+            padding: AppPadding.zero,
+            color: enabled
+                ? Theme.of(context).colorScheme.primary
+                : Theme.of(context).colorScheme.primaryContainer,
             onPressed: onPressed,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +31,9 @@ class ShowCategoryItem extends StatelessWidget {
                   child: Padding(
                     padding: AppPadding.allS!.add(EdgeInsets.only(top: 4)),
                     child: Image.asset(
-                      showCategory.logoImagePath,
+                      enabled
+                        ? showCategory.highlightedLogoImagePath
+                        : showCategory.neutralLogoImagePath,
                     ),
                   )
                 ),
