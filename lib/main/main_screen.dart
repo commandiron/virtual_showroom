@@ -30,23 +30,21 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           const MyAppBar(),
           AppSpace.verticalM!,
+          const ProjectTitle(),
+          AppSpace.verticalM!,
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const ProjectTitle(),
-                AppSpace.verticalM!,
-                AnimatedSwitcher(
-                  transitionBuilder: (Widget child, Animation<double> animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  duration: const Duration(milliseconds: 600),
-                  child: ShowCategory.showCategories.elementAt(_currentPage).view
-                ),
-              ],
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: AnimatedSwitcher(
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+                duration: const Duration(milliseconds: 600),
+                child: ShowCategory.showCategories.elementAt(_currentPage).view
+              ),
             ),
           ),
           Container(

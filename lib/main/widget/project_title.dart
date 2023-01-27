@@ -9,7 +9,7 @@ class ProjectTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 32,
+      height: 48,
       alignment: Alignment.center,
       child: FittedBox(
         child: Text(
