@@ -24,16 +24,19 @@ class MyAppBar extends StatelessWidget {
             )
           ),
           Expanded(
-            child: CupertinoButton(
-              padding: AppPadding.allS,
-              color: Theme.of(context).colorScheme.primary,
-              onPressed: () {},
-              child: FittedBox(
-                child: Text(
-                  "İletişim",
-                  style: AppTextStyle.b2
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: CupertinoButton(
+                padding: AppPadding.zero,
+                color: Theme.of(context).colorScheme.primary,
+                onPressed: () {},
+                child: FittedBox(
+                  child: Text(
+                    "İletişim",
+                    style: AppTextStyle.b2
+                  )
                 )
-              )
+              ),
             )
           ),
         ],

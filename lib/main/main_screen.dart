@@ -50,6 +50,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           Container(
             padding: AppPadding.allS,
+            height: 100,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: ShowCategory.showCategories.map(
