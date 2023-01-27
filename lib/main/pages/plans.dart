@@ -14,13 +14,14 @@ class Plans extends StatelessWidget {
       itemBuilder: (context, index, realIndex) {
         return CarouselItem(
           imageUrl: Project.project1.planImagePaths[index],
-          color: Theme.of(context).colorScheme.background,
+          color: Colors.transparent,
+          shadowColor: Colors.transparent,
           fit: BoxFit.fitWidth,
         );
       },
       options: CarouselOptions(
-          height: MediaQuery.of(context).size.height / 1.6,
-          viewportFraction: 0.9
+        height: MediaQuery.of(context).size.height / 1.6,
+        enlargeCenterPage: true,
       )
     );
   }
