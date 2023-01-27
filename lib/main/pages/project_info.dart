@@ -1,40 +1,42 @@
+import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
-
-import '../../configs/app_padding.dart';
+import 'package:virtual_showroom/configs/app_space.dart';
+import '../../model/project.dart';
 
 class ProjectInfo extends StatelessWidget {
   const ProjectInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+
+    final estimatedTotalDuration = Project.project1.estimatedFinishDate.difference(Project.project1.startDate).inDays;
+    final passedTime = DateTime.now().difference(Project.project1.startDate).inDays;
+
     return Column(
       children: [
-        Text("Tamamlanma tarihi: 10/2023"),
-        Padding(
-          padding: AppPadding.allM!,
-          child: SimpleCircularProgressBar(
-            valueNotifier: ValueNotifier(12),
-            size: 52,
-            backStrokeWidth: 3,
-            backColor: Theme.of(context).colorScheme.onPrimary,
-            progressStrokeWidth: 3,
-            progressColors: [
-              Theme.of(context).colorScheme.primary
-            ],
-            mergeMode: true,
-            onGetText: (double value) {
-              return Text('${value.toInt()}%');
-            },
+        const Text("Tamamlanma tarihi: 10/2023"),
+        AppSpace.verticalL!,
+        SizedBox(
+          width: 128,
+          child: CircleProgressBar(
+            backgroundColor:  Theme.of(context).colorScheme.onPrimary,
+            foregroundColor: Theme.of(context).colorScheme.primary,
+            animationDuration: Duration(milliseconds: 2000),
+            value: passedTime / estimatedTotalDuration,
+            child: Center(
+              child: AnimatedCount(
+                count: (passedTime / estimatedTotalDuration) * 100,
+                fractionDigits: 0,
+                unit: '%',
+                duration: Duration(milliseconds: 2000),
+                curve: Curves.fastOutSlowIn
+              ),
+            ),
           ),
         ),
-        Text("C-40 Beton - Kayalık Zemin"),
-        Text("Prekast cephe"),
-        Text("Akıllı Ev"),
-        Text("Daireye ait 2 araçlık otopark yeri "),
-        Text("Deniz Manzarası"),
-        Text("Merkezi Sistem yerden ısıtma"),
-        Text("Her bölgeye enerji sağlanayan jeneratör"),
+        AppSpace.verticalL!,
+        const Text("Proje Bilgileri"),
       ],
     );
   }

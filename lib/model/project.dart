@@ -3,6 +3,8 @@ class Project {
   String name;
   List<String> generalViewImagePaths;
   List<String> planImagePaths;
+  DateTime startDate;
+  DateTime estimatedFinishDate;
 
   Project(
     {
@@ -10,6 +12,8 @@ class Project {
       required this.name,
       required this.generalViewImagePaths,
       required this.planImagePaths,
+      required this.startDate,
+      required this.estimatedFinishDate
     }
   );
 
@@ -25,5 +29,11 @@ class Project {
       "assets/image_4.jpg",
       "assets/image_5.jpg"
     ],
+    startDate: DateTime(
+        2022, 10, 7
+    ),
+    estimatedFinishDate: DateTime(
+      2023, 11, 7
+    )
   );
 }
