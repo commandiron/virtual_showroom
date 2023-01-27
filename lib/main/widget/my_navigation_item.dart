@@ -2,12 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
-import 'package:virtual_showroom/model/show_category.dart';
+import 'package:virtual_showroom/model/page_item.dart';
 
-class ShowCategoryItem extends StatelessWidget {
-  const ShowCategoryItem({required this.showCategory, required this.enabled, this.onPressed, Key? key}) : super(key: key);
+class MyNavigationItem extends StatelessWidget {
+  const MyNavigationItem(
+    {
+      required this.pageItem,
+      required this.enabled,
+      this.onPressed,
+      Key? key
+    }
+  ) : super(key: key);
 
-  final ShowCategory showCategory;
+  final PageItem pageItem;
   final bool enabled;
   final void Function()? onPressed;
 
@@ -32,8 +39,8 @@ class ShowCategoryItem extends StatelessWidget {
                     padding: AppPadding.allS!.add(EdgeInsets.only(top: 4)),
                     child: Image.asset(
                       enabled
-                        ? showCategory.highlightedLogoImagePath
-                        : showCategory.neutralLogoImagePath,
+                        ? pageItem.highlightedLogoImagePath
+                        : pageItem.neutralLogoImagePath,
                     ),
                   )
                 ),
@@ -43,7 +50,7 @@ class ShowCategoryItem extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: FittedBox(
                     child: Text(
-                      showCategory.title,
+                      pageItem.title,
                       style: AppTextStyle.b2?.copyWith(
                         color: enabled
                           ? Theme.of(context).colorScheme.onPrimary

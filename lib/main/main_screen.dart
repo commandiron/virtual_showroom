@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/main/widget/my_footer.dart';
-import 'package:virtual_showroom/main/widget/show_category_item.dart';
+import 'package:virtual_showroom/main/widget/my_navigation_bar.dart';
+import 'package:virtual_showroom/main/widget/my_page.dart';
 import 'package:virtual_showroom/main/widget/my_app_bar.dart';
 import 'package:virtual_showroom/main/widget/project_title.dart';
-
 import '../configs/app_config.dart';
-import '../model/show_category.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -18,7 +16,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-  int _currentPage = 0;
+  int _pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,38 +31,14 @@ class _MainScreenState extends State<MainScreen> {
           AppSpace.verticalM!,
           const ProjectTitle(),
           AppSpace.verticalM!,
-          Expanded(
-            child: Align(
-              alignment: Alignment.center,
-              child: AnimatedSwitcher(
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  );
-                },
-                duration: const Duration(milliseconds: 600),
-                child: ShowCategory.showCategories.elementAt(_currentPage).view
-              ),
-            ),
-          ),
-          Container(
-            padding: AppPadding.allS,
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: ShowCategory.showCategories.map(
-                (showCategory) => ShowCategoryItem(
-                  showCategory: showCategory,
-                  enabled: showCategory.pageIndex == _currentPage,
-                  onPressed: () {
-                    setState(() {
-                      _currentPage = showCategory.pageIndex;
-                    });
-                  },
-                )
-              ).toList()
-            ),
+          MyPage(pageIndex: _pageIndex),
+          MyNavigationBar(
+            pageIndex: _pageIndex,
+            onPressed: (pageIndex) {
+              setState(() {
+                _pageIndex = pageIndex;
+              });
+            },
           ),
           const MyFooter()
         ],
