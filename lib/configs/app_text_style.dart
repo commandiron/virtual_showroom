@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'core_theme.dart';
-
 class AppTextStyle {
   static TextStyle? btn;
 
@@ -31,30 +29,29 @@ class AppTextStyle {
   static init(BuildContext context) {
     const bold = FontWeight.bold;
     const baseStyle = TextStyle();
-    final color = Theme.of(context).colorScheme.onBackground;
 
-    h1 = baseStyle.copyWith(fontSize: 36, color: color);
+    h1 = baseStyle.copyWith(fontSize: 36);
     h1b = h1!.copyWith(fontWeight: bold);
 
-    h2 = baseStyle.copyWith(fontSize: 22, color: color);
+    h2 = baseStyle.copyWith(fontSize: 22);
     h2b = h2!.copyWith(fontWeight: bold);
 
-    h3 = baseStyle.copyWith(fontSize: 18, color: color);
+    h3 = baseStyle.copyWith(fontSize: 18);
     h3b = h3!.copyWith(fontWeight: bold);
 
-    b1 = baseStyle.copyWith(fontSize: 16, color: color);
+    b1 = baseStyle.copyWith(fontSize: 16);
     b1b = b1!.copyWith(fontWeight: bold);
 
-    b2 = baseStyle.copyWith(fontSize: 14, color: color);
+    b2 = baseStyle.copyWith(fontSize: 14);
     b2b = b2!.copyWith(fontWeight: bold);
 
-    b3 = baseStyle.copyWith(fontSize: 12, color: color);
+    b3 = baseStyle.copyWith(fontSize: 12);
     b3b = b3!.copyWith(fontWeight: bold);
 
-    l1 = baseStyle.copyWith(fontSize: 10, color: color);
+    l1 = baseStyle.copyWith(fontSize: 10);
     l1b = l1!.copyWith(fontWeight: bold);
 
-    l2 = baseStyle.copyWith(fontSize: 8, color: color);
+    l2 = baseStyle.copyWith(fontSize: 8);
     l2b = l2!.copyWith(fontWeight: bold);
   }
 }
