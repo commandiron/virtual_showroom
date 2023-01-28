@@ -70,17 +70,25 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
           )
         ),
         if(_photoViewScaleState == PhotoViewScaleState.initial)
-          Align(
+          Container(
+            padding: AppPadding.allS,
             alignment: Alignment.bottomCenter,
-            child: DotsIndicator(
-              dotsCount: widget.imagePaths.length,
-              position:  _currentIndex,
-              decorator: DotsDecorator(
-                size: const Size.square(9.0),
-                activeSize: const Size(18.0, 9.0),
-                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                activeColor: Theme.of(context).colorScheme.primary,
-                color: Theme.of(context).colorScheme.onBackground
+            child: Container(
+              padding: AppPadding.horizontalS!.add(AppPadding.verticalXS!),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.5),
+                borderRadius: const BorderRadius.all(Radius.circular(16))
+              ),
+              child: DotsIndicator(
+                dotsCount: widget.imagePaths.length,
+                position:  _currentIndex,
+                decorator: DotsDecorator(
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  activeColor: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onBackground
+                ),
               ),
             ),
           ),
