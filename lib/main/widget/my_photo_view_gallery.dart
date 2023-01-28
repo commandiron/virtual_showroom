@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -16,21 +17,33 @@ class MyPhotoViewGallery extends StatefulWidget {
 
 class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
 
+  double _currentIndex = 0;
+  final PageController _pageController = PageController();
   PhotoViewScaleState _photoViewScaleState = PhotoViewScaleState.initial;
 
   final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
+
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      setState((){
+        _currentIndex = _pageController.page ?? 0;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         PhotoViewGallery.builder(
+          pageController: _pageController,
           itemCount: widget.imagePaths.length,
           scrollPhysics: _photoViewScaleState != PhotoViewScaleState.initial
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
           scaleStateChangedCallback: (value) {
-            print(value);
             setState((){
               _photoViewScaleState = value;
             });
@@ -56,6 +69,21 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
             color: Theme.of(context).colorScheme.background,
           )
         ),
+        if(_photoViewScaleState == PhotoViewScaleState.initial)
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: DotsIndicator(
+              dotsCount: widget.imagePaths.length,
+              position:  _currentIndex,
+              decorator: DotsDecorator(
+                size: const Size.square(9.0),
+                activeSize: const Size(18.0, 9.0),
+                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                activeColor: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.onBackground
+              ),
+            ),
+          ),
         if(_photoViewScaleState != PhotoViewScaleState.initial)
           Align(
             alignment: Alignment.topRight,
