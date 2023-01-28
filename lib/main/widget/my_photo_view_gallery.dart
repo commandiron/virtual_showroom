@@ -87,7 +87,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
                   activeSize: const Size(18.0, 9.0),
                   activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                   activeColor: Theme.of(context).colorScheme.primary,
-                  color: Theme.of(context).colorScheme.onBackground
+                  color: Colors.white
                 ),
               ),
             ),
