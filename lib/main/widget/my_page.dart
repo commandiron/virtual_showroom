@@ -11,14 +11,14 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: AnimatedSwitcher(
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-          duration: const Duration(milliseconds: 600),
-          child: PageItem.pages.elementAt(pageIndex).view
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+        duration: const Duration(milliseconds: 600),
+        child: PageItem.pages.elementAt(pageIndex).view
       ),
     );
   }
