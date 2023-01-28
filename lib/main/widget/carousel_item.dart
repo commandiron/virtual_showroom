@@ -126,7 +126,7 @@ class _PinchToZoomImageState extends State<PinchToZoomImage> with SingleTickerPr
             ),
             Positioned(
               left: offset.dx,
-              right: offset.dy,
+              top: offset.dy,
               width: size.width,
               child: buildImage(context)
             ),
