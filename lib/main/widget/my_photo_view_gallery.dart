@@ -21,16 +21,6 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
   PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
 
   @override
-  void initState() {
-    _photoViewScaleStateController.addIgnorableListener(() {
-      setState((){
-        _photoViewScaleState = _photoViewScaleStateController.scaleState;
-      });
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -43,6 +33,9 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
             Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
           },
           scaleStateChangedCallback: (value) {
+            setState((){
+              _photoViewScaleState = value;
+            });
             if(value == PhotoViewScaleState.initial) {
               Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
             } else {
@@ -66,15 +59,24 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
           )
         ),
         if(_photoViewScaleState != PhotoViewScaleState.initial)
-          Container(
+          Align(
             alignment: Alignment.topRight,
-            padding: AppPadding.allM!,
-            child: IconButton(
-              onPressed: () {
-                _photoViewScaleStateController.scaleState = PhotoViewScaleState.initial;
-                Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
-              },
-              icon: const Icon(Icons.close_fullscreen)
+            child: Padding(
+              padding: AppPadding.allM!,
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black.withOpacity(0.5),
+                ),
+                padding: AppPadding.allS!,
+                child: IconButton(
+                  onPressed: () {
+                    _photoViewScaleStateController.scaleState = PhotoViewScaleState.initial;
+                    Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+                  },
+                  icon: const Icon(Icons.close_fullscreen)
+                ),
+              ),
             ),
           ),
       ],
