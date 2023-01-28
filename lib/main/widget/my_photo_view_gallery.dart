@@ -18,7 +18,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
 
   PhotoViewScaleState _photoViewScaleState = PhotoViewScaleState.initial;
 
-  PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
+  final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
 
   @override
   Widget build(BuildContext context) {
