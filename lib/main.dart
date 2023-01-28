@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:virtual_showroom/provider/photo_view_provider.dart';
+import 'package:virtual_showroom/provider/photo_view_scale_state_provider.dart';
 
 import 'configs/core_theme.dart';
 import 'main/main_screen.dart';
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => PhotoViewProvider()),
+          ChangeNotifierProvider(create: (_) => PhotoViewScaleStateProvider()),
         ],
         child: const MaterialChild()
     );
