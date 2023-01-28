@@ -26,12 +26,9 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
       children: [
         PhotoViewGallery.builder(
           itemCount: widget.imagePaths.length,
-          onPageChanged: (index) {
-            setState((){
-              _photoViewScaleState = PhotoViewScaleState.initial;
-            });
-            Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
-          },
+          scrollPhysics: _photoViewScaleState != PhotoViewScaleState.initial
+            ? const NeverScrollableScrollPhysics()
+            : const AlwaysScrollableScrollPhysics(),
           scaleStateChangedCallback: (value) {
             print(value);
             setState((){
@@ -73,7 +70,6 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
                 child: IconButton(
                   onPressed: () {
                     _photoViewScaleStateController.scaleState = PhotoViewScaleState.initial;
-                    Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
                   },
                   icon: const Icon(Icons.close_fullscreen)
                 ),
@@ -89,8 +85,6 @@ PhotoViewScaleState myScaleStateCycle(PhotoViewScaleState actual) {
   switch (actual) {
     case PhotoViewScaleState.initial:
       return PhotoViewScaleState.originalSize;
-    case PhotoViewScaleState.originalSize:
-      return PhotoViewScaleState.initial;
     default:
       return PhotoViewScaleState.initial;
   }
