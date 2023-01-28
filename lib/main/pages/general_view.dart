@@ -19,6 +19,7 @@ class GeneralView extends StatelessWidget {
         );
       },
       options: CarouselOptions(
+        scrollPhysics: NeverScrollableScrollPhysics(),
         enlargeCenterPage: true,
           height: MediaQuery.of(context).size.height / 1.6,
       )
