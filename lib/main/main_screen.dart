@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
+import 'package:virtual_showroom/main/widget/my_app_bar.dart';
 import 'package:virtual_showroom/main/widget/my_footer.dart';
 import 'package:virtual_showroom/main/widget/my_navigation_bar.dart';
 import 'package:virtual_showroom/main/widget/my_page.dart';
-import 'package:virtual_showroom/main/widget/my_app_bar.dart';
 import 'package:virtual_showroom/main/widget/project_title.dart';
 import '../configs/app_config.dart';
-import '../provider/photo_view_scale_state_provider.dart';
+import '../provider/app_state_provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final photoViewScaleState = Provider.of<PhotoViewScaleStateProvider>(context).photoViewScaleState;
+    final screenState = Provider.of<AppStateProvider>(context).screenState;
 
     AppConfig.init(context);
     return Scaffold(
@@ -33,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
           const MyAppBar(),
           const ProjectTitle(),
           MyPage(pageIndex: _pageIndex),
-          if(photoViewScaleState == PhotoViewScaleState.initial)
+          if(screenState == ScreenState.collapsed)
             MyNavigationBar(
               pageIndex: _pageIndex,
               onPressed: (pageIndex) {
