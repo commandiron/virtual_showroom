@@ -12,12 +12,10 @@ class GeneralView extends StatelessWidget {
     return CarouselSlider.builder(
       itemCount: Project.project1.generalViewImagePaths.length,
       itemBuilder: (context, index, realIndex) {
-        return InteractiveViewer(
-          child: CarouselItem(
-            imagePath: Project.project1.generalViewImagePaths[index],
-            color: Theme.of(context).colorScheme.onBackground,
-            fit: BoxFit.cover,
-          ),
+        return CarouselItem(
+          imagePath: Project.project1.generalViewImagePaths[index],
+          color: Theme.of(context).colorScheme.onBackground,
+          fit: BoxFit.cover,
         );
       },
       options: CarouselOptions(

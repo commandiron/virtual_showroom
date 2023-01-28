@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CarouselItem extends StatelessWidget {
+class CarouselItem extends StatefulWidget {
   const CarouselItem(
     {
       required this.imagePath,
@@ -17,15 +17,56 @@ class CarouselItem extends StatelessWidget {
   final BoxFit? fit;
 
   @override
+  State<CarouselItem> createState() => _CarouselItemState();
+}
+
+class _CarouselItemState extends State<CarouselItem> with SingleTickerProviderStateMixin  {
+
+  late TransformationController _controller;
+  late AnimationController _animationController;
+  Animation<Matrix4>? _animation;
+
+  @override
+  void initState() {
+    _controller = TransformationController();
+    _animationController = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200)
+    )..addListener(() => _controller.value = _animation!.value);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).colorScheme.onBackground,
-      shadowColor: shadowColor,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset(imagePath, fit: fit)
+    return InteractiveViewer(
+      transformationController: _controller,
+      maxScale: 4,
+      minScale: 1,
+      onInteractionEnd: (details) {
+        resetAnimation();
+      },
+      child: Card(
+        color: Theme.of(context).colorScheme.onBackground,
+        shadowColor: widget.shadowColor,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(widget.imagePath, fit: widget.fit)
+        ),
       ),
     );
+  }
+
+  void resetAnimation() {
+    _animation = Matrix4Tween(
+      begin: _controller.value,
+      end: Matrix4.identity(),
+    ).animate(
+        CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut
+        )
+    );
+    _animationController.forward(from: 0);
   }
 }
 
