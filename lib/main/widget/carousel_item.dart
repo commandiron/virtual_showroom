@@ -23,38 +23,11 @@ class CarouselItem extends StatelessWidget {
       shadowColor: shadowColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: MyZoomImage(imagePath: imagePath, fit: fit,)
+        child: Image.asset(imagePath, fit: fit)
       ),
     );
   }
 }
-
-
-
-class MyZoomImage extends StatefulWidget {
-  const MyZoomImage({required this.imagePath, required this.fit, Key? key}) : super(key: key);
-
-  final String imagePath;
-  final BoxFit? fit;
-
-  @override
-  State<MyZoomImage> createState() => _MyZoomImageState();
-}
-
-class _MyZoomImageState extends State<MyZoomImage> {
-  @override
-  Widget build(BuildContext context) {
-    return  InteractiveViewer(
-      minScale: 1,
-      maxScale: 3,
-      scaleFactor: 400,
-      child: Image.asset(widget.imagePath, fit: widget.fit)
-    );
-  }
-}
-
-
-
 
 class PinchToZoomImage extends StatefulWidget {
   const PinchToZoomImage({required this.imagePath, required this.fit, Key? key}) : super(key: key);
