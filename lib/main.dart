@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:virtual_showroom/provider/photo_view_provider.dart';
 
 import 'configs/core_theme.dart';
 import 'main/main_screen.dart';
@@ -11,7 +13,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialChild();
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => PhotoViewProvider()),
+        ],
+        child: const MaterialChild()
+    );
   }
 }
 
