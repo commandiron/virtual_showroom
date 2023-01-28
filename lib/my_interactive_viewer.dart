@@ -43,10 +43,10 @@ class _MyInteractiveViewerState extends State<MyInteractiveViewer> with SingleTi
       begin: _controller.value,
       end: Matrix4.identity(),
     ).animate(
-        CurvedAnimation(
-            parent: _animationController,
-            curve: Curves.easeInOut
-        )
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut
+      )
     );
     _animationController.forward(from: 0);
   }
