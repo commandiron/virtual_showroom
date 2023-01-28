@@ -18,6 +18,9 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
   Widget build(BuildContext context) {
     return PhotoViewGallery.builder(
       itemCount: widget.imagePaths.length,
+      onPageChanged: (index) {
+        Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+      },
       scaleStateChangedCallback: (value) {
         if(value == PhotoViewScaleState.initial) {
           Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
