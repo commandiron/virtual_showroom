@@ -13,14 +13,14 @@ class GeneralView extends StatelessWidget {
       builder: (context, index) {
         return PhotoViewGalleryPageOptions(
           imageProvider: AssetImage(Project.project1.generalViewImagePaths[index]),
-          initialScale: PhotoViewComputedScale.contained * 0.8,
+          initialScale: PhotoViewComputedScale.contained * 1,
             heroAttributes: PhotoViewHeroAttributes(tag: Project.project1.generalViewImagePaths[index]),
-          minScale: PhotoViewComputedScale.contained * 0.8,
-          maxScale: 4,
+          minScale: PhotoViewComputedScale.contained * 1,
+          maxScale: PhotoViewComputedScale.contained * 4,
         );
       },
       backgroundDecoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background
+        color: Theme.of(context).colorScheme.background,
       )
     );
   }
