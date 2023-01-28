@@ -33,6 +33,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
             Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
           },
           scaleStateChangedCallback: (value) {
+            print(value);
             setState((){
               _photoViewScaleState = value;
             });
@@ -89,9 +90,6 @@ PhotoViewScaleState myScaleStateCycle(PhotoViewScaleState actual) {
     case PhotoViewScaleState.initial:
       return PhotoViewScaleState.originalSize;
     case PhotoViewScaleState.originalSize:
-      return PhotoViewScaleState.initial;
-    case PhotoViewScaleState.zoomedIn:
-    case PhotoViewScaleState.zoomedOut:
       return PhotoViewScaleState.initial;
     default:
       return PhotoViewScaleState.initial;
