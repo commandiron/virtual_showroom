@@ -17,9 +17,15 @@ class MyFooter extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              "from DEMIRLI",
+              "from ",
               style: AppTextStyle.b1?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimaryContainer
+                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5)
+              ),
+            ),
+            Text(
+              "DEMIRLI",
+              style: AppTextStyle.b1?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground
               ),
             ),
             Text(
