@@ -22,7 +22,7 @@ class CompanyContact {
       title: "Telefon",
       body: "0216 330 03 00",
       androidUrl: "tel:+902163300300",
-      iosUrl: "mailto:info@demirli.com.tr",
+      iosUrl: "tel:+902163300300",
       icon: Icons.phone,
     ),
     CompanyContact(

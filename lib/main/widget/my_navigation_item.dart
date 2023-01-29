@@ -9,60 +9,51 @@ class MyNavigationItem extends StatelessWidget {
     {
       required this.pageItem,
       required this.enabled,
-      this.onPressed,
+      required this.onPressed,
       Key? key
     }
   ) : super(key: key);
 
   final PageItem pageItem;
   final bool enabled;
-  final void Function()? onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Padding(
-          padding: AppPadding.allS!,
-          child: CupertinoButton(
-            padding: AppPadding.zero,
-            color: enabled
-                ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.primaryContainer,
-            onPressed: onPressed,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: AppPadding.allS!.add(EdgeInsets.only(top: 4)),
-                    child: Image.asset(
-                      enabled
-                        ? pageItem.highlightedLogoImagePath
-                        : pageItem.neutralLogoImagePath,
-                    ),
-                  )
-                ),
-                Container(
-                  height: 30,
-                  padding: AppPadding.horizontalS!,
-                  alignment: Alignment.topCenter,
-                  child: FittedBox(
-                    child: Text(
-                      pageItem.title,
-                      style: AppTextStyle.b2?.copyWith(
-                        color: enabled
-                          ? Theme.of(context).colorScheme.onPrimary
-                          : Theme.of(context).colorScheme.onPrimaryContainer,
-                      ),
-                    ),
-                  )
-                ),
-              ],
+      child: Padding(
+        padding: AppPadding.horizontalXS!,
+        child: InkWell(
+          onTap: () {
+            onPressed();
+          },
+          borderRadius:BorderRadius.circular(8),
+          child: Container(
+            height: 70,
+            decoration: BoxDecoration(
+              color: enabled
+                ? Colors.white
+                : Colors.transparent,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                width: 1,
+                color: Colors.white,
+              ),
             ),
+            alignment: Alignment.center,
+            child: Text(
+              pageItem.title,
+              textAlign: TextAlign.center,
+              style: enabled
+                ? AppTextStyle.b3b?.copyWith(
+                  color: Colors.black
+                )
+                : AppTextStyle.b3?.copyWith(
+                  color: Colors.white
+                )
+            )
           ),
-        )
+        ),
       )
     );
   }

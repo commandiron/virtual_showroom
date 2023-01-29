@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import '../../model/page_item.dart';
 import '../../provider/app_state_provider.dart';
-import 'my_navigation_item_2.dart';
+import 'my_navigation_item.dart';
 
 class MyNavigationBar extends StatefulWidget {
   const MyNavigationBar({required this.pageIndex, required this.onPressed, Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: PageItem.pages.map(
-            (pageItem) => MyNavigationItem2(
+            (pageItem) => MyNavigationItem(
               pageItem: pageItem,
               enabled: pageItem.index == widget.pageIndex,
               onPressed: () {
