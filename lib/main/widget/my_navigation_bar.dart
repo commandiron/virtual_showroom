@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:virtual_showroom/configs/app_padding.dart';
 import '../../model/page_item.dart';
 import 'package:virtual_showroom/main/widget/my_navigation_item.dart';
 import '../../provider/app_state_provider.dart';
@@ -41,8 +42,9 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: _offset == Offset.zero ? 300 : 0),
         height: _height,
+        padding: AppPadding.horizontalS,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: PageItem.pages.map(
             (pageItem) => MyNavigationItem(
               pageItem: pageItem,

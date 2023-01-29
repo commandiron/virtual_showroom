@@ -24,7 +24,7 @@ class MyNavigationItem extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1,
         child: Padding(
-          padding: AppPadding.allXS!,
+          padding: AppPadding.allS!,
           child: CupertinoButton(
             padding: AppPadding.zero,
             color: enabled
