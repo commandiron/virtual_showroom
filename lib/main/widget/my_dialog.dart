@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../configs/app_padding.dart';
 import '../../configs/app_text_style.dart';
@@ -35,8 +35,7 @@ class MyDialog extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    final userAgent = window.navigator.userAgent.toString();
-                    if(userAgent.contains("iphone") || userAgent.contains("ipad")) {
+                    if(defaultTargetPlatform == TargetPlatform.iOS) {
                       openURL(item.iosUrl);
                     } else {
                       openURL(item.androidUrl);
