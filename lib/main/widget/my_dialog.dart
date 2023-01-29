@@ -1,7 +1,5 @@
-
-
+import 'dart:html';
 import 'package:flutter/material.dart';
-
 import '../../configs/app_padding.dart';
 import '../../configs/app_text_style.dart';
 import '../../helper/url_launcher.dart';
@@ -37,7 +35,12 @@ class MyDialog extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    openURL(item.url);
+                    final userAgent = window.navigator.userAgent.toString();
+                    if(userAgent.contains("iphone") || userAgent.contains("ipad")) {
+                      openURL(item.iosUrl);
+                    } else {
+                      openURL(item.androidUrl);
+                    }
                   },
                   icon: Icon(item.icon, color: Theme.of(context).colorScheme.primary,)
                 )
