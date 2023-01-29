@@ -76,7 +76,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
             child: Container(
               padding: AppPadding.horizontalS!.add(AppPadding.verticalXS!),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.75),
                 borderRadius: const BorderRadius.all(Radius.circular(16))
               ),
               child: DotsIndicator(
