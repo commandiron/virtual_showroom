@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import '../../model/page_item.dart';
-import 'package:virtual_showroom/main/widget/my_navigation_item.dart';
 import '../../provider/app_state_provider.dart';
+import 'my_navigation_item_2.dart';
 
 class MyNavigationBar extends StatefulWidget {
   const MyNavigationBar({required this.pageIndex, required this.onPressed, Key? key}) : super(key: key);
@@ -42,11 +42,11 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: _offset == Offset.zero ? 300 : 0),
         height: _height,
-        padding: AppPadding.horizontalS,
+        padding: AppPadding.horizontalXS,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: PageItem.pages.map(
-            (pageItem) => MyNavigationItem(
+            (pageItem) => MyNavigationItem2(
               pageItem: pageItem,
               enabled: pageItem.index == widget.pageIndex,
               onPressed: () {

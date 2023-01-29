@@ -17,6 +17,7 @@ class AppPadding {
   static EdgeInsets? verticalXXL;
   static EdgeInsets? verticalXXXL;
 
+  static EdgeInsets? horizontalXS;
   static EdgeInsets? horizontalS;
   static EdgeInsets? horizontalM;
   static EdgeInsets? horizontalL;
@@ -43,6 +44,7 @@ class AppPadding {
     verticalXXL = const EdgeInsets.symmetric(vertical: 128);
     verticalXXXL = const EdgeInsets.symmetric(vertical: 256);
 
+    horizontalXS = const EdgeInsets.symmetric(horizontal: 4);
     horizontalS = const EdgeInsets.symmetric(horizontal: 8);
     horizontalM = const EdgeInsets.symmetric(horizontal: 16);
     horizontalL = const EdgeInsets.symmetric(horizontal: 32);
