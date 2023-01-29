@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../configs/app_padding.dart';
 import '../../model/page_item.dart';
 import 'package:virtual_showroom/main/widget/my_navigation_item.dart';
-
 import '../../provider/app_state_provider.dart';
 
 class MyNavigationBar extends StatefulWidget {
@@ -19,6 +16,7 @@ class MyNavigationBar extends StatefulWidget {
 
 class _MyNavigationBarState extends State<MyNavigationBar> {
 
+  Offset _offset = Offset.zero;
   double _height = 100;
 
   @override
@@ -28,29 +26,33 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
 
     if(screenState == ScreenState.collapsed) {
       setState(() {
+        _offset = Offset.zero;
         _height = 100;
       });
     } else {
       setState(() {
+        _offset = Offset(0, 1);
         _height = 0;
       });
     }
-
-    return AnimatedContainer(
-      padding: AppPadding.allS,
-      height: _height,
-      duration: Duration(milliseconds: _height > 0 ? 300 : 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: PageItem.pages.map(
-          (pageItem) => MyNavigationItem(
-            pageItem: pageItem,
-            enabled: pageItem.index == widget.pageIndex,
-            onPressed: () {
-              widget.onPressed(pageItem.index);
-            },
-          )
-        ).toList()
+    return AnimatedSlide(
+      offset: _offset,
+      duration: Duration(milliseconds: _offset == Offset.zero ? 600 : 0),
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: _offset == Offset.zero ? 300 : 0),
+        height: _height,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: PageItem.pages.map(
+            (pageItem) => MyNavigationItem(
+              pageItem: pageItem,
+              enabled: pageItem.index == widget.pageIndex,
+              onPressed: () {
+                widget.onPressed(pageItem.index);
+              },
+            )
+          ).toList()
+        ),
       ),
     );
   }
