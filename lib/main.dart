@@ -32,7 +32,7 @@ class MaterialChild extends StatelessWidget {
       title: 'Virtual Showroom',
       theme: themeLight,
       darkTheme: themeDark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       initialRoute: "/",
       routes: {
         "/": (context) => const MainScreen(),
