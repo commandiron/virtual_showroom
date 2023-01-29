@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 import '../../configs/app_text_style.dart';
 import '../../model/project.dart';
 
@@ -14,7 +13,7 @@ class ProjectTitle extends StatelessWidget {
       child: FittedBox(
         child: Text(
           Project.project1.name,
-          style: AppTextStyle.h3,
+          style: AppTextStyle.h3
         ),
       )
     );
