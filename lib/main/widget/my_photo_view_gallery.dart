@@ -100,10 +100,11 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.5),
+                  color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5)
                 ),
                 padding: AppPadding.allS!,
                 child: IconButton(
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
                   onPressed: () {
                     _photoViewScaleStateController.scaleState = PhotoViewScaleState.initial;
                   },
