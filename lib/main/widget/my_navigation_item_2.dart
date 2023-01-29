@@ -27,18 +27,19 @@ class MyNavigationItem2 extends StatelessWidget {
           onTap: () {
             onPressed();
           },
+          borderRadius:BorderRadius.circular(8),
           child: Container(
-            height: 56,
+            height: 70,
             decoration: BoxDecoration(
               color: enabled
                 ? Colors.white
                 : Colors.black.withOpacity(0.75),
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
-                width: 2,
+                width: 1,
                 color: enabled
                   ? Colors.white
-                  : Theme.of(context).colorScheme.primary,
+                  : Colors.white,
               ),
             ),
             alignment: Alignment.center,
