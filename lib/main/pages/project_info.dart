@@ -21,7 +21,7 @@ class ProjectInfo extends StatelessWidget {
             SizedBox(
               width: 200,
               child: CircleProgressBar(
-                backgroundColor:  Theme.of(context).colorScheme.onBackground.withOpacity(0.85),
+                backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
                 foregroundColor: Theme.of(context).colorScheme.primary,
                 animationDuration: Duration(milliseconds: 2000),
                 value: passedTime / estimatedTotalDuration,

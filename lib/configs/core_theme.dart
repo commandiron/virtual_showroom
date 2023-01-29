@@ -7,14 +7,11 @@ final colorSchemeDark = ColorScheme.dark(
   background: Color(0xff242424),
   onBackground: Colors.white,
 
-  primaryContainer: Colors.white,
-  onPrimaryContainer: Color(0xffA1A1A1),
+  primaryContainer: Colors.grey.shade50,
+  onPrimaryContainer: Colors.black,
 
-  secondaryContainer: Colors.grey.shade50,
-  onSecondaryContainer: Colors.black,
-
-  tertiaryContainer: Color(0xff242424),
-  onTertiaryContainer: Colors.white,
+  secondaryContainer: Color(0xff242424),
+  onSecondaryContainer: Colors.white,
 );
 
 final themeDark = ThemeData(
@@ -28,21 +25,18 @@ final themeDark = ThemeData(
   )
 );
 
-final colorSchemeLight = ColorScheme.dark(
+final colorSchemeLight = ColorScheme.light(
   primary: Color(0xff137CC0),
   onPrimary: Colors.white,
 
   background: Colors.white,
   onBackground: Color(0xff242424),
 
-  primaryContainer: Colors.white,
-  onPrimaryContainer: Color(0xffA1A1A1),
+  primaryContainer: Colors.grey.shade200,
+  onPrimaryContainer: Colors.black,
 
-  secondaryContainer: Colors.grey.shade200,
+  secondaryContainer:Colors.grey.shade200,
   onSecondaryContainer: Colors.black,
-
-  tertiaryContainer:Colors.grey.shade100,
-  onTertiaryContainer: Colors.black,
 );
 
 final themeLight = ThemeData(

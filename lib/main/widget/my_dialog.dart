@@ -11,7 +11,7 @@ class MyDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      backgroundColor: Colors.grey.shade50,
       title: Text("İletişim", style: AppTextStyle.h3!.copyWith(color: Colors.black),),
       contentPadding: AppPadding.horizontalL!.add(AppPadding.verticalM!),
       children: CompanyContact.items.map(

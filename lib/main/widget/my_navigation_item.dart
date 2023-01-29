@@ -32,12 +32,12 @@ class MyNavigationItem extends StatelessWidget {
             height: 70,
             decoration: BoxDecoration(
               color: enabled
-                ? Theme.of(context).colorScheme.secondaryContainer
+                ? Theme.of(context).colorScheme.primaryContainer
                 : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 width: 1,
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                color: Theme.of(context).colorScheme.primaryContainer,
               ),
             ),
             alignment: Alignment.center,
@@ -46,7 +46,7 @@ class MyNavigationItem extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppTextStyle.b3?.copyWith(
                 color: enabled
-                  ? Theme.of(context).colorScheme.onSecondaryContainer
+                  ? Theme.of(context).colorScheme.onPrimaryContainer
                   : Theme.of(context).colorScheme.onBackground
               )
             )
