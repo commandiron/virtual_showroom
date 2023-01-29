@@ -44,13 +44,11 @@ class MyNavigationItem extends StatelessWidget {
             child: Text(
               pageItem.title,
               textAlign: TextAlign.center,
-              style: enabled
-                ? AppTextStyle.b3b?.copyWith(
-                  color: Colors.black
-                )
-                : AppTextStyle.b3?.copyWith(
-                  color: Colors.white
-                )
+              style: AppTextStyle.b3?.copyWith(
+                color: enabled
+                  ? Colors.black
+                  :  Colors.white
+              )
             )
           ),
         ),
