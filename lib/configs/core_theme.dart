@@ -10,8 +10,11 @@ final colorSchemeDark = ColorScheme.dark(
   primaryContainer: Colors.white,
   onPrimaryContainer: Color(0xffA1A1A1),
 
-  secondaryContainer: Colors.grey.shade300,
-  onSecondaryContainer: Colors.black
+  secondaryContainer: Colors.grey.shade50,
+  onSecondaryContainer: Colors.black,
+
+  tertiaryContainer: Color(0xff242424),
+  onTertiaryContainer: Colors.white,
 );
 
 final themeDark = ThemeData(
@@ -35,8 +38,11 @@ final colorSchemeLight = ColorScheme.dark(
   primaryContainer: Colors.white,
   onPrimaryContainer: Color(0xffA1A1A1),
 
-  secondaryContainer: Colors.grey.shade300,
-  onSecondaryContainer: Colors.black
+  secondaryContainer: Colors.grey.shade200,
+  onSecondaryContainer: Colors.black,
+
+  tertiaryContainer:Colors.grey.shade100,
+  onTertiaryContainer: Colors.black,
 );
 
 final themeLight = ThemeData(
