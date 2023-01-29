@@ -33,18 +33,17 @@ class MyNavigationItem2 extends StatelessWidget {
             decoration: BoxDecoration(
               color: enabled
                 ? Colors.white
-                : Colors.black.withOpacity(0.75),
+                : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 width: 1,
-                color: enabled
-                  ? Colors.white
-                  : Colors.white,
+                color: Colors.white,
               ),
             ),
             alignment: Alignment.center,
             child: Text(
               pageItem.title,
+              textAlign: TextAlign.center,
               style: AppTextStyle.b3?.copyWith(
                 color: enabled
                   ? Colors.black
