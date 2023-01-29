@@ -43,7 +43,7 @@ class _MyAppBarState extends State<MyAppBar> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: _offset == Offset.zero ? 300 : 0),
         height: _height,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         child: Row(
           children: [
             Expanded(
