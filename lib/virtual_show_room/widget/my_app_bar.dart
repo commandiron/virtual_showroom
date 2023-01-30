@@ -10,14 +10,12 @@ import 'my_dialog.dart';
 class MyAppBar extends StatefulWidget {
   const MyAppBar(
     {
-      required this.companyLogoPath,
-      required this.companyContacts,
+      required this.project,
       Key? key
     }
   ) : super(key: key);
 
-  final String companyLogoPath;
-  final List<CompanyContact> companyContacts;
+  final Project project;
 
   @override
   State<MyAppBar> createState() => _MyAppBarState();
@@ -59,7 +57,7 @@ class _MyAppBarState extends State<MyAppBar> {
               child: Container(
                 padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
                 alignment: Alignment.centerLeft,
-                child: Image.asset(widget.companyLogoPath),
+                child: Image.asset(widget.project.companyLogoPath),
               )
             ),
             Expanded(
@@ -72,7 +70,12 @@ class _MyAppBarState extends State<MyAppBar> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return MyDialog(companyContacts: widget.companyContacts,);
+                        return MyDialog(
+                          phone: widget.project.companyPhone,
+                          mail: widget.project.companyMail,
+                          address: widget.project.companyAddress,
+                          locationUrl: widget.project.companyLocationUrl
+                        );
                       },
                     );
                   },

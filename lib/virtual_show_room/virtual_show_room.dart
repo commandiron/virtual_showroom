@@ -29,8 +29,7 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
       body: Column(
         children: [
           MyAppBar(
-            companyLogoPath: widget.project.companyLogoPath,
-            companyContacts: widget.project.companyContacts,
+            project: widget.project,
           ),
           ProjectTitle(
             title: widget.project.name,

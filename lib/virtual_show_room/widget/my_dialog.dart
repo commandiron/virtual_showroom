@@ -1,14 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/contact_item.dart';
 import '../../configs/app_padding.dart';
 import '../../configs/app_text_style.dart';
-import '../../helper/url_launcher.dart';
-import '../../model/project.dart';
 
 class MyDialog extends StatelessWidget {
-  const MyDialog({required this.companyContacts, Key? key}) : super(key: key);
+  const MyDialog({required this.phone, required this.mail, required this.address, required this.locationUrl, Key? key}) : super(key: key);
 
-  final List<CompanyContact> companyContacts;
+  final String phone;
+  final String mail;
+  final String address;
+  final String locationUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -16,40 +18,26 @@ class MyDialog extends StatelessWidget {
       backgroundColor: Colors.grey.shade50,
       title: Text("İletişim", style: AppTextStyle.h3!.copyWith(color: Colors.black),),
       contentPadding: AppPadding.horizontalL!.add(AppPadding.verticalM!),
-      children: companyContacts.map(
-        (item) => Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                item.title,
-                style: AppTextStyle.b1b!.copyWith(color: Colors.black),
-              )
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    item.body,
-                    style: AppTextStyle.b2!.copyWith(color: Colors.black),
-                  )
-                ),
-                IconButton(
-                  onPressed: () {
-                    if(defaultTargetPlatform == TargetPlatform.iOS) {
-                      openURL(item.iosUrl);
-                    } else {
-                      openURL(item.androidUrl);
-                    }
-                  },
-                  icon: Icon(item.icon, color: Theme.of(context).colorScheme.primary,)
-                )
-              ],
-            ),
-          ],
-        )
-      ).toList()
+      children: [
+        ContactItem(
+          title: "Telefon",
+          body: phone,
+          url: "tel:$phone",
+          icon: Icons.phone
+        ),
+        ContactItem(
+          title: "E posta",
+          body: mail,
+          url: "mailto:$mail",
+          icon: Icons.mail
+        ),
+        ContactItem(
+          title: "Ofis",
+          body: address,
+          url: locationUrl,
+          icon: Icons.location_on
+        ),
+      ]
     );
   }
 }
