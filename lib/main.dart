@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -68,5 +67,5 @@ class MaterialChild extends StatelessWidget {
 }
 
 Project? getProjectById(String id) {
-  return Project.projects.firstWhereOrNull((project) => project.id == id);
+  return Project.projects.firstWhere((project) => project.id == id);
 }
