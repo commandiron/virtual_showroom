@@ -43,9 +43,9 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
           MyNavigationBar(
             pages: PageItem.pages,
             pageIndex: _pageIndex,
-            onPressed: (pageIndex) {
+            onPressed: (index) {
               setState(() {
-                _pageIndex = pageIndex;
+                _pageIndex = index;
               });
             },
           ),

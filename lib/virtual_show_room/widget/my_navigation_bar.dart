@@ -10,7 +10,7 @@ class MyNavigationBar extends StatefulWidget {
 
   final List<PageItem> pages;
   final int pageIndex;
-  final Function(int pageIndex) onPressed;
+  final Function(int index) onPressed;
 
   @override
   State<MyNavigationBar> createState() => _MyNavigationBarState();
