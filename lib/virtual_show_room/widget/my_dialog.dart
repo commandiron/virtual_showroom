@@ -6,7 +6,9 @@ import '../../helper/url_launcher.dart';
 import '../../model/company_contact.dart';
 
 class MyDialog extends StatelessWidget {
-  const MyDialog({Key? key}) : super(key: key);
+  const MyDialog({required this.companyContacts, Key? key}) : super(key: key);
+
+  final List<CompanyContact> companyContacts;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class MyDialog extends StatelessWidget {
       backgroundColor: Colors.grey.shade50,
       title: Text("İletişim", style: AppTextStyle.h3!.copyWith(color: Colors.black),),
       contentPadding: AppPadding.horizontalL!.add(AppPadding.verticalM!),
-      children: CompanyContact.items.map(
+      children: companyContacts.map(
         (item) => Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

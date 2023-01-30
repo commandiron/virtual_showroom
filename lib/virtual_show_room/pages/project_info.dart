@@ -4,8 +4,8 @@ import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 import '../../model/project.dart';
 
-class ProjectInfo extends StatelessWidget {
-  const ProjectInfo({Key? key}) : super(key: key);
+class ProjectInfoPage extends StatelessWidget {
+  const ProjectInfoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

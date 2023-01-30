@@ -2,14 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
-import 'package:virtual_showroom/main/widget/my_dialog.dart';
-
 import '../../configs/app_padding.dart';
-import '../../model/project.dart';
+import '../../model/company_contact.dart';
 import '../../provider/app_state_provider.dart';
+import 'my_dialog.dart';
 
 class MyAppBar extends StatefulWidget {
-  const MyAppBar({Key? key}) : super(key: key);
+  const MyAppBar(
+    {
+      required this.companyLogoPath,
+      required this.companyContacts,
+      Key? key
+    }
+  ) : super(key: key);
+
+  final String companyLogoPath;
+  final List<CompanyContact> companyContacts;
 
   @override
   State<MyAppBar> createState() => _MyAppBarState();
@@ -51,7 +59,7 @@ class _MyAppBarState extends State<MyAppBar> {
               child: Container(
                 padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
                 alignment: Alignment.centerLeft,
-                child: Image.asset(Project.project1.companyImagePath),
+                child: Image.asset(widget.companyLogoPath),
               )
             ),
             Expanded(
@@ -64,7 +72,7 @@ class _MyAppBarState extends State<MyAppBar> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return const MyDialog();
+                        return MyDialog(companyContacts: widget.companyContacts,);
                       },
                     );
                   },

@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:virtual_showroom/main/pages/ar.dart';
-import 'package:virtual_showroom/main/pages/general_view.dart';
-import 'package:virtual_showroom/main/pages/project_info.dart';
-import 'package:virtual_showroom/main/pages/plans.dart';
+import 'package:flutter/material.dart';
+
+import '../virtual_show_room/pages/ar.dart';
+import '../virtual_show_room/pages/general_images.dart';
+import '../virtual_show_room/pages/plan_images.dart';
+import '../virtual_show_room/pages/project_info.dart';
 
 class PageItem {
   int index;
@@ -27,28 +28,28 @@ class PageItem {
       title: "Görünüş",
       neutralLogoImagePath: "assets/neutral/facade_neutral.png",
       highlightedLogoImagePath : "assets/highlighted/facade_highlighted.png",
-      view: const GeneralView()
+      view: const GeneralImagesPage()
     ),
     PageItem(
       index: 1,
       title: "Planlar",
       neutralLogoImagePath: "assets/neutral/plan_neutral.png",
       highlightedLogoImagePath :  "assets/highlighted/plan_highlighted.png",
-      view: const Plans()
+      view: const PlanImagesPage()
     ),
     PageItem(
       index: 2,
       title: "Proje Bilgileri",
       neutralLogoImagePath: "assets/neutral/information_neutral.png",
       highlightedLogoImagePath : "assets/highlighted/information_highlighted.png",
-      view: const ProjectInfo()
+      view: const ProjectInfoPage()
     ),
     PageItem(
       index: 3,
       title: "AR",
       neutralLogoImagePath: "assets/neutral/ar_neutral.png",
       highlightedLogoImagePath :  "assets/highlighted/ar_hightlighted.png",
-      view: const Ar()
+      view: const ArPage()
     ),
   ];
 }

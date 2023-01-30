@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
-
+import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
 import 'configs/core_theme.dart';
-import 'main/main_screen.dart';
+import 'model/project.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => AppStateProvider()),
-        ],
-        child: const MaterialChild()
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppStateProvider()),
+      ],
+      child: const MaterialChild()
     );
   }
 }
@@ -35,7 +36,7 @@ class MaterialChild extends StatelessWidget {
       themeMode: ThemeMode.system,
       initialRoute: "/",
       routes: {
-        "/": (context) => const MainScreen(),
+        "/": (context) => VirtualShowRoom(project: Project.project1),
       },
     );
   }
