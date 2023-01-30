@@ -59,7 +59,7 @@ class Project {
       "assets/image_5.jpg"
     ],
     startDate: DateTime(
-        2022, 10, 7
+      2022, 10, 7
     ),
     estimatedFinishDate: DateTime(
       2023, 11, 7
