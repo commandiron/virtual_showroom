@@ -7,7 +7,7 @@ import '../../model/project.dart';
 class ProjectInfoPage extends StatelessWidget {
   const ProjectInfoPage({Key? key}) : super(key: key);
 
-  static const route = "project_info_page";
+  static const route = "project_info";
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import '../widget/my_photo_view_gallery.dart';
 class GeneralImagesPage extends StatelessWidget {
   const GeneralImagesPage({required this.generalImagePaths, Key? key}) : super(key: key);
 
-  static const route = "general_images_page";
+  static const route = "general_images";
 
   final List<String> generalImagePaths;
 
