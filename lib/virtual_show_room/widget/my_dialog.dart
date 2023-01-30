@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../configs/app_padding.dart';
 import '../../configs/app_text_style.dart';
 import '../../helper/url_launcher.dart';
-import '../../model/company_contact.dart';
+import '../../model/project.dart';
 
 class MyDialog extends StatelessWidget {
   const MyDialog({required this.companyContacts, Key? key}) : super(key: key);

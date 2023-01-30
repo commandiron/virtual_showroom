@@ -36,12 +36,16 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
             title: widget.project.name,
           ),
           MyPage(
-            pages: PageItem.pages,
+            pages: PageItem.pages.where(
+              (page) => widget.project.enabledPageRoutes.contains(page.route)
+            ).toList(),
             project: widget.project,
             pageIndex: _pageIndex
           ),
           MyNavigationBar(
-            pages: PageItem.pages,
+            pages: PageItem.pages.where(
+              (page) => widget.project.enabledPageRoutes.contains(page.route)
+            ).toList(),
             pageIndex: _pageIndex,
             onPressed: (index) {
               setState(() {

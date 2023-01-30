@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 import '../../configs/app_padding.dart';
-import '../../model/company_contact.dart';
+import '../../model/project.dart';
 import '../../provider/app_state_provider.dart';
 import 'my_dialog.dart';
 

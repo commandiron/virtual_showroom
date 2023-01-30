@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plan_images.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/project_info.dart';
-
 import '../../model/page_item.dart';
 import '../../model/project.dart';
 import '../pages/ar.dart';
@@ -25,13 +24,13 @@ class MyPage extends StatelessWidget {
           );
         },
         duration: const Duration(milliseconds: 600),
-        child: getPage(pages.where((page) => page.enabled).toList())
+        child: getPage()
       ),
     );
   }
 
-  Widget getPage(List<PageItem> enabledPages) {
-    switch(enabledPages.firstWhere((page) => page.index == pageIndex).route) {
+  Widget getPage() {
+    switch(pages.firstWhere((page) => page.index == pageIndex).route) {
       case GeneralImagesPage.route :
         return GeneralImagesPage(
           generalImagePaths: project.generalImagePaths,

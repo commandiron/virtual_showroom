@@ -7,14 +7,12 @@ class PageItem {
   int index;
   String title;
   String route;
-  bool enabled;
 
   PageItem(
     {
       required this.index,
       required this.title,
-      required this.route,
-      required this.enabled
+      required this.route
     }
   );
 
@@ -23,25 +21,21 @@ class PageItem {
       index: 0,
       title: "Görünüş",
       route: GeneralImagesPage.route,
-      enabled: true,
     ),
     PageItem(
       index: 1,
       title: "Planlar",
       route: PlanImagesPage.route,
-      enabled: true,
     ),
     PageItem(
       index: 2,
       title: "Proje Bilgileri",
       route: ProjectInfoPage.route,
-      enabled: true,
     ),
     PageItem(
       index: 3,
       title: "AR",
       route: ArPage.route,
-      enabled: true,
     ),
   ];
 }

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/model/company_contact.dart';
+import '../virtual_show_room/pages/ar.dart';
+import '../virtual_show_room/pages/general_images.dart';
+import '../virtual_show_room/pages/plan_images.dart';
+import '../virtual_show_room/pages/project_info.dart';
+
 
 class Project {
-  List<CompanyContact> companyContacts;
   String companyLogoPath;
+  List<CompanyContact> companyContacts;
+  List<String> enabledPageRoutes;
   String name;
   List<String> generalImagePaths;
   List<String> planImagePaths;
@@ -12,8 +17,9 @@ class Project {
 
   Project(
     {
-      required this.companyContacts,
       required this.companyLogoPath,
+      required this.companyContacts,
+      required this.enabledPageRoutes,
       required this.name,
       required this.generalImagePaths,
       required this.planImagePaths,
@@ -23,6 +29,7 @@ class Project {
   );
 
   static Project testProject = Project(
+    companyLogoPath: "assets/demirli_ins_logo.png",
     companyContacts: [
       CompanyContact(
         title: "Telefon",
@@ -46,7 +53,12 @@ class Project {
         icon: Icons.location_on,
       ),
     ],
-    companyLogoPath: "assets/demirli_ins_logo.png",
+    enabledPageRoutes: [
+      GeneralImagesPage.route,
+      PlanImagesPage.route,
+      ProjectInfoPage.route,
+      ArPage.route,
+    ],
     name: "Suadiye | Oran Apartmanı",
     generalImagePaths: [
       "assets/image_1.jpg",
@@ -63,5 +75,23 @@ class Project {
     estimatedFinishDate: DateTime(
       2023, 11, 7
     )
+  );
+}
+
+class CompanyContact {
+  String title;
+  String body;
+  String androidUrl;
+  String iosUrl;
+  IconData icon;
+
+  CompanyContact(
+    {
+      required this.title,
+      required this.body,
+      required this.androidUrl,
+      required this.iosUrl,
+      required this.icon,
+    }
   );
 }
