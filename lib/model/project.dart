@@ -41,7 +41,7 @@ class Project {
     companyPhone : "+902163300300",
     companyMail: "info@demirli.com.tr",
     companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
-    companyLocationUrl: "https://goo.gl/maps/RNiqv558Wzu3nqeR7",
+    companyLocationUrl: "http://maps.apple.com/?address=Hasanpaşa+Mah.,+Taşköprü+Cd.+Demirli+İş+Merkezi+25/A,+34718+Kadıköy/İstanbul&t=m",
     enabledPageRoutes: [
       GeneralImagesPage.route,
       PlanImagesPage.route,
