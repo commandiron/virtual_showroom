@@ -46,7 +46,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         padding: AppPadding.horizontalXS,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: widget.pages.map(
+          children: widget.pages.where((pageItem) => pageItem.enabled).map(
             (pageItem) => MyNavigationItem(
               title: pageItem.title,
               enabled: pageItem.index == widget.pageIndex,

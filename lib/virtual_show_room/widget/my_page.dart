@@ -25,13 +25,13 @@ class MyPage extends StatelessWidget {
           );
         },
         duration: const Duration(milliseconds: 600),
-        child: getPage()
+        child: getPage(pages.where((page) => page.enabled).toList())
       ),
     );
   }
 
-  Widget getPage() {
-    switch(pages.elementAt(pageIndex).route) {
+  Widget getPage(List<PageItem> enabledPages) {
+    switch(enabledPages.firstWhere((page) => page.index == pageIndex).route) {
       case GeneralImagesPage.route :
         return GeneralImagesPage(
           generalImagePaths: project.generalImagePaths,
