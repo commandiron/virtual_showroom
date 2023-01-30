@@ -2,18 +2,26 @@ import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
-import '../../model/project.dart';
 
 class ProjectInfoPage extends StatelessWidget {
-  const ProjectInfoPage({Key? key}) : super(key: key);
+  const ProjectInfoPage(
+    {
+      required this.startDate,
+      required this.estimatedFinishDate,
+      Key? key
+    }
+  ) : super(key: key);
 
   static const route = "project_info";
+
+  final DateTime startDate;
+  final DateTime estimatedFinishDate;
 
   @override
   Widget build(BuildContext context) {
 
-    final estimatedTotalDuration = Project.testProject.estimatedFinishDate.difference(Project.testProject.startDate).inDays;
-    final passedTime = DateTime.now().difference(Project.testProject.startDate).inDays;
+    final estimatedTotalDuration = estimatedFinishDate.difference(startDate).inDays;
+    final passedTime = DateTime.now().difference(startDate).inDays;
 
     return SingleChildScrollView(
       child: Container(

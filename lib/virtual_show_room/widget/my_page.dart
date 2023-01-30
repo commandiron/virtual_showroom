@@ -40,7 +40,10 @@ class MyPage extends StatelessWidget {
           planImagePaths: project.planImagePaths,
         );
       case ProjectInfoPage.route:
-        return const ProjectInfoPage();
+        return ProjectInfoPage(
+          startDate: project.startDate,
+          estimatedFinishDate: project.estimatedFinishDate,
+        );
       case ArPage.route :
         return const ArPage();
       default:

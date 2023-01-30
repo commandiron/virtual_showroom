@@ -5,7 +5,7 @@ import '../virtual_show_room/pages/project_info.dart';
 
 
 class Project {
-  int id;
+  String id;
   String companyLogoPath;
   String companyPhone;
   String companyMail;
@@ -35,34 +35,36 @@ class Project {
     }
   );
 
-  static Project testProject = Project(
-    id: 0,
-    companyLogoPath: "assets/demirli_ins_logo.png",
-    companyPhone : "+902163300300",
-    companyMail: "info@demirli.com.tr",
-    companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
-    companyLocationUrl: "https://goo.gl/maps/pUvD8P7sWb4NzitK7",
-    enabledPageRoutes: [
-      GeneralImagesPage.route,
-      PlanImagesPage.route,
-      ProjectInfoPage.route,
-      ArPage.route,
-    ],
-    name: "Suadiye | Oran Apartmanı",
-    generalImagePaths: [
-      "assets/image_1.jpg",
-      "assets/image_2.jpg"
-    ],
-    planImagePaths: [
-      "assets/image_3.jpeg",
-      "assets/image_4.jpg",
-      "assets/image_5.jpg"
-    ],
-    startDate: DateTime(
-      2022, 10, 7
+  static List<Project> projects = [
+    Project(
+      id: "0",
+      companyLogoPath: "assets/demirli_ins_logo.png",
+      companyPhone : "+902163300300",
+      companyMail: "info@demirli.com.tr",
+      companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
+      companyLocationUrl: "https://goo.gl/maps/pUvD8P7sWb4NzitK7",
+      enabledPageRoutes: [
+        GeneralImagesPage.route,
+        PlanImagesPage.route,
+        ProjectInfoPage.route,
+        ArPage.route,
+      ],
+      name: "Suadiye | Oran Apartmanı",
+      generalImagePaths: [
+        "assets/image_1.jpg",
+        "assets/image_2.jpg"
+      ],
+      planImagePaths: [
+        "assets/image_3.jpeg",
+        "assets/image_4.jpg",
+        "assets/image_5.jpg"
+      ],
+      startDate: DateTime(
+        2022, 10, 7
+      ),
+      estimatedFinishDate: DateTime(
+        2023, 11, 7
+      )
     ),
-    estimatedFinishDate: DateTime(
-      2023, 11, 7
-    )
-  );
+  ];
 }

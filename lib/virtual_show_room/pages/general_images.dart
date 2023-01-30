@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../model/project.dart';
 import '../widget/my_photo_view_gallery.dart';
 
 class GeneralImagesPage extends StatelessWidget {
@@ -12,7 +11,7 @@ class GeneralImagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MyPhotoViewGallery(
-      imagePaths: Project.testProject.generalImagePaths,
+      imagePaths: generalImagePaths,
     );
   }
 }

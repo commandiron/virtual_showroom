@@ -1,7 +1,9 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
+import 'package:virtual_showroom/virtual_show_room/error_page.dart';
 import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
 import 'configs/core_theme.dart';
 import 'model/project.dart';
@@ -36,10 +38,35 @@ class MaterialChild extends StatelessWidget {
       theme: themeLight,
       darkTheme: themeDark,
       themeMode: ThemeMode.system,
-      initialRoute: "/",
-      routes: {
-        "/": (context) => VirtualShowRoom(project: Project.testProject),
+      onGenerateRoute: (settings) {
+        final id = Uri.base.queryParameters['id'];
+        if(id == null) {
+          return MaterialPageRoute(
+            builder: (context) {
+              return const ErrorPage(message: "id verilmedi.");
+            },
+          );
+        } else {
+          final project = getProjectById(id);
+          if(project == null) {
+            return MaterialPageRoute(
+              builder: (context) {
+                return const ErrorPage(message: "Böyle bir proje yok.");
+              },
+            );
+          } else {
+            return MaterialPageRoute(
+              builder: (context) {
+                return VirtualShowRoom(project: project);
+              },
+            );
+          }
+        }
       },
     );
   }
+}
+
+Project? getProjectById(String id) {
+  return Project.projects.firstWhereOrNull((project) => project.id == id);
 }
