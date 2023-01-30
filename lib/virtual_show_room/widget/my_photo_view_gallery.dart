@@ -71,7 +71,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
         ),
         if(_photoViewScaleState == PhotoViewScaleState.initial)
           Container(
-            padding: AppPadding.allS,
+            padding: AppPadding.allL,
             alignment: Alignment.bottomCenter,
             child: Container(
               padding: AppPadding.horizontalS!.add(AppPadding.verticalXS!),
