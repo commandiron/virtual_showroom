@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 
@@ -9,6 +11,7 @@ class ProjectInfoPage extends StatelessWidget {
     {
       required this.startDate,
       required this.estimatedFinishDate,
+      required this.generalSpecs,
       Key? key
     }
   ) : super(key: key);
@@ -17,6 +20,7 @@ class ProjectInfoPage extends StatelessWidget {
 
   final DateTime startDate;
   final DateTime estimatedFinishDate;
+  final List<String> generalSpecs;
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +66,38 @@ class ProjectInfoPage extends StatelessWidget {
             AppSpace.verticalL!,
             Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(estimatedFinishDate)}", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
+            Text("Genel Özellikler", style: AppTextStyle.b2!,),
+            AppSpace.verticalL!,
+            GridView.builder(
+              padding: AppPadding.allS,
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
+              itemCount: generalSpecs.length,
+              itemBuilder: (context, index) {
+                return AspectRatio(
+                  aspectRatio: 1,
+                  child: Card(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: Padding(
+                      padding: AppPadding.allS!,
+                      child: Center(
+                        child: AutoSizeText(
+                          generalSpecs[index],
+                          style: AppTextStyle.b2!.copyWith(
+                            color: Theme.of(context).colorScheme.primary
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    ),
+                  ),
+                );
+              },
+            ),
             SizedBox(
               height: 1000,
-            )
+            ),
+
           ],
         ),
       ),

@@ -17,6 +17,7 @@ class Project {
   List<String> planImagePaths;
   DateTime startDate;
   DateTime estimatedFinishDate;
+  List<String> generalSpecs;
 
   Project(
     {
@@ -31,7 +32,8 @@ class Project {
       required this.generalImagePaths,
       required this.planImagePaths,
       required this.startDate,
-      required this.estimatedFinishDate
+      required this.estimatedFinishDate,
+      required this.generalSpecs
     }
   );
 
@@ -64,7 +66,19 @@ class Project {
       ),
       estimatedFinishDate: DateTime(
         2023, 12, 7
-      )
+      ),
+      generalSpecs: [
+        "C40 Beton",
+        "Prekast Cephe",
+        "Akıllı Ev",
+        "2 adet Otopark",
+        "Yerden Isıtma",
+        "Jeneratör",
+        "Prekast Cephe",
+        "Akıllı Ev",
+        "2 adet Otopark",
+        "Yerden Isıtma",
+      ]
     ),
   ];
 }
