@@ -63,7 +63,7 @@ class Project {
         2022, 10, 7
       ),
       estimatedFinishDate: DateTime(
-        2023, 11, 7
+        2023, 12, 7
       )
     ),
   ];

@@ -1,5 +1,6 @@
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 
@@ -59,7 +60,7 @@ class ProjectInfoPage extends StatelessWidget {
               ),
             ),
             AppSpace.verticalL!,
-            Text("Bitiş tarihi: 10/2023", style: AppTextStyle.b2!,),
+            Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(estimatedFinishDate)}", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
             SizedBox(
               height: 1000,
