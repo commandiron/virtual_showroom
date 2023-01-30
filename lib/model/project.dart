@@ -22,7 +22,7 @@ class Project {
     }
   );
 
-  static Project project1 = Project(
+  static Project testProject = Project(
     companyContacts: [
       CompanyContact(
         title: "Telefon",

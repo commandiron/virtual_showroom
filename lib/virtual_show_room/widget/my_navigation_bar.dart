@@ -6,8 +6,9 @@ import '../../provider/app_state_provider.dart';
 import 'my_navigation_item.dart';
 
 class MyNavigationBar extends StatefulWidget {
-  const MyNavigationBar({required this.pageIndex, required this.onPressed, Key? key}) : super(key: key);
+  const MyNavigationBar({required this.pages, required this.pageIndex, required this.onPressed, Key? key}) : super(key: key);
 
+  final List<PageItem> pages;
   final int pageIndex;
   final Function(int pageIndex) onPressed;
 
@@ -45,9 +46,9 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         padding: AppPadding.horizontalXS,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: PageItem.pages.map(
+          children: widget.pages.map(
             (pageItem) => MyNavigationItem(
-              pageItem: pageItem,
+              title: pageItem.title,
               enabled: pageItem.index == widget.pageIndex,
               onPressed: () {
                 widget.onPressed(pageItem.index);

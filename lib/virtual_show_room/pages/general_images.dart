@@ -3,12 +3,16 @@ import '../../model/project.dart';
 import '../widget/my_photo_view_gallery.dart';
 
 class GeneralImagesPage extends StatelessWidget {
-  const GeneralImagesPage({Key? key}) : super(key: key);
+  const GeneralImagesPage({required this.generalImagePaths, Key? key}) : super(key: key);
+
+  static const route = "general_images_page";
+
+  final List<String> generalImagePaths;
 
   @override
   Widget build(BuildContext context) {
     return  MyPhotoViewGallery(
-      imagePaths: Project.project1.generalImagePaths,
+      imagePaths: Project.testProject.generalImagePaths,
     );
   }
 }

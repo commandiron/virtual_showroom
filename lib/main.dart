@@ -36,7 +36,7 @@ class MaterialChild extends StatelessWidget {
       themeMode: ThemeMode.system,
       initialRoute: "/",
       routes: {
-        "/": (context) => VirtualShowRoom(project: Project.project1),
+        "/": (context) => VirtualShowRoom(project: Project.testProject),
       },
     );
   }

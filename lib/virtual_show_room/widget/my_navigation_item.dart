@@ -2,19 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
-import 'package:virtual_showroom/model/page_item.dart';
 
 class MyNavigationItem extends StatelessWidget {
   const MyNavigationItem(
     {
-      required this.pageItem,
+      required this.title,
       required this.enabled,
       required this.onPressed,
       Key? key
     }
   ) : super(key: key);
 
-  final PageItem pageItem;
+  final String title;
   final bool enabled;
   final void Function() onPressed;
 
@@ -42,7 +41,7 @@ class MyNavigationItem extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              pageItem.title,
+              title,
               textAlign: TextAlign.center,
               style: AppTextStyle.b3?.copyWith(
                 color: enabled
