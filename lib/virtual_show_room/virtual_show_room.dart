@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/my_app_bar.dart';
-import 'package:virtual_showroom/virtual_show_room/widget/my_footer.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/app_footer.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/navigation/app_navigation_bar.dart';
-import 'package:virtual_showroom/virtual_show_room/widget/my_page.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/app_page.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/project_title.dart';
 import '../configs/app_config.dart';
 import '../model/page_item.dart';
@@ -34,14 +34,14 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
           ProjectTitle(
             title: widget.project.name,
           ),
-          MyPage(
+          AppPage(
             pages: PageItem.pages.where(
               (page) => widget.project.enabledPageRoutes.contains(page.route)
             ).toList(),
             project: widget.project,
             pageIndex: _pageIndex
           ),
-          MyNavigationBar(
+          AppNavigationBar(
             pages: PageItem.pages.where(
               (page) => widget.project.enabledPageRoutes.contains(page.route)
             ).toList(),
@@ -52,7 +52,7 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
               });
             },
           ),
-          const MyFooter()
+          const AppFooter()
         ],
       )
     );

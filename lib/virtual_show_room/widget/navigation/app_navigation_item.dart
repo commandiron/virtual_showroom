@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 
-class MyNavigationItem extends StatelessWidget {
-  const MyNavigationItem(
+class AppNavigationItem extends StatelessWidget {
+  const AppNavigationItem(
     {
       required this.title,
       required this.enabled,

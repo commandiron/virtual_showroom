@@ -3,8 +3,8 @@ import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 import 'package:virtual_showroom/helper/url_launcher.dart';
 
-class MyFooter extends StatelessWidget {
-  const MyFooter({Key? key}) : super(key: key);
+class AppFooter extends StatelessWidget {
+  const AppFooter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

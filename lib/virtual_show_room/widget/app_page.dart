@@ -6,8 +6,8 @@ import '../../model/project.dart';
 import '../pages/ar.dart';
 import '../pages/general_images.dart';
 
-class MyPage extends StatelessWidget {
-  const MyPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
+class AppPage extends StatelessWidget {
+  const AppPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
 
   final List<PageItem> pages;
   final Project project;

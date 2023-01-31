@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import '../../../model/page_item.dart';
 import '../../../provider/app_state_provider.dart';
-import 'my_navigation_item.dart';
+import 'app_navigation_item.dart';
 
-class MyNavigationBar extends StatefulWidget {
-  const MyNavigationBar(
+class AppNavigationBar extends StatefulWidget {
+  const AppNavigationBar(
     {
       required this.pages,
       required this.pageIndex,
@@ -20,10 +20,10 @@ class MyNavigationBar extends StatefulWidget {
   final Function(int index) onPressed;
 
   @override
-  State<MyNavigationBar> createState() => _MyNavigationBarState();
+  State<AppNavigationBar> createState() => _AppNavigationBarState();
 }
 
-class _MyNavigationBarState extends State<MyNavigationBar> {
+class _AppNavigationBarState extends State<AppNavigationBar> {
 
   Offset _offset = Offset.zero;
   double _height = 100;
@@ -54,7 +54,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: widget.pages.map(
-            (pageItem) => MyNavigationItem(
+            (pageItem) => AppNavigationItem(
               title: pageItem.title,
               enabled: pageItem.index == widget.pageIndex,
               onPressed: () {

@@ -5,7 +5,7 @@ import 'package:virtual_showroom/configs/app_text_style.dart';
 import '../../configs/app_padding.dart';
 import '../../model/project.dart';
 import '../../provider/app_state_provider.dart';
-import 'dialog/my_dialog.dart';
+import 'dialog/app_dialog.dart';
 
 class MyAppBar extends StatefulWidget {
   const MyAppBar(
@@ -70,7 +70,7 @@ class _MyAppBarState extends State<MyAppBar> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return MyDialog(
+                        return AppDialog(
                           phone: widget.project.companyPhone,
                           mail: widget.project.companyMail,
                           address: widget.project.companyAddress,
