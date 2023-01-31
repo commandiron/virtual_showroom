@@ -34,7 +34,7 @@ class PageItem {
     ),
     PageItem(
       index: 3,
-      title: "AR",
+      title: "Augmented Reality",
       route: ArPage.route,
     ),
   ];
