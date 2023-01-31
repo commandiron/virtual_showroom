@@ -17,8 +17,8 @@ class Project {
   List<String> planImagePaths;
   DateTime startDate;
   DateTime estimatedFinishDate;
-  List<String> generalSpecs;
-  List<String> apartmentSpecs;
+  List<Spec> generalSpecs;
+  List<Spec>  apartmentSpecs;
 
   Project(
     {
@@ -69,25 +69,75 @@ class Project {
       estimatedFinishDate: DateTime(
         2023, 12, 7
       ),
-      generalSpecs: [
-        "C40 Beton",
-        "Kayalık Zemin",
-        "Drenaj Sistemi",
-        "Prekast Cephe",
-        "Ferforje Korkuluk",
-        "Tam Besleme Jeneratör",
-        "Araç Asansörü",
-        "Açık Otopark",
-        "Özel Konum"
-      ],
-      apartmentSpecs: [
-        "Akıllı Ev",
-        "2 araçlık otopark",
-        "Yerden Isıtma",
-        "Lamine Parke",
-        "Giyotin Sistem Geniş Balkon",
-        "Ultra Lüks Malzemeler"
-      ]
+      generalSpecs: Spec.generalSpecs,
+      apartmentSpecs: Spec.apartmentSpecs
+    ),
+  ];
+}
+
+
+class Spec {
+  String category;
+  String body;
+
+  Spec(
+    {
+      required this.category,
+      required this.body,
+    }
+  );
+
+  static List<Spec> generalSpecs = [
+    Spec(
+      category: "Beton Sınıfı",
+      body: "C40"
+    ),
+    Spec(
+      category: "Zemin",
+      body: "Kayalık"
+    ),
+    Spec(
+      category: "Cephe",
+      body: "Prekast"
+    ),
+    Spec(
+      category: "Korkuluk",
+      body: "Ferforje"
+    ),
+    Spec(
+      category: "Jeneratör",
+      body: "1'e 1"
+    ),
+    Spec(
+      category: "Konum",
+      body: "Özel"
+    ),
+  ];
+
+  static List<Spec> apartmentSpecs = [
+    Spec(
+      category: "Teknoloji",
+      body: "Akıllı Ev"
+    ),
+    Spec(
+      category: "Manzara",
+      body: "Deniz"
+    ),
+    Spec(
+      category: "Daire Otopark",
+      body: "2"
+    ),
+    Spec(
+      category: "Isıtma",
+      body: "Yerden"
+    ),
+    Spec(
+      category: "Parke",
+      body: "Lamine"
+    ),
+    Spec(
+      category: "Balkon",
+      body: "Giyotin"
     ),
   ];
 }

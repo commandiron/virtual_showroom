@@ -6,6 +6,8 @@ import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 
+import '../../model/project.dart';
+
 class ProjectInfoPage extends StatelessWidget {
   const ProjectInfoPage(
     {
@@ -21,8 +23,8 @@ class ProjectInfoPage extends StatelessWidget {
 
   final DateTime startDate;
   final DateTime estimatedFinishDate;
-  final List<String> generalSpecs;
-  final List<String> apartmentSpecs;
+  final List<Spec> generalSpecs;
+  final List<Spec> apartmentSpecs;
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +72,14 @@ class ProjectInfoPage extends StatelessWidget {
             AppSpace.verticalL!,
             Text("Genel Özellikler", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
+            InfoGridView(
+              specs: generalSpecs
+            ),
             AppSpace.verticalL!,
             Text("Daire Özellikleri", style: AppTextStyle.b2!,),
+            InfoGridView(
+              specs: apartmentSpecs
+            ),
             SizedBox(
               height: 1000,
             ),
@@ -84,9 +92,9 @@ class ProjectInfoPage extends StatelessWidget {
 }
 
 class InfoGridView extends StatelessWidget {
-  const InfoGridView({required this.items, Key? key}) : super(key: key);
+  const InfoGridView({required this.specs, Key? key}) : super(key: key);
 
-  final List<String> items;
+  final List<Spec> specs;
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +103,9 @@ class InfoGridView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4
+          crossAxisCount: 3
       ),
-      itemCount: items.length,
+      itemCount: specs.length,
       itemBuilder: (context, index) {
         return AspectRatio(
           aspectRatio: 1,
@@ -106,12 +114,32 @@ class InfoGridView extends StatelessWidget {
             child: Padding(
                 padding: AppPadding.allS!,
                 child: Center(
-                  child: AutoSizeText(
-                    items[index],
-                    style: AppTextStyle.b1!.copyWith(
-                        color: Theme.of(context).colorScheme.primary
-                    ),
-                    textAlign: TextAlign.center,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          specs[index].category,
+                          style: AppTextStyle.b2!.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimaryContainer
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Center(
+                          child: FittedBox(
+                            child: Text(
+                              specs[index].body,
+                              style: AppTextStyle.h1b!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
+                      )
+                    ],
                   ),
                 )
             ),
