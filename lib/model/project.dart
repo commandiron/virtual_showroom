@@ -131,7 +131,7 @@ class Project {
     ),
     Project(
         id: "1",
-        companyLogoPath: "assets/demirli_ins_logo.png",
+        companyLogoPath: "assets/company_logo.png",
         companyPhone : "+902163300300",
         companyMail: "info@demirli.com.tr",
         companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
