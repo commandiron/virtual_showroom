@@ -33,14 +33,21 @@ class ProjectInfoPage extends StatefulWidget {
 
 class _ProjectInfoPageState extends State<ProjectInfoPage> {
 
+  Offset _upArrowOffset = Offset(0.5, 0);
   ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     _scrollController.addListener(() {
       if(_scrollController.offset > 0 ){
+        setState(() {
+          _upArrowOffset = Offset.zero;
+        });
         Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded(isAnimated: true);
       } else {
+        setState(() {
+          _upArrowOffset = Offset(0.5, 0);
+        });
         Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
       }
     });
@@ -53,61 +60,89 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
     final estimatedTotalDuration = widget.estimatedFinishDate.difference(widget.startDate).inDays;
     final passedTime = DateTime.now().difference(widget.startDate).inDays;
 
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            SizedBox(
-              width: 200,
-              child: CircleProgressBar(
-                backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
-                foregroundColor: Theme.of(context).colorScheme.primary,
-                animationDuration: Duration(milliseconds: 2000),
-                value: passedTime / estimatedTotalDuration,
-                strokeWidth: 16,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Tamamlanma Yüzdesi:",
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.b2!,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          controller: _scrollController,
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: CircleProgressBar(
+                    backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(context).colorScheme.primary,
+                    animationDuration: Duration(milliseconds: 2000),
+                    value: passedTime / estimatedTotalDuration,
+                    strokeWidth: 16,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Tamamlanma Yüzdesi:",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyle.b2!,
+                          ),
+                          AnimatedCount(
+                            count: (passedTime / estimatedTotalDuration) * 100,
+                            fractionDigits: 0,
+                            unit: '%',
+                            duration: Duration(milliseconds: 2000),
+                            curve: Curves.fastOutSlowIn,
+                            style: AppTextStyle.b1!,
+                          ),
+                        ],
                       ),
-                      AnimatedCount(
-                        count: (passedTime / estimatedTotalDuration) * 100,
-                        fractionDigits: 0,
-                        unit: '%',
-                        duration: Duration(milliseconds: 2000),
-                        curve: Curves.fastOutSlowIn,
-                        style: AppTextStyle.b1!,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+                AppSpace.verticalL!,
+                Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(widget.estimatedFinishDate)}", style: AppTextStyle.b2!,),
+                AppSpace.verticalL!,
+                Text("Genel Özellikler", style: AppTextStyle.b2!,),
+                AppSpace.verticalL!,
+                InfoGridView(
+                  specs: widget.generalSpecs
+                ),
+                AppSpace.verticalL!,
+                Text("Daire Özellikleri", style: AppTextStyle.b2!,),
+                InfoGridView(
+                  specs: widget.apartmentSpecs
+                ),
+                SizedBox(
+                  height: 1000,
+                ),
+              ],
             ),
-            AppSpace.verticalL!,
-            Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(widget.estimatedFinishDate)}", style: AppTextStyle.b2!,),
-            AppSpace.verticalL!,
-            Text("Genel Özellikler", style: AppTextStyle.b2!,),
-            AppSpace.verticalL!,
-            InfoGridView(
-              specs: widget.generalSpecs
-            ),
-            AppSpace.verticalL!,
-            Text("Daire Özellikleri", style: AppTextStyle.b2!,),
-            InfoGridView(
-              specs: widget.apartmentSpecs
-            ),
-            SizedBox(
-              height: 1000,
-            ),
-          ],
+          ),
         ),
-      ),
+        AnimatedSlide(
+          offset: _upArrowOffset,
+          duration: Duration(milliseconds: 300),
+          child: Container(
+            alignment: Alignment.bottomRight,
+            padding: AppPadding.allM,
+            child: InkWell(
+                onTap: () {
+                  _scrollController.animateTo(
+                      0,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 24,
+                  child: const Icon(
+                    Icons.arrow_drop_up_outlined,
+                    size: 36,
+                  ),
+                )
+            ),
+          ),
+        )
+      ],
     );
   }
 }
