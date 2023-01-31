@@ -33,6 +33,7 @@ class _VirtualShowRoomState extends State<VirtualShowRoom> {
           ),
           ProjectTitle(
             title: widget.project.name,
+            locationUrl: widget.project.locationUrl,
           ),
           AppPage(
             pages: PageItem.pages.where(
