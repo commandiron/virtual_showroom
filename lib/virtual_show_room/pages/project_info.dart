@@ -64,7 +64,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
       children: [
         SingleChildScrollView(
           controller: _scrollController,
-          child: Container(
+          child: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
