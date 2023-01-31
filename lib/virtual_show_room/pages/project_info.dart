@@ -68,6 +68,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
+                AppSpace.verticalL!,
                 SizedBox(
                   width: 200,
                   child: CircleProgressBar(
@@ -76,12 +77,14 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                     animationDuration: Duration(milliseconds: 2000),
                     value: passedTime / estimatedTotalDuration,
                     strokeWidth: 16,
-                    child: Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: AppPadding.allM,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Tamamlanma Yüzdesi:",
+                            "İnşaat Tamamlanma Yüzdesi:",
                             textAlign: TextAlign.center,
                             style: AppTextStyle.b2!,
                           ),
@@ -91,23 +94,29 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                             unit: '%',
                             duration: Duration(milliseconds: 2000),
                             curve: Curves.fastOutSlowIn,
-                            style: AppTextStyle.b1!,
+                            style: AppTextStyle.b1b!,
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
+                AppSpace.verticalXL!,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
+                    Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
+                  ],
+                ),
                 AppSpace.verticalL!,
-                Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(widget.estimatedFinishDate)}", style: AppTextStyle.b2!,),
-                AppSpace.verticalL!,
-                Text("Genel Özellikler", style: AppTextStyle.b2!,),
+                Text("Genel Özellikler", style: AppTextStyle.b1!,),
                 AppSpace.verticalL!,
                 InfoGridView(
                   specs: widget.generalSpecs
                 ),
                 AppSpace.verticalL!,
-                Text("Daire Özellikleri", style: AppTextStyle.b2!,),
+                Text("Daire Özellikleri", style: AppTextStyle.b1!,),
                 InfoGridView(
                   specs: widget.apartmentSpecs
                 ),
