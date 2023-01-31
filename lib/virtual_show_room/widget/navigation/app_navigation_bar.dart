@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
-import '../../model/page_item.dart';
-import '../../provider/app_state_provider.dart';
+import '../../../model/page_item.dart';
+import '../../../provider/app_state_provider.dart';
 import 'my_navigation_item.dart';
 
 class MyNavigationBar extends StatefulWidget {

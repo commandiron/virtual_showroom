@@ -12,6 +12,7 @@ class ProjectInfoPage extends StatelessWidget {
       required this.startDate,
       required this.estimatedFinishDate,
       required this.generalSpecs,
+      required this.apartmentSpecs,
       Key? key
     }
   ) : super(key: key);
@@ -21,6 +22,7 @@ class ProjectInfoPage extends StatelessWidget {
   final DateTime startDate;
   final DateTime estimatedFinishDate;
   final List<String> generalSpecs;
+  final List<String> apartmentSpecs;
 
   @override
   Widget build(BuildContext context) {
@@ -68,31 +70,13 @@ class ProjectInfoPage extends StatelessWidget {
             AppSpace.verticalL!,
             Text("Genel Özellikler", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
-            GridView.builder(
-              padding: AppPadding.allS,
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
-              itemCount: generalSpecs.length,
-              itemBuilder: (context, index) {
-                return AspectRatio(
-                  aspectRatio: 1,
-                  child: Card(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    child: Padding(
-                      padding: AppPadding.allS!,
-                      child: Center(
-                        child: AutoSizeText(
-                          generalSpecs[index],
-                          style: AppTextStyle.b2!.copyWith(
-                            color: Theme.of(context).colorScheme.primary
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    ),
-                  ),
-                );
-              },
+            InfoGridView(
+              items: generalSpecs
+            ),
+            AppSpace.verticalL!,
+            Text("Daire Özellikleri", style: AppTextStyle.b2!,),
+            InfoGridView(
+                items: apartmentSpecs
             ),
             SizedBox(
               height: 1000,
@@ -104,3 +88,43 @@ class ProjectInfoPage extends StatelessWidget {
     );
   }
 }
+
+class InfoGridView extends StatelessWidget {
+  const InfoGridView({required this.items, Key? key}) : super(key: key);
+
+  final List<String> items;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding: AppPadding.allS,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4
+      ),
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return AspectRatio(
+          aspectRatio: 1,
+          child: Card(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: Padding(
+                padding: AppPadding.allS!,
+                child: Center(
+                  child: AutoSizeText(
+                    items[index],
+                    style: AppTextStyle.b2!.copyWith(
+                        color: Theme.of(context).colorScheme.primary
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+

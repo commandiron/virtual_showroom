@@ -44,6 +44,7 @@ class MyPage extends StatelessWidget {
           startDate: project.startDate,
           estimatedFinishDate: project.estimatedFinishDate,
           generalSpecs: project.generalSpecs,
+          apartmentSpecs: project.apartmentSpecs,
         );
       case ArPage.route :
         return const ArPage();

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/virtual_show_room/widget/contact_item.dart';
-import '../../configs/app_padding.dart';
-import '../../configs/app_text_style.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/dialog/contact_item.dart';
+import '../../../configs/app_padding.dart';
+import '../../../configs/app_text_style.dart';
 
 class MyDialog extends StatelessWidget {
   const MyDialog({required this.phone, required this.mail, required this.address, required this.locationUrl, Key? key}) : super(key: key);

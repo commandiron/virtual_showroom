@@ -18,6 +18,7 @@ class Project {
   DateTime startDate;
   DateTime estimatedFinishDate;
   List<String> generalSpecs;
+  List<String> apartmentSpecs;
 
   Project(
     {
@@ -33,7 +34,8 @@ class Project {
       required this.planImagePaths,
       required this.startDate,
       required this.estimatedFinishDate,
-      required this.generalSpecs
+      required this.generalSpecs,
+      required this.apartmentSpecs
     }
   );
 
@@ -69,15 +71,22 @@ class Project {
       ),
       generalSpecs: [
         "C40 Beton",
+        "Kayalık Zemin",
+        "Drenaj Sistemi",
         "Prekast Cephe",
+        "Ferforje Korkuluk",
+        "Tam Besleme Jeneratör",
+        "Araç Asansörü",
+        "Açık Otopark",
+        "Özel Konum"
+      ],
+      apartmentSpecs: [
         "Akıllı Ev",
-        "2 adet Otopark",
+        "2 araçlık otopark",
         "Yerden Isıtma",
-        "Jeneratör",
-        "Prekast Cephe",
-        "Akıllı Ev",
-        "2 adet Otopark",
-        "Yerden Isıtma",
+        "Lamine Parke",
+        "Giyotin Sistem Geniş Balkon",
+        "Ultra Lüks Malzemeler"
       ]
     ),
   ];

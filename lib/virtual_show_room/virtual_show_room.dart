@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/my_app_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/my_footer.dart';
-import 'package:virtual_showroom/virtual_show_room/widget/my_navigation_bar.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/navigation/app_navigation_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/my_page.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/project_title.dart';
 import '../configs/app_config.dart';

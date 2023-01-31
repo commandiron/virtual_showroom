@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../configs/app_text_style.dart';
-import '../../helper/url_launcher.dart';
+import '../../../configs/app_text_style.dart';
+import '../../../helper/url_launcher.dart';
 
 class ContactItem extends StatelessWidget {
   const ContactItem(
