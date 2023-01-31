@@ -1,12 +1,11 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
+import 'package:virtual_showroom/provider/project_provider.dart';
 import 'package:virtual_showroom/virtual_show_room/error_page.dart';
 import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
 import 'configs/core_theme.dart';
-import 'model/project.dart';
 
 
 void main() {
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AppStateProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectProvider()),
       ],
       child: const MaterialChild()
     );
@@ -47,7 +47,7 @@ class MaterialChild extends StatelessWidget {
             },
           );
         } else {
-          final project = getProjectById(id);
+          final project = Provider.of<ProjectProvider>(context, listen: false).getProjectById(id);
           if(project == null) {
             return MaterialPageRoute(
               builder: (context) {
@@ -65,8 +65,4 @@ class MaterialChild extends StatelessWidget {
       },
     );
   }
-}
-
-Project? getProjectById(String id) {
-  return Project.projects.firstWhereOrNull((project) => project.id == id);
 }
