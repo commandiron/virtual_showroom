@@ -39,11 +39,11 @@ class MaterialChild extends StatelessWidget {
       darkTheme: themeDark,
       themeMode: ThemeMode.system,
       onGenerateRoute: (settings) {
-        final id = Uri.base.queryParameters['id'];
+        final id = Uri.base.queryParameters["id"];
         if(id == null) {
           return MaterialPageRoute(
             builder: (context) {
-              return const ErrorPage(message: "id verilmedi.");
+              return const ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin.");
             },
           );
         } else {
@@ -51,7 +51,7 @@ class MaterialChild extends StatelessWidget {
           if(project == null) {
             return MaterialPageRoute(
               builder: (context) {
-                return const ErrorPage(message: "Böyle bir proje yok.");
+                return const ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin.");
               },
             );
           } else {
