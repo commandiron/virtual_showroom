@@ -20,6 +20,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
   double _currentIndex = 0;
   final PageController _pageController = PageController();
   PhotoViewScaleState _photoViewScaleState = PhotoViewScaleState.initial;
+  bool twoFinderPointer = false;
 
   final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
 
@@ -37,37 +38,48 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        PhotoViewGallery.builder(
-          pageController: _pageController,
-          itemCount: widget.imagePaths.length,
-          scrollPhysics: _photoViewScaleState != PhotoViewScaleState.initial
-            ? const NeverScrollableScrollPhysics()
-            : const AlwaysScrollableScrollPhysics(),
-          scaleStateChangedCallback: (value) {
-            setState((){
-              _photoViewScaleState = value;
+        InteractiveViewer(
+          onInteractionStart: (details) {
+            setState(() {
+              if(details.pointerCount > 1) {
+                twoFinderPointer = true;
+              } else {
+                twoFinderPointer = false;
+              }
             });
-            if(value == PhotoViewScaleState.initial) {
-              Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
-            } else {
-              Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded();
-            }
           },
-          builder: (context, index) {
-            return PhotoViewGalleryPageOptions(
-              scaleStateController: _photoViewScaleStateController,
-              imageProvider: AssetImage(widget.imagePaths[index]),
-              initialScale: PhotoViewComputedScale.contained * 1,
-              minScale: PhotoViewComputedScale.contained * 1,
-              maxScale: PhotoViewComputedScale.contained * 4,
-              scaleStateCycle: (actual) {
-                return myScaleStateCycle(actual);
-              },
-            );
-          },
-          backgroundDecoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
-          )
+          child: PhotoViewGallery.builder(
+            pageController: _pageController,
+            itemCount: widget.imagePaths.length,
+            scrollPhysics: _photoViewScaleState != PhotoViewScaleState.initial
+              ? const NeverScrollableScrollPhysics()
+              : twoFinderPointer ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
+            scaleStateChangedCallback: (value) {
+              setState((){
+                _photoViewScaleState = value;
+              });
+              if(value == PhotoViewScaleState.initial) {
+                Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+              } else {
+                Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded();
+              }
+            },
+            builder: (context, index) {
+              return PhotoViewGalleryPageOptions(
+                scaleStateController: _photoViewScaleStateController,
+                imageProvider: AssetImage(widget.imagePaths[index]),
+                initialScale: PhotoViewComputedScale.contained * 1,
+                minScale: PhotoViewComputedScale.contained * 1,
+                maxScale: PhotoViewComputedScale.contained * 4,
+                scaleStateCycle: (actual) {
+                  return myScaleStateCycle(actual);
+                },
+              );
+            },
+            backgroundDecoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+            )
+          ),
         ),
         if(_photoViewScaleState == PhotoViewScaleState.initial)
           Container(
