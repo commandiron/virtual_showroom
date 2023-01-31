@@ -124,22 +124,20 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
           child: Container(
             alignment: Alignment.bottomRight,
             padding: AppPadding.allM,
-            child: Card(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              shape: CircleBorder(),
-              clipBehavior: Clip.hardEdge,
-              child: InkWell(
-                onTap: () {
-                  _scrollController.animateTo(
-                    0,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut
-                  );
-                },
-                child: Icon(
-                  Icons.arrow_drop_up_outlined,
-                  size: 36,
-                ),
+            child: InkWell(
+              onTap: () {
+                _scrollController.animateTo(
+                  0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut
+                );
+              },
+              radius: 64,
+              borderRadius: BorderRadius.circular(8),
+              child: Icon(
+                Icons.arrow_drop_up_outlined,
+                size: 36,
+                color: Theme.of(context).colorScheme.primary
               ),
             ),
           ),
@@ -168,6 +166,11 @@ class InfoGridView extends StatelessWidget {
         return AspectRatio(
           aspectRatio: 1,
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(16)
+              )
+            ),
             color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
               padding: AppPadding.allS!,
