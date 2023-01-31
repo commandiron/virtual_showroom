@@ -125,7 +125,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
             alignment: Alignment.bottomRight,
             padding: AppPadding.allM,
             child: Card(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.primaryContainer,
               shape: CircleBorder(),
               clipBehavior: Clip.hardEdge,
               child: InkWell(
@@ -139,7 +139,6 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                 child: Icon(
                   Icons.arrow_drop_up_outlined,
                   size: 36,
-                  color: Theme.of(context).colorScheme.onPrimary
                 ),
               ),
             ),
