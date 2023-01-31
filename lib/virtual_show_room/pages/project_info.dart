@@ -111,7 +111,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                 InfoGridView(
                   specs: widget.apartmentSpecs
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 1000,
                 ),
               ],
