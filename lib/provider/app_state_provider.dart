@@ -2,21 +2,26 @@ import 'package:flutter/cupertino.dart';
 
 class AppStateProvider extends ChangeNotifier {
 
-  ScreenState _screenState = ScreenState.collapsed;
+  ScreenState _screenState = ScreenState.animatedCollapsed;
 
   ScreenState get screenState => _screenState;
 
-  setScreenStateExpanded() {
-    _screenState = ScreenState.expanded;
+  setScreenStateExpanded({bool isAnimated = false}) {
+    if(isAnimated) {
+      _screenState = ScreenState.animatedExpanded;
+    } else {
+      _screenState = ScreenState.expanded;
+    }
     notifyListeners();
   }
   setScreenStateCollapsed() {
-    _screenState = ScreenState.collapsed;
+    _screenState = ScreenState.animatedCollapsed;
     notifyListeners();
   }
 }
 
 enum ScreenState {
-  collapsed,
+  animatedCollapsed,
   expanded,
+  animatedExpanded,
 }

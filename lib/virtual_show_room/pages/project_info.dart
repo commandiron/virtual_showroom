@@ -1,13 +1,15 @@
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
+import 'package:virtual_showroom/provider/app_state_provider.dart';
 
 import '../../model/project.dart';
 
-class ProjectInfoPage extends StatelessWidget {
+class ProjectInfoPage extends StatefulWidget {
   const ProjectInfoPage(
     {
       required this.startDate,
@@ -26,12 +28,33 @@ class ProjectInfoPage extends StatelessWidget {
   final List<Spec> apartmentSpecs;
 
   @override
+  State<ProjectInfoPage> createState() => _ProjectInfoPageState();
+}
+
+class _ProjectInfoPageState extends State<ProjectInfoPage> {
+
+  ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    _scrollController.addListener(() {
+      if(_scrollController.offset > 0 ){
+        Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded(isAnimated: true);
+      } else {
+        Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
-    final estimatedTotalDuration = estimatedFinishDate.difference(startDate).inDays;
-    final passedTime = DateTime.now().difference(startDate).inDays;
+    final estimatedTotalDuration = widget.estimatedFinishDate.difference(widget.startDate).inDays;
+    final passedTime = DateTime.now().difference(widget.startDate).inDays;
 
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -67,22 +90,21 @@ class ProjectInfoPage extends StatelessWidget {
               ),
             ),
             AppSpace.verticalL!,
-            Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(estimatedFinishDate)}", style: AppTextStyle.b2!,),
+            Text("Bitiş tarihi: ${DateFormat("MM/yyyy").format(widget.estimatedFinishDate)}", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
             Text("Genel Özellikler", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
             InfoGridView(
-              specs: generalSpecs
+              specs: widget.generalSpecs
             ),
             AppSpace.verticalL!,
             Text("Daire Özellikleri", style: AppTextStyle.b2!,),
             InfoGridView(
-              specs: apartmentSpecs
+              specs: widget.apartmentSpecs
             ),
             SizedBox(
               height: 1000,
             ),
-
           ],
         ),
       ),

@@ -25,6 +25,7 @@ class AppNavigationBar extends StatefulWidget {
 
 class _AppNavigationBarState extends State<AppNavigationBar> {
 
+  int _expandedAnimationDuration = 0;
   Offset _offset = Offset.zero;
   double _height = 100;
 
@@ -33,22 +34,35 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
 
     final screenState = Provider.of<AppStateProvider>(context).screenState;
 
-    if(screenState == ScreenState.collapsed) {
-      setState(() {
-        _offset = Offset.zero;
-        _height = 100;
-      });
-    } else {
-      setState(() {
-        _offset = Offset(0, 1);
-        _height = 0;
-      });
+    switch(screenState) {
+
+      case ScreenState.animatedCollapsed:
+        setState(() {
+          _offset = Offset.zero;
+          _height = 100;
+        });
+        break;
+      case ScreenState.expanded:
+        setState(() {
+          _expandedAnimationDuration = 0;
+          _offset = const Offset(0, 1);
+          _height = 0;
+        });
+        break;
+      case ScreenState.animatedExpanded:
+        setState(() {
+          _expandedAnimationDuration = 300;
+          _offset = const Offset(0, 1);
+          _height = 0;
+        });
+        break;
     }
+
     return AnimatedSlide(
       offset: _offset,
-      duration: Duration(milliseconds: _offset == Offset.zero ? 600 : 0),
+      duration: Duration(milliseconds: _offset == Offset.zero ? 600 : _expandedAnimationDuration),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: _offset == Offset.zero ? 300 : 0),
+        duration: Duration(milliseconds: _offset == Offset.zero ? 300 : _expandedAnimationDuration),
         height: _height,
         padding: AppPadding.horizontalXS,
         child: Row(
