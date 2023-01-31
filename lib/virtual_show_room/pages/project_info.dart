@@ -124,23 +124,24 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
           child: Container(
             alignment: Alignment.bottomRight,
             padding: AppPadding.allM,
-            child: InkWell(
-              onTap: () {
-                _scrollController.animateTo(
-                  0,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut
-                );
-              },
-              child: CircleAvatar(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                radius: 24,
-                child: const Icon(
+            child: Card(
+              color: Theme.of(context).colorScheme.primary,
+              shape: CircleBorder(),
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+                onTap: () {
+                  _scrollController.animateTo(
+                    0,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut
+                  );
+                },
+                child: Icon(
                   Icons.arrow_drop_up_outlined,
                   size: 36,
+                  color: Theme.of(context).colorScheme.onPrimary
                 ),
-              )
+              ),
             ),
           ),
         )
