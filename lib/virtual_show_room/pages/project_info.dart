@@ -70,14 +70,8 @@ class ProjectInfoPage extends StatelessWidget {
             AppSpace.verticalL!,
             Text("Genel Özellikler", style: AppTextStyle.b2!,),
             AppSpace.verticalL!,
-            InfoGridView(
-              items: generalSpecs
-            ),
             AppSpace.verticalL!,
             Text("Daire Özellikleri", style: AppTextStyle.b2!,),
-            InfoGridView(
-                items: apartmentSpecs
-            ),
             SizedBox(
               height: 1000,
             ),
@@ -114,7 +108,7 @@ class InfoGridView extends StatelessWidget {
                 child: Center(
                   child: AutoSizeText(
                     items[index],
-                    style: AppTextStyle.b2!.copyWith(
+                    style: AppTextStyle.b1!.copyWith(
                         color: Theme.of(context).colorScheme.primary
                     ),
                     textAlign: TextAlign.center,
