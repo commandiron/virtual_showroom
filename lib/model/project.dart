@@ -77,7 +77,7 @@ class Project {
       ),
       generalSpecs: [
         Spec(
-          category: "Beton Sınıfı",
+          category: "Beton",
           body: "C40"
         ),
         Spec(
@@ -85,20 +85,88 @@ class Project {
           body: "Kayalık"
         ),
         Spec(
+          category: "Akıllı Ev",
+          body: "Viko"
+        ),
+        Spec(
+          category: "Manzara",
+          body: "Deniz"
+        ),
+        Spec(
+          category: "Konum",
+          body: "Önü Kapanmaz"
+        ),
+        Spec(
+          category: "Daire Otopark",
+          body: "2 Adet + Misafir"
+        ),
+        Spec(
           category: "Cephe",
           body: "Prekast"
+        ),
+        Spec(
+          category: "Jeneratör",
+          body: "Tam Besleme"
+        ),
+        Spec(
+          category: "Duvar",
+          body: "Ytong"
+        ),
+        Spec(
+          category: "Çatı",
+          body: "Braas"
+        ),
+        Spec(
+          category: "Bina Girişi",
+          body: "Lobi"
+        ),
+        Spec(
+          category: "Diafon",
+          body: "Görüntülü"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Kamera Sistemi"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Gaz Kaçağı Güvenliği"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Su Baskını Güvenliği"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Yangın Güvenliği"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Aydınlatma Kontrolü"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Panjur Kontrolü"
+        ),
+        Spec(
+          category: "Akıllı Ev",
+          body: "Zip Perde Kontrolü"
         ),
         Spec(
           category: "Korkuluk",
           body: "Ferforje"
         ),
         Spec(
-          category: "Jeneratör",
-          body: "1'e 1"
+            category: "Isıtma",
+            body: "Yerden"
         ),
         Spec(
-          category: "Konum",
-          body: "Özel"
+            category: "Parke",
+            body: "Lamine"
+        ),
+        Spec(
+            category: "Balkon",
+            body: "Giyotin"
         ),
       ],
       apartmentSpecs: [

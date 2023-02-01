@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -110,15 +111,10 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                   ],
                 ),
                 AppSpace.verticalL!,
-                Text("Genel Özellikler", style: AppTextStyle.b1!,),
+                Text("Proje Özellikleri", style: AppTextStyle.b1!,),
                 AppSpace.verticalL!,
                 InfoGridView(
                   specs: widget.generalSpecs
-                ),
-                AppSpace.verticalL!,
-                Text("Daire Özellikleri", style: AppTextStyle.b1!,),
-                InfoGridView(
-                  specs: widget.apartmentSpecs
                 ),
                 const SizedBox(
                   height: 1000,
@@ -192,28 +188,24 @@ class InfoGridView extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          specs[index].category,
-                          style: AppTextStyle.b2!.copyWith(
+                    Center(
+                      child: Text(
+                        specs[index].category,
+                        style: AppTextStyle.b2!.copyWith(
                             color: Theme.of(context).colorScheme.onPrimaryContainer
-                          ),
-                          textAlign: TextAlign.center,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     Expanded(
-                      flex: 3,
                       child: Center(
-                        child: FittedBox(
-                          child: Text(
-                            specs[index].body,
-                            style: AppTextStyle.h1b!.copyWith(
-                              color: Theme.of(context).colorScheme.primary
-                            ),
-                            textAlign: TextAlign.center,
+                        child: AutoSizeText(
+                          specs[index].body,
+                          style: AppTextStyle.h3b!.copyWith(
+                            color: Theme.of(context).colorScheme.primary
                           ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
                         ),
                       )
                     )
