@@ -46,7 +46,7 @@ class Project {
   static List<Project> projects = [
     Project(
       id: "0",
-      companyLogoPath: "assets/demirli_ins_logo.png",
+      companyLogoPath: "assets/id0/demirli_ins_logo.png",
       primaryColorValue: 0xff137CC0,
       companyPhone : "+902163300300",
       companyMail: "info@demirli.com.tr",
@@ -61,13 +61,13 @@ class Project {
       name: "Suadiye | Oran Apartmanı",
       locationUrl: "https://goo.gl/maps/HJdvb8UVM1TnqSx69",
       generalImagePaths: [
-        "assets/image_1.jpg",
-        "assets/image_2.jpg"
+        "assets/id0/image_1.jpg",
+        "assets/id0/image_2.jpg"
       ],
       planImagePaths: [
-        "assets/image_3.jpeg",
-        "assets/image_4.jpg",
-        "assets/image_5.jpg"
+        "assets/id0/image_3.jpeg",
+        "assets/id0/image_4.jpg",
+        "assets/id0/image_5.jpg"
       ],
       startDate: DateTime(
         2022, 10, 7
@@ -131,94 +131,6 @@ class Project {
           body: "Rehau"
         ),
       ]
-    ),
-    Project(
-        id: "1",
-        companyLogoPath: "assets/company_logo.png",
-        primaryColorValue: 0xff242424,
-        companyPhone : "+902163300300",
-        companyMail: "info@demirli.com.tr",
-        companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
-        companyLocationUrl: "https://goo.gl/maps/pUvD8P7sWb4NzitK7",
-        enabledPageRoutes: [
-          GeneralImagesPage.route,
-          PlanImagesPage.route,
-          ProjectInfoPage.route,
-          ArPage.route,
-        ],
-        name: "Suadiye | Oran Apartmanı",
-        locationUrl: "https://goo.gl/maps/HJdvb8UVM1TnqSx69",
-        generalImagePaths: [
-          "assets/image_1.jpg",
-          "assets/image_2.jpg"
-        ],
-        planImagePaths: [
-          "assets/image_3.jpeg",
-          "assets/image_4.jpg",
-          "assets/image_5.jpg"
-        ],
-        startDate: DateTime(
-            2022, 10, 7
-        ),
-        estimatedFinishDate: DateTime(
-            2023, 12, 7
-        ),
-        generalSpecs: [
-          Spec(
-              category: "Beton Sınıfı",
-              body: "C40"
-          ),
-          Spec(
-              category: "Zemin",
-              body: "Kayalık"
-          ),
-          Spec(
-              category: "Cephe",
-              body: "Prekast"
-          ),
-          Spec(
-              category: "Korkuluk",
-              body: "Ferforje"
-          ),
-          Spec(
-              category: "Jeneratör",
-              body: "1'e 1"
-          ),
-          Spec(
-              category: "Konum",
-              body: "Özel"
-          ),
-        ],
-        apartmentSpecs: [
-          Spec(
-              category: "Teknoloji",
-              body: "Akıllı Ev"
-          ),
-          Spec(
-              category: "Manzara",
-              body: "Deniz"
-          ),
-          Spec(
-              category: "Daire Otopark",
-              body: "2"
-          ),
-          Spec(
-              category: "Isıtma",
-              body: "Yerden"
-          ),
-          Spec(
-              category: "Parke",
-              body: "Lamine"
-          ),
-          Spec(
-              category: "Balkon",
-              body: "Giyotin"
-          ),
-          Spec(
-              category: "Doğrama",
-              body: "Rehau"
-          ),
-        ]
     ),
   ];
 }
