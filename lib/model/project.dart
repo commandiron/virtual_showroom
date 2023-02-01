@@ -126,10 +126,6 @@ class Project {
           category: "Balkon",
           body: "Giyotin"
         ),
-        Spec(
-          category: "Doğrama",
-          body: "Rehau"
-        ),
       ]
     ),
   ];
