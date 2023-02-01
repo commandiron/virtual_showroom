@@ -7,6 +7,7 @@ import '../virtual_show_room/pages/project_info.dart';
 class Project {
   String id;
   String companyLogoPath;
+  int primaryColorValue;
   String companyPhone;
   String companyMail;
   String companyAddress;
@@ -25,6 +26,7 @@ class Project {
     {
       required this.id,
       required this.companyLogoPath,
+      required this.primaryColorValue,
       required this.companyPhone,
       required this.companyMail,
       required this.companyAddress,
@@ -45,6 +47,7 @@ class Project {
     Project(
       id: "0",
       companyLogoPath: "assets/demirli_ins_logo.png",
+      primaryColorValue: 0xff137CC0,
       companyPhone : "+902163300300",
       companyMail: "info@demirli.com.tr",
       companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
@@ -132,6 +135,7 @@ class Project {
     Project(
         id: "1",
         companyLogoPath: "assets/company_logo.png",
+        primaryColorValue: 0xff242424,
         companyPhone : "+902163300300",
         companyMail: "info@demirli.com.tr",
         companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",

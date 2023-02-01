@@ -10,6 +10,7 @@ import 'configs/core_theme.dart';
 
 void main() {
   setPathUrlStrategy();
+   // WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
