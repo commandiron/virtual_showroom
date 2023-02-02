@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +8,7 @@ import 'package:virtual_showroom/configs/app_text_style.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
 
 import '../../model/project.dart';
+import 'spec_item.dart';
 
 class ProjectInfoPage extends StatefulWidget {
   const ProjectInfoPage(
@@ -87,7 +87,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "İnşaat Tamamlanma Yüzdesi:2",
+                                "İnşaat Tamamlanma Yüzdesi:3",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.b2!,
                               ),
@@ -119,11 +119,19 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                 ),
               )
             ),
-            InfoGridView(
-                specs: widget.generalSpecs
+            SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                childCount: widget.generalSpecs.length,
+                (context, index) {
+                  return SpecItem(spec: widget.generalSpecs[index]);
+                },
+              ),
             ),
-            SliverToBoxAdapter(
-              child: const SizedBox(
+            const SliverToBoxAdapter(
+              child: SizedBox(
                 height: 1000,
               ),
             )
@@ -160,67 +168,6 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
           ),
         )
       ],
-    );
-  }
-}
-
-class InfoGridView extends StatelessWidget {
-  const InfoGridView({required this.specs, Key? key}) : super(key: key);
-
-  final List<Spec> specs;
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        childCount: specs.length,
-        (context, index) {
-          return  AspectRatio(
-            aspectRatio: 1,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(16)
-                  )
-              ),
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: Padding(
-                  padding: AppPadding.allS!,
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Center(
-                          child: Text(
-                            specs[index].category,
-                            style: AppTextStyle.b2!.copyWith(
-                                color: Theme.of(context).colorScheme.onPrimaryContainer
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        Expanded(
-                            child: Center(
-                              child: AutoSizeText(
-                                specs[index].body,
-                                style: AppTextStyle.h3b!.copyWith(
-                                    color: Theme.of(context).colorScheme.primary
-                                ),
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                              ),
-                            )
-                        )
-                      ],
-                    ),
-                  )
-              ),
-            ),
-          );
-        },
-      ),
     );
   }
 }
