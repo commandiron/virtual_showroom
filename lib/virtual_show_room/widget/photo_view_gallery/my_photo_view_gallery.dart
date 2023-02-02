@@ -121,7 +121,7 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
 PhotoViewScaleState myScaleStateCycle(PhotoViewScaleState actual) {
   switch (actual) {
     case PhotoViewScaleState.initial:
-      return PhotoViewScaleState.covering;
+      return PhotoViewScaleState.originalSize;
     default:
       return PhotoViewScaleState.initial;
   }
