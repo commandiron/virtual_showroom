@@ -34,8 +34,8 @@ class ProjectInfoPage extends StatefulWidget {
 
 class _ProjectInfoPageState extends State<ProjectInfoPage> {
 
-  Offset _upArrowOffset = Offset(0.5, 0);
-  ScrollController _scrollController = ScrollController();
+  Offset _upArrowOffset = const Offset(0.5, 0);
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
         Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded(isAnimated: true);
       } else {
         setState(() {
-          _upArrowOffset = Offset(0.5, 0);
+          _upArrowOffset = const Offset(0.5, 0);
         });
         Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
       }
@@ -77,7 +77,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                       child: CircleProgressBar(
                         backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
                         foregroundColor: Theme.of(context).colorScheme.primary,
-                        animationDuration: Duration(milliseconds: 2000),
+                        animationDuration: const Duration(milliseconds: 2000),
                         value: passedTime / estimatedTotalDuration,
                         strokeWidth: 16,
                         child: Container(
@@ -87,7 +87,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "İnşaat Tamamlanma Yüzdesi:",
+                                "İnşaat Tamamlanma Yüzdesi:1",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.b2!,
                               ),
@@ -95,7 +95,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                                 count: (passedTime / estimatedTotalDuration) * 100,
                                 fractionDigits: 0,
                                 unit: '%',
-                                duration: Duration(milliseconds: 2000),
+                                duration: const Duration(milliseconds: 2000),
                                 curve: Curves.fastOutSlowIn,
                                 style: AppTextStyle.b1b!,
                               ),
@@ -129,7 +129,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
         ),
         AnimatedSlide(
           offset: _upArrowOffset,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           child: Container(
             alignment: Alignment.bottomRight,
             padding: AppPadding.allM,
