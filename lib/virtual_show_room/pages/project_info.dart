@@ -165,57 +165,57 @@ class InfoGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
+    return GridView(
       padding: AppPadding.allS,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3
       ),
-      itemCount: specs.length,
-      itemBuilder: (context, index) {
-        return AspectRatio(
-          aspectRatio: 1,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(16)
-              )
-            ),
-            color: Theme.of(context).colorScheme.primaryContainer,
-            child: Padding(
-              padding: AppPadding.allS!,
-              child: Center(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        specs[index].category,
-                        style: AppTextStyle.b2!.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimaryContainer
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: AutoSizeText(
-                          specs[index].body,
-                          style: AppTextStyle.h3b!.copyWith(
-                            color: Theme.of(context).colorScheme.primary
+      children:
+        specs.map(
+          (spec) => AspectRatio(
+            aspectRatio: 1,
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(16)
+                  )
+              ),
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Padding(
+                padding: AppPadding.allS!,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Text(
+                          spec.category,
+                          style: AppTextStyle.b2!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimaryContainer
                           ),
                           textAlign: TextAlign.center,
-                          maxLines: 2,
                         ),
+                      ),
+                      Expanded(
+                        child: Center(
+                          child: AutoSizeText(
+                            spec.body,
+                            style: AppTextStyle.h3b!.copyWith(
+                                color: Theme.of(context).colorScheme.primary
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                          ),
+                        )
                       )
-                    )
-                  ],
-                ),
-              )
+                    ],
+                  ),
+                )
+              ),
             ),
-          ),
-        );
-      },
+          )
+        ).toList(),
     );
   }
 }
