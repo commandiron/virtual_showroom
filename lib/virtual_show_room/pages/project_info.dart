@@ -63,65 +63,69 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
 
     return Stack(
       children: [
-        SingleChildScrollView(
+        CustomScrollView(
           controller: _scrollController,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AppSpace.verticalL!,
-                SizedBox(
-                  width: 200,
-                  child: CircleProgressBar(
-                    backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
-                    foregroundColor: Theme.of(context).colorScheme.primary,
-                    animationDuration: Duration(milliseconds: 2000),
-                    value: passedTime / estimatedTotalDuration,
-                    strokeWidth: 16,
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: AppPadding.allM,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "İnşaat Tamamlanma Yüzdesi:",
-                            textAlign: TextAlign.center,
-                            style: AppTextStyle.b2!,
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    AppSpace.verticalL!,
+                    SizedBox(
+                      width: 200,
+                      child: CircleProgressBar(
+                        backgroundColor:  Theme.of(context).colorScheme.primaryContainer,
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                        animationDuration: Duration(milliseconds: 2000),
+                        value: passedTime / estimatedTotalDuration,
+                        strokeWidth: 16,
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: AppPadding.allM,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "İnşaat Tamamlanma Yüzdesi:",
+                                textAlign: TextAlign.center,
+                                style: AppTextStyle.b2!,
+                              ),
+                              AnimatedCount(
+                                count: (passedTime / estimatedTotalDuration) * 100,
+                                fractionDigits: 0,
+                                unit: '%',
+                                duration: Duration(milliseconds: 2000),
+                                curve: Curves.fastOutSlowIn,
+                                style: AppTextStyle.b1b!,
+                              ),
+                            ],
                           ),
-                          AnimatedCount(
-                            count: (passedTime / estimatedTotalDuration) * 100,
-                            fractionDigits: 0,
-                            unit: '%',
-                            duration: Duration(milliseconds: 2000),
-                            curve: Curves.fastOutSlowIn,
-                            style: AppTextStyle.b1b!,
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                AppSpace.verticalXL!,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
-                    Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
+                    AppSpace.verticalXL!,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
+                        Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
+                      ],
+                    ),
+                    AppSpace.verticalL!,
+                    Text("Proje Özellikleri", style: AppTextStyle.b1!,),
+                    AppSpace.verticalL!,
+                    InfoGridView(
+                        specs: widget.generalSpecs
+                    ),
+                    const SizedBox(
+                      height: 1000,
+                    ),
                   ],
                 ),
-                AppSpace.verticalL!,
-                Text("Proje Özellikleri", style: AppTextStyle.b1!,),
-                AppSpace.verticalL!,
-                InfoGridView(
-                  specs: widget.generalSpecs
-                ),
-                const SizedBox(
-                  height: 1000,
-                ),
-              ],
+              )
             ),
-          ),
+          ],
         ),
         AnimatedSlide(
           offset: _upArrowOffset,
@@ -165,57 +169,57 @@ class InfoGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
+    return GridView.builder(
       padding: AppPadding.allS,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3
       ),
-      children:
-        specs.map(
-          (spec) => AspectRatio(
-            aspectRatio: 1,
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(16)
-                  )
-              ),
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: Padding(
-                padding: AppPadding.allS!,
-                child: Center(
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Text(
-                          spec.category,
-                          style: AppTextStyle.b2!.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimaryContainer
+      itemCount: specs.length,
+      itemBuilder: (context, index) {
+        return AspectRatio(
+          aspectRatio: 1,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(16)
+              )
+            ),
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: Padding(
+              padding: AppPadding.allS!,
+              child: Center(
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        specs[index].category,
+                        style: AppTextStyle.b2!.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimaryContainer
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: AutoSizeText(
+                          specs[index].body,
+                          style: AppTextStyle.h3b!.copyWith(
+                            color: Theme.of(context).colorScheme.primary
                           ),
                           textAlign: TextAlign.center,
+                          maxLines: 2,
                         ),
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: AutoSizeText(
-                            spec.body,
-                            style: AppTextStyle.h3b!.copyWith(
-                                color: Theme.of(context).colorScheme.primary
-                            ),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                          ),
-                        )
                       )
-                    ],
-                  ),
-                )
-              ),
+                    )
+                  ],
+                ),
+              )
             ),
-          )
-        ).toList(),
+          ),
+        );
+      },
     );
   }
 }
