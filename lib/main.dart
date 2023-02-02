@@ -54,7 +54,7 @@ class MaterialChild extends StatelessWidget {
               PointerDeviceKind.touch
             },
           ),
-          title: 'Virtual Showroom',
+          title: 'Qr Projem - Virtual Showroom',
           theme: themeLight.copyWith(
             colorScheme: colorSchemeLight.copyWith(
               primary: Color(project.primaryColorValue)

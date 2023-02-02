@@ -3,9 +3,9 @@
     "short_name": "virtual_showroom",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Virtual showroom for Qr Projem",
+    "background_color": "#hexcode",
+    "theme_color": "#hexcode",
+    "description": "Qr Projem - Virtual Showroom",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
