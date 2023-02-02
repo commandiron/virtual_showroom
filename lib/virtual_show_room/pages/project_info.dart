@@ -87,7 +87,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "İnşaat Tamamlanma Yüzdesi:1",
+                                "İnşaat Tamamlanma Yüzdesi:2",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.b2!,
                               ),
@@ -115,16 +115,18 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                     AppSpace.verticalL!,
                     Text("Proje Özellikleri", style: AppTextStyle.b1!,),
                     AppSpace.verticalL!,
-                    InfoGridView(
-                        specs: widget.generalSpecs
-                    ),
-                    const SizedBox(
-                      height: 1000,
-                    ),
                   ],
                 ),
               )
             ),
+            InfoGridView(
+                specs: widget.generalSpecs
+            ),
+            SliverToBoxAdapter(
+              child: const SizedBox(
+                height: 1000,
+              ),
+            )
           ],
         ),
         AnimatedSlide(
@@ -169,57 +171,56 @@ class InfoGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: AppPadding.allS,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
       ),
-      itemCount: specs.length,
-      itemBuilder: (context, index) {
-        return AspectRatio(
-          aspectRatio: 1,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(16)
-              )
-            ),
-            color: Theme.of(context).colorScheme.primaryContainer,
-            child: Padding(
-              padding: AppPadding.allS!,
-              child: Center(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        specs[index].category,
-                        style: AppTextStyle.b2!.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimaryContainer
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: AutoSizeText(
-                          specs[index].body,
-                          style: AppTextStyle.h3b!.copyWith(
-                            color: Theme.of(context).colorScheme.primary
+      delegate: SliverChildBuilderDelegate(
+        childCount: specs.length,
+        (context, index) {
+          return  AspectRatio(
+            aspectRatio: 1,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(16)
+                  )
+              ),
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Padding(
+                  padding: AppPadding.allS!,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Text(
+                            specs[index].category,
+                            style: AppTextStyle.b2!.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimaryContainer
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
                         ),
-                      )
-                    )
-                  ],
-                ),
-              )
+                        Expanded(
+                            child: Center(
+                              child: AutoSizeText(
+                                specs[index].body,
+                                style: AppTextStyle.h3b!.copyWith(
+                                    color: Theme.of(context).colorScheme.primary
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                              ),
+                            )
+                        )
+                      ],
+                    ),
+                  )
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
