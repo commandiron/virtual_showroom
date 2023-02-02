@@ -38,47 +38,44 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SingleChildScrollView(
+        CustomScrollView(
           controller: _scrollController,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AppSpace.verticalL!,
-                ProgressView(
-                  startDate: widget.startDate,
-                  estimatedFinishDate: widget.estimatedFinishDate
-                ),
-                AppSpace.verticalXL!,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
                   children: [
-                    Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
-                    Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
+                    AppSpace.verticalL!,
+                    ProgressView(
+                      startDate: widget.startDate,
+                      estimatedFinishDate: widget.estimatedFinishDate
+                    ),
+                    AppSpace.verticalXL!,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
+                        Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
+                      ],
+                    ),
+                    AppSpace.verticalL!,
+                    Text("Proje Özellikleri", style: AppTextStyle.b1!,),
+                    AppSpace.verticalL!,
                   ],
                 ),
-                AppSpace.verticalL!,
-                Text("Proje Özellikleri", style: AppTextStyle.b1!,),
-                AppSpace.verticalL!,
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3
-                  ),
-                  itemCount: widget.generalSpecs.length,
-                  itemBuilder: (context, index) {
-                    return SpecItem(
-                      spec: widget.generalSpecs[index],
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 1000,
-                ),
-              ],
+              ),
             ),
-          )
+            SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                childCount: widget.generalSpecs.length,
+                (context, index) => SpecItem(spec: widget.generalSpecs[index])
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3
+              )
+            )
+          ],
         ),
         AnimatedUpArrow(scrollController: _scrollController)
       ],
