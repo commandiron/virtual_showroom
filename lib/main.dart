@@ -50,8 +50,7 @@ class MaterialChild extends StatelessWidget {
           scrollBehavior: const MaterialScrollBehavior().copyWith(
             dragDevices: {
               PointerDeviceKind.mouse,
-              PointerDeviceKind.touch,
-              PointerDeviceKind.unknown
+              PointerDeviceKind.touch
             },
           ),
           title: 'Virtual Showroom',
