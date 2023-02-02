@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/model/project.dart';
 
-import '../../configs/app_padding.dart';
-import '../../configs/app_text_style.dart';
+import '../../../../configs/app_padding.dart';
+import '../../../../configs/app_text_style.dart';
 
 class SpecItem extends StatelessWidget {
   const SpecItem({required this.spec, Key? key}) : super(key: key);
