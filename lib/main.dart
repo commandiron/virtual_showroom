@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -45,6 +47,13 @@ class MaterialChild extends StatelessWidget {
       } else {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
+            dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.unknown
+            },
+          ),
           title: 'Virtual Showroom',
           theme: themeLight.copyWith(
             colorScheme: colorSchemeLight.copyWith(
@@ -69,3 +78,10 @@ class MaterialChild extends StatelessWidget {
     }
   }
 }
+
+// behavior: ScrollConfiguration.of(context).copyWith(
+// dragDevices: {
+// PointerDeviceKind.touch,
+// PointerDeviceKind.mouse,
+// },
+// ),
