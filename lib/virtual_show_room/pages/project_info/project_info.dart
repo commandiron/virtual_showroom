@@ -74,6 +74,11 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3
               )
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 1000,
+              ),
             )
           ],
         ),
