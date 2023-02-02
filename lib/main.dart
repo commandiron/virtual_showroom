@@ -9,7 +9,6 @@ import 'package:virtual_showroom/virtual_show_room/error_page.dart';
 import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
 import 'configs/core_theme.dart';
 
-
 void main() {
   setPathUrlStrategy();
   runApp(const MyApp());
