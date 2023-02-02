@@ -40,28 +40,30 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
     return AnimatedSlide(
       offset: _upArrowOffset,
       duration: const Duration(milliseconds: 300),
-      child: Container(
+      child: Align(
         alignment: Alignment.bottomRight,
-        padding: AppPadding.allM,
-        child: Card(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8)
-          ),
-          child: InkWell(
-            onTap: () {
-              widget.scrollController.animateTo(
-                0,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeInOut
-              );
-            },
-            radius: 64,
-            borderRadius: BorderRadius.circular(8),
-            child: Icon(
-              Icons.arrow_drop_up_outlined,
-              size: 36,
-              color: Theme.of(context).colorScheme.primary
+        child: Padding(
+          padding: AppPadding.allM!,
+          child: Card(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8)
+            ),
+            child: InkWell(
+              onTap: () {
+                widget.scrollController.animateTo(
+                  0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut
+                );
+              },
+              radius: 64,
+              borderRadius: BorderRadius.circular(8),
+              child: Icon(
+                Icons.arrow_drop_up_outlined,
+                size: 36,
+                color: Theme.of(context).colorScheme.primary
+              ),
             ),
           ),
         ),
