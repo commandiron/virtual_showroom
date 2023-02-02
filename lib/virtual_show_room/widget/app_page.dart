@@ -43,8 +43,7 @@ class AppPage extends StatelessWidget {
         return ProjectInfoPage(
           startDate: project.startDate,
           estimatedFinishDate: project.estimatedFinishDate,
-          generalSpecs: project.generalSpecs,
-          apartmentSpecs: project.apartmentSpecs,
+          features: project.features,
         );
       case ArPage.route :
         return const ArPage();

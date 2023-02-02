@@ -19,8 +19,7 @@ class Project {
   List<String> planImagePaths;
   DateTime startDate;
   DateTime estimatedFinishDate;
-  List<Spec> generalSpecs;
-  List<Spec>  apartmentSpecs;
+  List<String> features;
 
   Project(
     {
@@ -38,8 +37,7 @@ class Project {
       required this.planImagePaths,
       required this.startDate,
       required this.estimatedFinishDate,
-      required this.generalSpecs,
-      required this.apartmentSpecs
+      required this.features,
     }
   );
 
@@ -75,139 +73,32 @@ class Project {
       estimatedFinishDate: DateTime(
         2023, 12, 7
       ),
-      generalSpecs: [
-        Spec(
-          category: "Beton",
-          body: "C40"
-        ),
-        Spec(
-          category: "Zemin",
-          body: "Kayalık"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Viko"
-        ),
-        Spec(
-          category: "Manzara",
-          body: "Deniz"
-        ),
-        Spec(
-          category: "Konum",
-          body: "Önü Kapanmaz"
-        ),
-        Spec(
-          category: "Daire Otopark",
-          body: "2 Adet + Misafir"
-        ),
-        Spec(
-          category: "Cephe",
-          body: "Prekast"
-        ),
-        Spec(
-          category: "Jeneratör",
-          body: "Tam Besleme"
-        ),
-        Spec(
-          category: "Duvar",
-          body: "Ytong"
-        ),
-        Spec(
-          category: "Çatı",
-          body: "Braas"
-        ),
-        Spec(
-          category: "Bina Girişi",
-          body: "Lobi"
-        ),
-        Spec(
-          category: "Diafon",
-          body: "Görüntülü"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Kamera Sistemi"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Gaz Kaçağı Güvenliği"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Su Baskını Güvenliği"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Yangın Güvenliği"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Aydınlatma Kontrolü"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Panjur Kontrolü"
-        ),
-        Spec(
-          category: "Akıllı Ev",
-          body: "Zip Perde Kontrolü"
-        ),
-        Spec(
-          category: "Korkuluk",
-          body: "Ferforje"
-        ),
-        Spec(
-            category: "Isıtma",
-            body: "Yerden"
-        ),
-        Spec(
-            category: "Parke",
-            body: "Lamine"
-        ),
-        Spec(
-            category: "Balkon",
-            body: "Giyotin"
-        ),
+      features: [
+        "C40 Beton",
+        "Kayalık Zemin",
+        "Akıllı Ev",
+        "Deniz Manzarası",
+        "Önü Kapanmaz Konum",
+        "2 Adet + Misafir Otoparkı",
+        "Prekast Cephe",
+        "Ferforje Korkuluk",
+        "Giyotin Balkon",
+        "Yerden Isıtma",
+        "Lamine Parke",
+        "Tam Besleme Jeneratör",
+        "Ytong Duvar",
+        "Braas Çatı",
+        "Lobi Tip Bina Girişi",
+        "Görüntülü - Kameralı Diafon",
+        "Kameralı Güvenlik Sistemi",
+        "Aydınlatma Kontrolü",
+        "Panjur Kontrolü",
+        "Zip Perde Kontrolü",
+        "Gaz Kaçağı Güvenliği",
+        "Su Baskını Güvenliği",
+        "Yangın Güvenliği",
+
       ],
-      apartmentSpecs: [
-        Spec(
-          category: "Teknoloji",
-          body: "Akıllı Ev"
-        ),
-        Spec(
-          category: "Manzara",
-          body: "Deniz"
-        ),
-        Spec(
-          category: "Daire Otopark",
-          body: "2"
-        ),
-        Spec(
-          category: "Isıtma",
-          body: "Yerden"
-        ),
-        Spec(
-          category: "Parke",
-          body: "Lamine"
-        ),
-        Spec(
-          category: "Balkon",
-          body: "Giyotin"
-        ),
-      ]
     ),
   ];
-}
-
-
-class Spec {
-  String category;
-  String body;
-
-  Spec(
-    {
-      required this.category,
-      required this.body,
-    }
-  );
 }

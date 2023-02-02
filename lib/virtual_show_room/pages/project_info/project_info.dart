@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/configs/app_space.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/project_info/widget/animated_up_arrow.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/project_info/widget/progress_view.dart';
-import 'package:virtual_showroom/virtual_show_room/pages/project_info/widget/spec_item.dart';
-
-import '../../../model/project.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/project_info/widget/feature_item.dart';
 
 class ProjectInfoPage extends StatefulWidget {
   const ProjectInfoPage(
     {
       required this.startDate,
       required this.estimatedFinishDate,
-      required this.generalSpecs,
-      required this.apartmentSpecs,
+      required this.features,
       Key? key
     }
   ) : super(key: key);
@@ -23,8 +21,7 @@ class ProjectInfoPage extends StatefulWidget {
 
   final DateTime startDate;
   final DateTime estimatedFinishDate;
-  final List<Spec> generalSpecs;
-  final List<Spec> apartmentSpecs;
+  final List<String> features;
 
   @override
   State<ProjectInfoPage> createState() => _ProjectInfoPageState();
@@ -60,24 +57,24 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                       ],
                     ),
                     AppSpace.verticalL!,
-                    Text("Proje Özellikleri", style: AppTextStyle.b1!,),
+                    Padding(
+                      padding: AppPadding.horizontalM!,
+                      child: Text("Proje Özellikleri", style: AppTextStyle.h3b!,)
+                    ),
                     AppSpace.verticalL!,
                   ],
                 ),
               ),
             ),
-            SliverGrid(
+            SliverList(
               delegate: SliverChildBuilderDelegate(
-                childCount: widget.generalSpecs.length,
-                (context, index) => SpecItem(spec: widget.generalSpecs[index])
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3
+                childCount: widget.features.length,
+                (context, index) => FeatureItem(feature: widget.features[index])
               )
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 1000,
+                height: 300,
               ),
             )
           ],
