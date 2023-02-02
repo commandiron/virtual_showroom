@@ -64,7 +64,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3
+                    crossAxisCount: 3
                   ),
                   itemCount: widget.generalSpecs.length,
                   itemBuilder: (context, index) {
