@@ -21,12 +21,14 @@ class FeatureItem extends StatelessWidget {
         color: Theme.of(context).colorScheme.primaryContainer,
         child: Padding(
           padding: AppPadding.horizontalM!,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(feature, style: AppTextStyle.b1b,)
-            ],
-          ),
+          child: Center(
+            child: Text(
+              feature,
+              style: AppTextStyle.b1b?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimaryContainer
+              ),
+            ),
+          )
         )
       ),
     );
