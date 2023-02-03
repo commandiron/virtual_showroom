@@ -17,7 +17,7 @@ class AppFooter extends StatelessWidget {
       child: FittedBox(
         child: InkWell(
           onTap: () {
-            openURL("https://commandiron.github.io");
+            openURL("https://www.demirli.tech");
           },
           child: Row(
             children: [
