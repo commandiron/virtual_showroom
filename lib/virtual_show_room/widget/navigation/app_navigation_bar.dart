@@ -27,7 +27,7 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
 
   int _expandedAnimationDuration = 0;
   Offset _offset = Offset.zero;
-  double _height = 100;
+  double _height = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
       case ScreenState.animatedCollapsed:
         setState(() {
           _offset = Offset.zero;
-          _height = 100;
+          _height = 200;
         });
         break;
       case ScreenState.expanded:
@@ -64,19 +64,25 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: _offset == Offset.zero ? 300 : _expandedAnimationDuration),
         height: _height,
-        padding: AppPadding.horizontalXS,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: widget.pages.map(
-            (pageItem) => AppNavigationItem(
-              title: pageItem.title,
-              enabled: pageItem.index == widget.pageIndex,
+        padding: AppPadding.allM,
+        child: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisExtent: 80
+          ),
+          itemCount: widget.pages.length,
+          itemBuilder: (context, index) {
+            return AppNavigationItem(
+              title: widget.pages[index].title,
+              iconPath: widget.pages[index].iconPath,
+              enabled: widget.pages[index].index == widget.pageIndex,
               onPressed: () {
-                widget.onPressed(pageItem.index);
+                widget.onPressed(widget.pages[index].index);
               },
-            )
-          ).toList()
-        ),
+            );
+          },
+        )
       ),
     );
   }

@@ -7,12 +7,14 @@ class PageItem {
   int index;
   String title;
   String route;
+  String iconPath;
 
   PageItem(
     {
       required this.index,
       required this.title,
-      required this.route
+      required this.route,
+      required this.iconPath,
     }
   );
 
@@ -21,21 +23,25 @@ class PageItem {
       index: 0,
       title: "Görünüş",
       route: GeneralImagesPage.route,
+      iconPath: "assets/general_images_icon.png"
     ),
     PageItem(
       index: 1,
       title: "Planlar",
       route: PlanImagesPage.route,
+      iconPath: "assets/plan_images_icon.png"
     ),
     PageItem(
       index: 2,
       title: "Proje Bilgileri",
       route: ProjectInfoPage.route,
+      iconPath: "assets/project_info_icon.png"
     ),
     PageItem(
       index: 3,
       title: "Augmented Reality",
       route: ArPage.route,
+      iconPath: "assets/ar_icon.png"
     ),
   ];
 }

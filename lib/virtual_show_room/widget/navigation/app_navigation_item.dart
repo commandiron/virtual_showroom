@@ -6,6 +6,7 @@ class AppNavigationItem extends StatelessWidget {
   const AppNavigationItem(
     {
       required this.title,
+      required this.iconPath,
       required this.enabled,
       required this.onPressed,
       Key? key
@@ -13,44 +14,62 @@ class AppNavigationItem extends StatelessWidget {
   ) : super(key: key);
 
   final String title;
+  final String iconPath;
   final bool enabled;
   final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: AppPadding.horizontalXS!,
-        child: InkWell(
-          onTap: () {
-            onPressed();
-          },
-          borderRadius:BorderRadius.circular(8),
-          child: Container(
-            height: 70,
-            decoration: BoxDecoration(
-              color: enabled
-                ? Theme.of(context).colorScheme.primaryContainer
-                : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                width: 1,
-                color: Theme.of(context).colorScheme.primaryContainer,
-              ),
+    return Padding(
+      padding: AppPadding.allXS!,
+      child: InkWell(
+        onTap: () {
+          onPressed();
+        },
+        borderRadius:BorderRadius.circular(8),
+        child: Container(
+          decoration: BoxDecoration(
+            color: enabled
+              ? Theme.of(context).colorScheme.primaryContainer
+              : Colors.transparent,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              width: 1,
+              color: Theme.of(context).colorScheme.primaryContainer,
             ),
-            alignment: Alignment.center,
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: AppTextStyle.b3?.copyWith(
-                color: enabled
-                  ? Theme.of(context).colorScheme.onPrimaryContainer
-                  : Theme.of(context).colorScheme.onBackground
-              )
-            )
           ),
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.b2b?.copyWith(
+                    color: enabled
+                      ? Theme.of(context).colorScheme.onPrimaryContainer
+                      : Theme.of(context).colorScheme.onBackground
+                  )
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: AppPadding.allS!,
+                  child: enabled
+                    ? Image.asset(
+                        iconPath,
+                    )
+                    : Image.asset(
+                      iconPath,
+                      colorBlendMode: BlendMode.srcATop,
+                      color: Theme.of(context).colorScheme.primaryContainer
+                    )
+                )
+              )
+            ],
+          )
         ),
-      )
+      ),
     );
   }
 }
