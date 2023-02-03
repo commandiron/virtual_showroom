@@ -10,12 +10,15 @@ class FeatureItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(16)
+        ),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.primaryContainer
         )
       ),
-      color: Colors.grey.shade50,
+      color: Theme.of(context).colorScheme.secondaryContainer,
       child: Stack(
         children: [
           Container(
@@ -25,7 +28,7 @@ class FeatureItem extends StatelessWidget {
               feature,
               textAlign: TextAlign.center,
               style: AppTextStyle.b1b!.copyWith(
-                color: Theme.of(context).colorScheme.onPrimaryContainer
+                color: Theme.of(context).colorScheme.onSecondaryContainer
               )
             ),
           ),
@@ -33,7 +36,7 @@ class FeatureItem extends StatelessWidget {
             padding: AppPadding.allS!,
             alignment: Alignment.topRight,
             child: Icon(
-              Icons.check,
+              Icons.check_circle,
               size: 16,
               color: Theme.of(context).colorScheme.primary,
             )

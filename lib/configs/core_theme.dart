@@ -35,7 +35,7 @@ final colorSchemeLight = ColorScheme.light(
   primaryContainer: Colors.grey.shade200,
   onPrimaryContainer: Colors.black,
 
-  secondaryContainer:Colors.grey.shade200,
+  secondaryContainer: Colors.grey.shade200,
   onSecondaryContainer: Colors.black,
 );
 

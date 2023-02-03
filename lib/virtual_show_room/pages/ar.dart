@@ -27,7 +27,7 @@ class ArPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("from", style: AppTextStyle.b1!.copyWith(
+                Text("from", style: AppTextStyle.b3!.copyWith(
                     color: Colors.grey
                 ),),
                 AppSpace.verticalS!,
@@ -36,7 +36,9 @@ class ArPage extends StatelessWidget {
                     openURL("https://www.demirli.tech");
                   },
                   child: Image.asset(
-                    "assets/demirli_tech_text_logo_black.png"
+                    Theme.of(context).brightness == Brightness.light
+                      ? "assets/demirli_tech_text_logo_black.png"
+                      : "assets/demirli_tech_text_logo_white.png"
                   )
                 ),
               ],
