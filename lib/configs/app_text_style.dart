@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyle {
   static TextStyle? btn;
@@ -27,9 +28,10 @@ class AppTextStyle {
   static TextStyle? l2b;
 
   static init(BuildContext context) {
-    const bold = FontWeight.bold;
+
+    final baseStyle = GoogleFonts.oswald();
     final color = Theme.of(context).colorScheme.onBackground;
-    const baseStyle = TextStyle();
+    const bold = FontWeight.bold;
 
     h1 = baseStyle.copyWith(fontSize: 36, color: color);
     h1b = h1!.copyWith(fontWeight: bold);

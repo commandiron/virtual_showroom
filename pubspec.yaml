@@ -21,6 +21,7 @@ dependencies:
   collection: ^1.16.0
   intl: ^0.18.0
   auto_size_text: ^3.0.0
+  google_fonts: ^4.0.1
 
 dev_dependencies:
   flutter_test:
