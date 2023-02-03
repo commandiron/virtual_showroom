@@ -29,7 +29,7 @@ class AppTextStyle {
 
   static init(BuildContext context) {
 
-    final baseStyle = GoogleFonts.oswald();
+    final baseStyle = GoogleFonts.roboto();
     final color = Theme.of(context).colorScheme.onBackground;
     const bold = FontWeight.bold;
 
