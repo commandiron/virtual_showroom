@@ -20,57 +20,45 @@ class AppNavigationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: AppPadding.allXS!,
-      child: InkWell(
-        onTap: () {
-          onPressed();
-        },
-        borderRadius:BorderRadius.circular(8),
-        child: Container(
-          decoration: BoxDecoration(
-            color: enabled
-              ? Theme.of(context).colorScheme.primaryContainer
-              : Colors.transparent,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              width: 1,
-              color: Theme.of(context).colorScheme.primaryContainer,
-            ),
-          ),
-          alignment: Alignment.center,
-          padding: AppPadding.horizontalM,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyle.b2b?.copyWith(
-                    color: enabled
-                      ? Theme.of(context).colorScheme.onPrimaryContainer
-                      : Theme.of(context).colorScheme.onBackground
-                  )
-                ),
+    return Expanded(
+      child: Padding(
+        padding: AppPadding.allXS!,
+        child: InkWell(
+          onTap: () {
+            onPressed();
+          },
+          borderRadius:BorderRadius.circular(8),
+          child: Container(
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: enabled
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Colors.transparent,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                width: 1,
+                color: Theme.of(context).colorScheme.primaryContainer,
               ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: AppPadding.allS!,
-                  child: enabled
-                    ? Image.asset(
-                        iconPath,
-                    )
-                    : Image.asset(
-                      iconPath,
-                      colorBlendMode: BlendMode.srcATop,
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.1)
-                    )
+            ),
+            alignment: Alignment.center,
+            padding: AppPadding.horizontalS,
+            child: enabled
+              ? Padding(
+                padding: AppPadding.allS!,
+                child: Image.asset(
+                  iconPath,
+                ),
+              )
+              : Text(
+                title,
+                textAlign: TextAlign.center,
+                style: AppTextStyle.b3?.copyWith(
+                  color: enabled
+                    ? Theme.of(context).colorScheme.onPrimaryContainer
+                    : Theme.of(context).colorScheme.onBackground
                 )
               )
-            ],
-          )
+          ),
         ),
       ),
     );
