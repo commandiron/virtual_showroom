@@ -62,7 +62,7 @@ class AppNavigationItem extends StatelessWidget {
                     : Image.asset(
                       iconPath,
                       colorBlendMode: BlendMode.srcATop,
-                      color: Theme.of(context).colorScheme.primaryContainer
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.1)
                     )
                 )
               )
