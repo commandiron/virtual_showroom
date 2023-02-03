@@ -77,10 +77,3 @@ class MaterialChild extends StatelessWidget {
     }
   }
 }
-
-// behavior: ScrollConfiguration.of(context).copyWith(
-// dragDevices: {
-// PointerDeviceKind.touch,
-// PointerDeviceKind.mouse,
-// },
-// ),
