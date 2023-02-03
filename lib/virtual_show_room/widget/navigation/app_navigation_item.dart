@@ -39,9 +39,11 @@ class AppNavigationItem extends StatelessWidget {
             ),
           ),
           alignment: Alignment.center,
+          padding: AppPadding.horizontalM,
           child: Row(
             children: [
               Expanded(
+                flex: 3,
                 child: Text(
                   title,
                   textAlign: TextAlign.center,
@@ -53,6 +55,7 @@ class AppNavigationItem extends StatelessWidget {
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: Padding(
                   padding: AppPadding.allS!,
                   child: enabled

@@ -39,7 +39,7 @@ class PageItem {
     ),
     PageItem(
       index: 3,
-      title: "Augmented Reality",
+      title: "Arttırılmış Gerçeklik",
       route: ArPage.route,
       iconPath: "assets/ar_icon.png"
     ),
