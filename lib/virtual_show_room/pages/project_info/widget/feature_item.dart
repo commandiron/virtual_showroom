@@ -11,7 +11,7 @@ class FeatureItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(16)
         ),
         side: BorderSide(
