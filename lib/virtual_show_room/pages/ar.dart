@@ -27,9 +27,12 @@ class ArPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("from", style: AppTextStyle.b3!.copyWith(
+                Text(
+                  "from",
+                  style: AppTextStyle.b3!.copyWith(
                     color: Colors.grey
-                ),),
+                  ),
+                ),
                 AppSpace.verticalS!,
                 InkWell(
                   onTap: () {
