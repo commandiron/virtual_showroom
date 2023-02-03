@@ -64,7 +64,7 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: _offset == Offset.zero ? 300 : _expandedAnimationDuration),
         height: _height,
-        padding: AppPadding.allM,
+        padding: AppPadding.allS,
         child: Row(
           children: widget.pages.map(
             (page) => AppNavigationItem(
