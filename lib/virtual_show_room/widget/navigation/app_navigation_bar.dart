@@ -69,7 +69,7 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisExtent: 80
+            mainAxisExtent: 84
           ),
           itemCount: widget.pages.length,
           itemBuilder: (context, index) {
