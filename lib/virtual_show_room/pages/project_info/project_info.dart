@@ -66,11 +66,18 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: widget.features.length,
-                (context, index) => FeatureItem(feature: widget.features[index])
-              )
+            SliverPadding(
+              padding: AppPadding.horizontalS!,
+              sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 2,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  childCount: widget.features.length,
+                  (context, index) => FeatureItem(feature: widget.features[index])
+                )
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
