@@ -33,7 +33,7 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                   (apartment) => Padding(
                 padding: AppPadding.allM!,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                       Radius.circular(32)
                   ),
                   child: Container(
@@ -42,7 +42,7 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                       color: Theme.of(context).colorScheme.secondaryContainer,
                     ),
                     foregroundDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                             Radius.circular(32)
                         ),
                         border: Border.all(
@@ -70,23 +70,23 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                             )
                         ),
                         Expanded(
-                            child: Column(
-                              children: [
-                                Text("Test"),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _selectedApartment = apartment;
-                                        Provider.of<AppStateProvider>(
-                                            context,
-                                            listen: false
-                                        ).setScreenStateExpanded(isAnimated: true);
-                                      });
-                                    },
-                                    child: Text("İncele")
-                                )
-                              ],
-                            )
+                          child: Column(
+                            children: [
+                              Text("Test"),
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedApartment = apartment;
+                                    Provider.of<AppStateProvider>(
+                                        context,
+                                        listen: false
+                                    ).setScreenStateExpanded(isAnimated: true);
+                                  });
+                                },
+                                child: Text("İncele")
+                              )
+                            ],
+                          )
                         ),
                       ],
                     ),
