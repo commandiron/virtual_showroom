@@ -3,7 +3,6 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/model/project.dart';
-import 'package:virtual_showroom/virtual_show_room/pages/image_detail.dart';
 
 class PlanImagesPage extends StatefulWidget {
   const PlanImagesPage({required this.apartments, Key? key}) : super(key: key);
@@ -75,17 +74,17 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                           Text("Test"),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return ImageDetailPage(
-                                      imagePaths: apartment.imagePaths,
-                                      initialPage: _pageIndex,
-                                      heroTag: "${apartment.id}"
-                                    );
-                                  },
-                                )
-                              );
+                              // Navigator.push(
+                              //   context, MaterialPageRoute(
+                              //     builder: (context) {
+                              //       return ImageDetailPage(
+                              //         imagePaths: apartment.imagePaths,
+                              //         initialPage: _pageIndex,
+                              //         heroTag: "${apartment.id}"
+                              //       );
+                              //     },
+                              //   )
+                              // );
                             },
                             child: Text("İncele")
                           )
