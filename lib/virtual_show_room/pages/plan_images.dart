@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/model/project.dart';
-
-import 'image_detail.dart';
+import 'package:virtual_showroom/provider/app_state_provider.dart';
 
 class PlanImagesPage extends StatefulWidget {
   const PlanImagesPage({required this.apartments, Key? key}) : super(key: key);
@@ -19,11 +19,11 @@ class PlanImagesPage extends StatefulWidget {
 
 class _PlanImagesPageState extends State<PlanImagesPage> {
 
-  int _pageIndex = 0;
+  Apartment? _selectedApartment;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return _selectedApartment == null ? SingleChildScrollView(
       child: Column(
         children: widget.apartments.map(
           (apartment) => Padding(
@@ -55,16 +55,12 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                         backgroundDecoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.secondaryContainer,
                         ),
-                        onPageChanged: (index) {
-                          _pageIndex = index;
-                        },
                         builder: (context, index) {
                           return PhotoViewGalleryPageOptions(
                             initialScale: PhotoViewComputedScale.contained,
                             minScale: PhotoViewComputedScale.contained,
                             maxScale: PhotoViewComputedScale.contained,
                             imageProvider: AssetImage(apartment.imagePaths[index]),
-                            heroAttributes: PhotoViewHeroAttributes(tag: "${apartment.id}"),
                           );
                         },
                       )
@@ -75,17 +71,13 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                           Text("Test"),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return ImageDetailPage(
-                                      imagePaths: apartment.imagePaths,
-                                      initialPage: _pageIndex,
-                                      heroTag: "${apartment.id}"
-                                    );
-                                  },
-                                )
-                              );
+                              setState(() {
+                                _selectedApartment = apartment;
+                                Provider.of<AppStateProvider>(
+                                  context,
+                                  listen: false
+                                ).setScreenStateExpanded(isAnimated: true);
+                              });
                             },
                             child: Text("İncele")
                           )
@@ -98,6 +90,15 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
             ),
           )
         ).toList(),
+      ),
+    ) : Center(
+      child: PhotoViewGallery.builder(
+        itemCount: _selectedApartment!.imagePaths.length,
+        builder: (context, index) {
+          return PhotoViewGalleryPageOptions(
+            imageProvider: AssetImage(_selectedApartment!.imagePaths[index]),
+          );
+        },
       ),
     );
   }
