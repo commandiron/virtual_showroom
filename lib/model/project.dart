@@ -16,7 +16,7 @@ class Project {
   String name;
   String locationUrl;
   List<String> generalImagePaths;
-  List<String> planImagePaths;
+  List<Apartment> apartments;
   DateTime startDate;
   DateTime estimatedFinishDate;
   List<String> features;
@@ -34,7 +34,7 @@ class Project {
       required this.name,
       required this.locationUrl,
       required this.generalImagePaths,
-      required this.planImagePaths,
+      required this.apartments,
       required this.startDate,
       required this.estimatedFinishDate,
       required this.features,
@@ -62,10 +62,26 @@ class Project {
         "assets/id0/image_1.jpg",
         "assets/id0/image_2.jpg"
       ],
-      planImagePaths: [
-        "assets/id0/image_3.jpeg",
-        "assets/id0/image_4.jpg",
-        "assets/id0/image_5.jpg"
+      apartments: [
+        Apartment(
+          id: 0,
+          title: "Normal Daire",
+          imagePaths: ["assets/id0/image_3.jpeg"],
+          type: "5+1",
+          netArea: "212",
+          grossArea: "268"
+        ),
+        Apartment(
+          id: 1,
+          title: "Dubleks Daire",
+          imagePaths:[
+            "assets/id0/image_4.jpg",
+            "assets/id0/image_5.jpg"
+          ],
+          type: "5+2",
+          netArea: "376",
+          grossArea: "475"
+        ),
       ],
       startDate: DateTime(
         2022, 10, 7
@@ -101,4 +117,24 @@ class Project {
       ],
     ),
   ];
+}
+
+class Apartment {
+  int id;
+  String title;
+  List<String> imagePaths;
+  String type;
+  String netArea;
+  String grossArea;
+
+  Apartment(
+    {
+      required this.id,
+      required this.title,
+      required this.imagePaths,
+      required this.type,
+      required this.netArea,
+      required this.grossArea,
+    }
+  );
 }

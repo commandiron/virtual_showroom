@@ -37,7 +37,7 @@ class AppPage extends StatelessWidget {
         );
       case PlanImagesPage.route :
         return PlanImagesPage(
-          planImagePaths: project.planImagePaths,
+          apartments: project.apartments,
         );
       case ProjectInfoPage.route:
         return ProjectInfoPage(
