@@ -4,6 +4,8 @@ import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/model/project.dart';
 
+import 'image_detail.dart';
+
 class PlanImagesPage extends StatefulWidget {
   const PlanImagesPage({required this.apartments, Key? key}) : super(key: key);
 
@@ -42,7 +44,6 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                   border: Border.all(
                       color: Theme.of(context).colorScheme.primary,
                       width: 1,
-                      strokeAlign: StrokeAlign.inside
                   )
                 ),
                 child: Column(
@@ -74,17 +75,17 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
                           Text("Test"),
                           ElevatedButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //   context, MaterialPageRoute(
-                              //     builder: (context) {
-                              //       return ImageDetailPage(
-                              //         imagePaths: apartment.imagePaths,
-                              //         initialPage: _pageIndex,
-                              //         heroTag: "${apartment.id}"
-                              //       );
-                              //     },
-                              //   )
-                              // );
+                              Navigator.push(
+                                context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return ImageDetailPage(
+                                      imagePaths: apartment.imagePaths,
+                                      initialPage: _pageIndex,
+                                      heroTag: "${apartment.id}"
+                                    );
+                                  },
+                                )
+                              );
                             },
                             child: Text("İncele")
                           )
