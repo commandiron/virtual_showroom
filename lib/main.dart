@@ -32,48 +32,50 @@ class MaterialChild extends StatelessWidget {
   const MaterialChild({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     final id = Uri.base.queryParameters["id"];
+
     if(id == null) {
       return const MaterialApp(
         home: ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (id yok.)")
       );
-    } else {
-      final project = Provider.of<ProjectProvider>(context, listen: false).getProjectById(id);
-      if(project == null) {
-        return const MaterialApp(
-          home: ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (Böyle bir proje bulunamadı.)")
-        );
-      } else {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: const MaterialScrollBehavior().copyWith(
-            dragDevices: {
-              PointerDeviceKind.mouse,
-              PointerDeviceKind.trackpad,
-              PointerDeviceKind.touch
-            },
-          ),
-          title: 'Qr Projem - Virtual Showroom',
-          theme: themeLight.copyWith(
-            colorScheme: colorSchemeLight.copyWith(
-              primary: Color(project.primaryColorValue)
-            )
-          ),
-          darkTheme: themeDark.copyWith(
-            colorScheme: colorSchemeDark.copyWith(
-              primary: Color(project.primaryColorValue)
-            )
-          ),
-          themeMode: ThemeMode.system,
-          onGenerateRoute: (settings) {
-            return MaterialPageRoute(
-              builder: (context) {
-                return VirtualShowRoom(project: project);
-              },
-            );
+    }
+
+    final project = Provider.of<ProjectProvider>(context, listen: false).getProjectById(id);
+    if(project == null) {
+      return const MaterialApp(
+        home: ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (Böyle bir proje bulunamadı.)")
+      );
+    }
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.trackpad,
+          PointerDeviceKind.touch
+        },
+      ),
+      title: 'Qr Projem - Virtual Showroom',
+      theme: themeLight.copyWith(
+        colorScheme: colorSchemeLight.copyWith(
+          primary: Color(project.primaryColorValue)
+        )
+      ),
+      darkTheme: themeDark.copyWith(
+        colorScheme: colorSchemeDark.copyWith(
+          primary: Color(project.primaryColorValue)
+        )
+      ),
+      themeMode: ThemeMode.system,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) {
+            return VirtualShowRoom(project: project);
           },
         );
-      }
-    }
+      },
+    );
   }
 }
