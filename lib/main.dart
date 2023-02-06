@@ -34,7 +34,8 @@ class MaterialChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final id = Uri.base.queryParameters["id"];
+    // final id = Uri.base.queryParameters["id"]; //Bu şekilde kullanılacak şimdilik test için direk veriyorum.
+    final id = "0";
 
     if(id == null) {
       return const MaterialApp(
