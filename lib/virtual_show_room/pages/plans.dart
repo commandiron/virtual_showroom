@@ -134,11 +134,13 @@ class _ApartmentItemState extends State<ApartmentItem> {
                       itemCount: widget.apartment.imagePaths.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                            onDoubleTap: () {
-                              widget.onSelect();
-                            },
-                            child: Image.asset(
-                                widget.apartment.imagePaths[index]));
+                          onDoubleTap: () {
+                            widget.onSelect();
+                          },
+                          child: Image.asset(
+                            widget.apartment.imagePaths[index]
+                          )
+                        );
                       },
                     )),
                 if (widget.apartment.imagePaths.length > 1)
