@@ -70,8 +70,8 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
               padding: AppPadding.horizontalS!,
               sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 1,
+                  crossAxisCount: 1,
+                  childAspectRatio: 6,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   childCount: widget.features.length,

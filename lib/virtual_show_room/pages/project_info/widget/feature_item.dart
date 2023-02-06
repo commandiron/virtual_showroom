@@ -27,7 +27,7 @@ class FeatureItem extends StatelessWidget {
             child: Text(
               feature,
               textAlign: TextAlign.center,
-              style: AppTextStyle.b1b!.copyWith(
+              style: AppTextStyle.b1!.copyWith(
                 color: Theme.of(context).colorScheme.onSecondaryContainer
               )
             ),
