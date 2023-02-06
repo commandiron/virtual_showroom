@@ -72,7 +72,12 @@ class MaterialChild extends StatelessWidget {
       onGenerateRoute: (settings) {
         return MaterialPageRoute(
           builder: (context) {
-            return VirtualShowRoom(project: project);
+            return WillPopScope(
+              child: VirtualShowRoom(project: project),
+              onWillPop: () async {
+                return false;
+              },
+            );
           },
         );
       },

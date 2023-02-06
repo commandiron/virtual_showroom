@@ -23,87 +23,82 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: _selectedApartment == null ? SingleChildScrollView(
-        child: Column(
-          children: widget.apartments.map(
-                  (apartment) => Padding(
-                padding: AppPadding.allM!,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(32)
-                  ),
-                  child: Container(
-                    height: 400,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondaryContainer,
+    return _selectedApartment == null ? SingleChildScrollView(
+      child: Column(
+        children: widget.apartments.map(
+          (apartment) => Padding(
+            padding: AppPadding.allM!,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(32)
+              ),
+              child: Container(
+                height: 400,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                ),
+                foregroundDecoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                        Radius.circular(32)
                     ),
-                    foregroundDecoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(32)
-                        ),
-                        border: Border.all(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 1,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.primary,
+                      width: 1,
+                    )
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 3,
+                        child: PhotoViewGallery.builder(
+                          itemCount: apartment.imagePaths.length,
+                          backgroundDecoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondaryContainer,
+                          ),
+                          builder: (context, index) {
+                            return PhotoViewGalleryPageOptions(
+                              initialScale: PhotoViewComputedScale.contained,
+                              minScale: PhotoViewComputedScale.contained,
+                              maxScale: PhotoViewComputedScale.contained,
+                              imageProvider: AssetImage(apartment.imagePaths[index]),
+                            );
+                          },
                         )
                     ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                            flex: 3,
-                            child: PhotoViewGallery.builder(
-                              itemCount: apartment.imagePaths.length,
-                              backgroundDecoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.secondaryContainer,
-                              ),
-                              builder: (context, index) {
-                                return PhotoViewGalleryPageOptions(
-                                  initialScale: PhotoViewComputedScale.contained,
-                                  minScale: PhotoViewComputedScale.contained,
-                                  maxScale: PhotoViewComputedScale.contained,
-                                  imageProvider: AssetImage(apartment.imagePaths[index]),
-                                );
-                              },
-                            )
-                        ),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Text("Test"),
-                              ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _selectedApartment = apartment;
-                                    Provider.of<AppStateProvider>(
-                                        context,
-                                        listen: false
-                                    ).setScreenStateExpanded(isAnimated: true);
-                                  });
-                                },
-                                child: Text("İncele")
-                              )
-                            ],
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text("Test"),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _selectedApartment = apartment;
+                                Provider.of<AppStateProvider>(
+                                    context,
+                                    listen: false
+                                ).setScreenStateExpanded(isAnimated: true);
+                              });
+                            },
+                            child: Text("İncele")
                           )
-                        ),
-                      ],
+                        ],
+                      )
                     ),
-                  ),
+                  ],
                 ),
-              )
-          ).toList(),
-        ),
-      ) : Center(
-        child: PhotoViewGallery.builder(
-          itemCount: _selectedApartment!.imagePaths.length,
-          builder: (context, index) {
-            return PhotoViewGalleryPageOptions(
-              imageProvider: AssetImage(_selectedApartment!.imagePaths[index]),
-            );
-          },
-        ),
+              ),
+            ),
+          )
+        ).toList(),
+      ),
+    ) : Center(
+      child: PhotoViewGallery.builder(
+        itemCount: _selectedApartment!.imagePaths.length,
+        builder: (context, index) {
+          return PhotoViewGalleryPageOptions(
+            imageProvider: AssetImage(_selectedApartment!.imagePaths[index]),
+          );
+        },
       ),
     );
   }
