@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
-import 'package:virtual_showroom/virtual_show_room/pages/general_images/widget/close_fullscreen_button.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/overview/widget/close_fullscreen_button.dart';
 import '../../../provider/app_state_provider.dart';
 import '../../widget/app_dots_indicator.dart';
 
-class GeneralImagesPage extends StatefulWidget {
-  const GeneralImagesPage({required this.generalImagePaths, Key? key}) : super(key: key);
+class OverviewPage extends StatefulWidget {
+  const OverviewPage({required this.generalImagePaths, Key? key}) : super(key: key);
 
-  static const route = "general_images";
+  static const route = "overview";
 
   final List<String> generalImagePaths;
 
   @override
-  State<GeneralImagesPage> createState() => _GeneralImagesPageState();
+  State<OverviewPage> createState() => _OverviewPageState();
 }
 
-class _GeneralImagesPageState extends State<GeneralImagesPage> {
+class _OverviewPageState extends State<OverviewPage> {
 
   double _currentIndex = 0;
   final PageController _pageController = PageController();

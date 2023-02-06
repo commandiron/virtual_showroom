@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/virtual_show_room/pages/plan_images.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/plans.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/project_info/project_info.dart';
 import '../../model/page_item.dart';
 import '../../model/project.dart';
 import '../pages/ar.dart';
-import '../pages/general_images/general_images.dart';
+import '../pages/overview/overview.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
@@ -31,12 +31,12 @@ class AppPage extends StatelessWidget {
 
   Widget getPage() {
     switch(pages.firstWhere((page) => page.index == pageIndex).route) {
-      case GeneralImagesPage.route :
-        return GeneralImagesPage(
+      case OverviewPage.route :
+        return OverviewPage(
           generalImagePaths: project.generalImagePaths,
         );
-      case PlanImagesPage.route :
-        return PlanImagesPage(
+      case PlansPage.route :
+        return PlansPage(
           apartments: project.apartments,
         );
       case ProjectInfoPage.route:
@@ -48,7 +48,7 @@ class AppPage extends StatelessWidget {
       case ArPage.route :
         return const ArPage();
       default:
-        return GeneralImagesPage(
+        return OverviewPage(
           generalImagePaths: project.generalImagePaths,
         );
     }

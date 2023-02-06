@@ -1,6 +1,6 @@
 import '../virtual_show_room/pages/ar.dart';
-import '../virtual_show_room/pages/general_images/general_images.dart';
-import '../virtual_show_room/pages/plan_images.dart';
+import '../virtual_show_room/pages/overview/overview.dart';
+import '../virtual_show_room/pages/plans.dart';
 import '../virtual_show_room/pages/project_info/project_info.dart';
 
 class PageItem {
@@ -22,13 +22,13 @@ class PageItem {
     PageItem(
       index: 0,
       title: "Görünüş",
-      route: GeneralImagesPage.route,
+      route: OverviewPage.route,
       iconPath: "assets/general_images_icon.png"
     ),
     PageItem(
       index: 1,
       title: "Planlar",
-      route: PlanImagesPage.route,
+      route: PlansPage.route,
       iconPath: "assets/plan_images_icon.png"
     ),
     PageItem(

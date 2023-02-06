@@ -1,6 +1,6 @@
 import '../virtual_show_room/pages/ar.dart';
-import '../virtual_show_room/pages/general_images/general_images.dart';
-import '../virtual_show_room/pages/plan_images.dart';
+import '../virtual_show_room/pages/overview/overview.dart';
+import '../virtual_show_room/pages/plans.dart';
 import '../virtual_show_room/pages/project_info/project_info.dart';
 
 
@@ -51,8 +51,8 @@ class Project {
       companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
       companyLocationUrl: "https://goo.gl/maps/pUvD8P7sWb4NzitK7",
       enabledPageRoutes: [
-        GeneralImagesPage.route,
-        PlanImagesPage.route,
+        OverviewPage.route,
+        PlansPage.route,
         ProjectInfoPage.route,
         ArPage.route,
       ],

@@ -6,18 +6,18 @@ import 'package:virtual_showroom/model/project.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/app_dots_indicator.dart';
 
-class PlanImagesPage extends StatefulWidget {
-  const PlanImagesPage({required this.apartments, Key? key}) : super(key: key);
+class PlansPage extends StatefulWidget {
+  const PlansPage({required this.apartments, Key? key}) : super(key: key);
 
-  static const route = "plan_images";
+  static const route = "plans";
 
   final List<Apartment> apartments;
 
   @override
-  State<PlanImagesPage> createState() => _PlanImagesPageState();
+  State<PlansPage> createState() => _PlansPageState();
 }
 
-class _PlanImagesPageState extends State<PlanImagesPage> {
+class _PlansPageState extends State<PlansPage> {
   Apartment? _selectedApartment;
 
   double _currentIndex = 0;
@@ -143,8 +143,9 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     )),
                 if (widget.apartment.imagePaths.length > 1)
                   AppDotsIndicator(
-                      dotsCount: widget.apartment.imagePaths.length,
-                      position: _currentIndex)
+                    dotsCount: widget.apartment.imagePaths.length,
+                    position: _currentIndex
+                  )
               ],
             ),
             SizedBox(
