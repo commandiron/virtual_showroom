@@ -4,6 +4,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/app_dots_indicator.dart';
 import '../../../provider/app_state_provider.dart';
 
 class MyPhotoViewGallery extends StatefulWidget {
@@ -70,27 +71,9 @@ class _MyPhotoViewGalleryState extends State<MyPhotoViewGallery> {
           )
         ),
         if(_photoViewScaleState == PhotoViewScaleState.initial)
-          Container(
-            padding: AppPadding.allS,
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: AppPadding.horizontalS!.add(AppPadding.verticalXS!),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.90),
-                borderRadius: const BorderRadius.all(Radius.circular(16))
-              ),
-              child: DotsIndicator(
-                dotsCount: widget.imagePaths.length,
-                position:  _currentIndex,
-                decorator: DotsDecorator(
-                  size: const Size.square(9.0),
-                  activeSize: const Size(18.0, 9.0),
-                  activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                  activeColor: Theme.of(context).colorScheme.primary,
-                  color: Colors.white
-                ),
-              ),
-            ),
+          AppDotsIndicator(
+            dotsCount: widget.imagePaths.length, 
+            position: _currentIndex
           ),
         if(_photoViewScaleState != PhotoViewScaleState.initial)
           Align(

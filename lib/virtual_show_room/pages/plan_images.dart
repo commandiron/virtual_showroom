@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/model/project.dart';
+import 'package:virtual_showroom/virtual_show_room/widget/app_dots_indicator.dart';
 
 class PlanImagesPage extends StatefulWidget {
   const PlanImagesPage({required this.apartments, Key? key}) : super(key: key);
@@ -70,6 +71,11 @@ class _ApartmentItemState extends State<ApartmentItem> {
     return Padding(
       padding: AppPadding.allM!,
       child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)
+        ),
+        borderOnForeground: true,
         child: Column(
           children: [
             Stack(
@@ -86,17 +92,11 @@ class _ApartmentItemState extends State<ApartmentItem> {
                       },
                     )
                 ),
-                DotsIndicator(
-                  dotsCount: widget.apartment.imagePaths.length,
-                  position: _currentIndex,
-                  decorator: DotsDecorator(
-                    size: const Size.square(9.0),
-                    activeSize: const Size(18.0, 9.0),
-                    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    color: Colors.white
-                  ),
-                )
+                if(widget.apartment.imagePaths.length > 1)
+                  AppDotsIndicator(
+                    dotsCount: widget.apartment.imagePaths.length,
+                    position: _currentIndex
+                  )
               ],
             ),
             SizedBox(
