@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
@@ -48,7 +49,7 @@ class MaterialChild extends StatelessWidget {
       );
     }
 
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {
@@ -69,18 +70,16 @@ class MaterialChild extends StatelessWidget {
         )
       ),
       themeMode: ThemeMode.system,
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (context) {
-            return WillPopScope(
-              child: VirtualShowRoom(project: project),
-              onWillPop: () async {
-                return false;
-              },
-            );
-          },
-        );
-      },
+      routerConfig: GoRouter(
+        routes: [
+          GoRoute(
+            path: "/",
+            builder: (context, state) {
+              return VirtualShowRoom(project: project);
+            },
+          )
+        ]
+      ),
     );
   }
 }
