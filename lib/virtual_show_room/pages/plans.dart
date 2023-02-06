@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
+import 'package:virtual_showroom/configs/app_space.dart';
+import 'package:virtual_showroom/configs/app_text_style.dart';
 import 'package:virtual_showroom/model/project.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
 import 'package:virtual_showroom/virtual_show_room/widget/app_dots_indicator.dart';
@@ -117,6 +119,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
     return Padding(
       padding: AppPadding.allM!,
       child: Card(
+        color: Colors.white,
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         borderOnForeground: true,
@@ -126,23 +129,24 @@ class _ApartmentItemState extends State<ApartmentItem> {
               alignment: Alignment.bottomCenter,
               children: [
                 Container(
-                    height: 200,
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    child: PageView.builder(
-                      controller: _pageController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.apartment.imagePaths.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onDoubleTap: () {
-                            widget.onSelect();
-                          },
-                          child: Image.asset(
-                            widget.apartment.imagePaths[index]
-                          )
-                        );
-                      },
-                    )),
+                  height: 200,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: widget.apartment.imagePaths.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onDoubleTap: () {
+                          widget.onSelect();
+                        },
+                        child: Image.asset(
+                          widget.apartment.imagePaths[index]
+                        )
+                      );
+                    },
+                  )
+                ),
                 if (widget.apartment.imagePaths.length > 1)
                   AppDotsIndicator(
                     dotsCount: widget.apartment.imagePaths.length,
@@ -150,9 +154,35 @@ class _ApartmentItemState extends State<ApartmentItem> {
                   )
               ],
             ),
-            SizedBox(
-              height: 100,
-              child: Text("Test"),
+            Container(
+              height: 120,
+              padding: AppPadding.allM,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.apartment.title, style: AppTextStyle.b1b,),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        PlanFeatureItem(
+                          icon: Icons.area_chart,
+                          title: "m² Net",
+                          body: widget.apartment.netArea
+                        ),
+                        Padding(
+                          padding: AppPadding.verticalS!,
+                          child: const VerticalDivider(),
+                        ),
+                        PlanFeatureItem(
+                          icon: Icons.room,
+                          title: "Oda",
+                          body: widget.apartment.type
+                        ),
+                      ],
+                    ),
+                  )
+                ]
+              ),
             )
           ],
         ),
@@ -160,3 +190,58 @@ class _ApartmentItemState extends State<ApartmentItem> {
     );
   }
 }
+
+class PlanFeatureItem extends StatelessWidget {
+  const PlanFeatureItem(
+    {
+      required this.icon,
+      required this.title,
+      required this.body,
+      Key? key
+    }
+  ) : super(key: key);
+
+  final IconData icon;
+  final String title;
+  final String body;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: Row(
+            children: [
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(12)
+                      )
+                    ),
+                    child: Icon(
+                      icon,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
+              AppSpace.horizontalL!,
+              Expanded(
+                flex: 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: AppTextStyle.b2!.copyWith(color: Colors.grey)),
+                    Text(body, style: AppTextStyle.b1b,),
+                  ],
+                ),
+              ),
+            ]
+        )
+    );
+  }
+}
+
