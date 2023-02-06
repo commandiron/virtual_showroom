@@ -208,39 +208,39 @@ class PlanFeatureItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Row(
-            children: [
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(12)
-                      )
-                    ),
-                    child: Icon(
-                      icon,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
+      child: Row(
+        children: [
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondary,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(12)
+                  )
+                ),
+                child: Icon(
+                  icon,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
-              AppSpace.horizontalL!,
-              Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: AppTextStyle.b2!.copyWith(color: Colors.grey)),
-                    Text(body, style: AppTextStyle.b1b,),
-                  ],
-                ),
-              ),
-            ]
-        )
+            ),
+          ),
+          AppSpace.horizontalL!,
+          Expanded(
+            flex: 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: AppTextStyle.b2!.copyWith(color: Colors.grey)),
+                Text(body, style: AppTextStyle.b1b,),
+              ],
+            ),
+          ),
+        ]
+      )
     );
   }
 }
