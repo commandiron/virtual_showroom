@@ -17,11 +17,12 @@ class AppDotsIndicator extends StatelessWidget {
       child: Container(
         padding: AppPadding.horizontalS!.add(AppPadding.verticalXS!),
         decoration: BoxDecoration(
-            color: Theme.of(context)
-                .colorScheme
-                .secondaryContainer
-                .withOpacity(0.90),
-            borderRadius: const BorderRadius.all(Radius.circular(16))),
+          color: Theme.of(context)
+            .colorScheme
+            .secondaryContainer
+            .withOpacity(0.90),
+          borderRadius: const BorderRadius.all(Radius.circular(16))
+        ),
         child: DotsIndicator(
           dotsCount: dotsCount,
           position: position,
@@ -29,7 +30,8 @@ class AppDotsIndicator extends StatelessWidget {
             size: const Size.square(5.0),
             activeSize: const Size(18.0, 5.0),
             activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+              borderRadius: BorderRadius.circular(5.0)
+            ),
             activeColor: Theme.of(context).colorScheme.primary,
             color: Colors.white),
         ),

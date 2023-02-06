@@ -4,7 +4,7 @@ import 'package:virtual_showroom/virtual_show_room/pages/project_info/project_in
 import '../../model/page_item.dart';
 import '../../model/project.dart';
 import '../pages/ar.dart';
-import '../pages/general_images.dart';
+import '../pages/general_images/general_images.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);

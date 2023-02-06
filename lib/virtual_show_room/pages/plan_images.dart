@@ -84,8 +84,12 @@ class _PlanImagesPageState extends State<PlanImagesPage> {
 
 class ApartmentItem extends StatefulWidget {
   const ApartmentItem(
-      {required this.apartment, required this.onSelect, Key? key})
-      : super(key: key);
+    {
+      required this.apartment,
+      required this.onSelect,
+      Key? key
+    }
+  ) : super(key: key);
 
   final Apartment apartment;
   final Function onSelect;

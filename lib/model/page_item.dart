@@ -1,5 +1,5 @@
 import '../virtual_show_room/pages/ar.dart';
-import '../virtual_show_room/pages/general_images.dart';
+import '../virtual_show_room/pages/general_images/general_images.dart';
 import '../virtual_show_room/pages/plan_images.dart';
 import '../virtual_show_room/pages/project_info/project_info.dart';
 
