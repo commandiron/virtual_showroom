@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
@@ -18,20 +19,31 @@ class PlansPage extends StatefulWidget {
   State<PlansPage> createState() => _PlansPageState();
 }
 
-class _PlansPageState extends State<PlansPage> {
+class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
   Apartment? _selectedApartment;
 
   double _currentIndex = 0;
   final PageController _pageController = PageController();
 
+  late final AnimationController _animationController;
+
   @override
   void initState() {
+    print("init");
+    _animationController = AnimationController(vsync: this);
     _pageController.addListener(() {
       setState(() {
         _currentIndex = _pageController.page ?? 0;
       });
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -73,6 +85,20 @@ class _PlansPageState extends State<PlansPage> {
                 dotsCount: _selectedApartment!.imagePaths.length,
                 position: _currentIndex
               ),
+            IgnorePointer(
+              child: Center(
+                child: Lottie.network(
+                  "https://assets8.lottiefiles.com/packages/lf20_YJZ0dWUhOD.json",
+                  controller: _animationController,
+                  onLoaded: (composition) {
+                    _animationController
+                      ..duration = composition.duration
+                      ..forward();
+                  },
+                ),
+              ),
+            ),
+
             Padding(
               padding: AppPadding.allS!,
               child: Container(
