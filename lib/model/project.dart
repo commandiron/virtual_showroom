@@ -65,7 +65,7 @@ class Project {
       apartments: [
         Apartment(
           id: 0,
-          title: "Normal Daire",
+          title: "8. Kat Normal Daire",
           imagePaths: ["assets/id0/image_3.jpeg"],
           type: "5+1",
           netArea: "212",
@@ -73,7 +73,7 @@ class Project {
         ),
         Apartment(
           id: 1,
-          title: "Dubleks Daire",
+          title: "9-10. Kat Dubleks Daire",
           imagePaths:[
             "assets/id0/image_4.jpg",
             "assets/id0/image_5.jpg"
