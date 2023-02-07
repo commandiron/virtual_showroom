@@ -86,11 +86,11 @@ class _ApartmentItemState extends State<ApartmentItem> {
                       decoration: BoxDecoration(
                         color: Theme.of(context)
                           .colorScheme
-                          .secondaryContainer
+                          .primary
                           .withOpacity(0.90),
                         borderRadius: const BorderRadius.all(Radius.circular(32))
                       ),
-                      child: const Icon(Icons.zoom_in,),
+                      child: Icon(Icons.zoom_in,),
                     ),
                   )
                 ),
