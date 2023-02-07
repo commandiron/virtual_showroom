@@ -112,16 +112,16 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     child: Row(
                       children: [
                         PlanFeatureItem(
-                          icon: Icons.area_chart,
+                          icon: Icons.open_in_full_sharp,
                           title: "Net",
-                          body: "${widget.apartment.netArea} m²"
+                          body: "${widget.apartment.netArea} m²",
                         ),
                         Padding(
                           padding: AppPadding.allS!,
                           child: const VerticalDivider(),
                         ),
                         PlanFeatureItem(
-                          icon: Icons.home,
+                          icon: Icons.chair,
                           title: "Oda",
                           body: widget.apartment.type
                         ),
