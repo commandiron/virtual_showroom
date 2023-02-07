@@ -1,6 +1,6 @@
 import '../virtual_show_room/pages/ar.dart';
 import '../virtual_show_room/pages/overview/overview.dart';
-import '../virtual_show_room/pages/plans.dart';
+import '../virtual_show_room/pages/plans/plans.dart';
 import '../virtual_show_room/pages/project_info/project_info.dart';
 
 

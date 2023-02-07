@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/virtual_show_room/pages/plans.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/plans/plans.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/project_info/project_info.dart';
 import '../../model/page_item.dart';
 import '../../model/project.dart';

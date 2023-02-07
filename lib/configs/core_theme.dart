@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 final colorSchemeDark = ColorScheme.dark(
   primary: const Color(0xff137CC0),
   onPrimary: Colors.white,
-  secondary: const Color(0xffD8EDFB),
 
   background: const Color(0xff242424),
   onBackground: Colors.white,
@@ -29,7 +28,6 @@ final themeDark = ThemeData(
 final colorSchemeLight = ColorScheme.light(
   primary: const Color(0xff137CC0),
   onPrimary: Colors.white,
-  secondary: const Color(0xffD8EDFB),
 
   background: Colors.white,
   onBackground: const Color(0xff242424),
