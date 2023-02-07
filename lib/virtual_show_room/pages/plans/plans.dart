@@ -89,6 +89,7 @@ class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
               child: Center(
                 child: Lottie.network(
                   "https://assets8.lottiefiles.com/packages/lf20_YJZ0dWUhOD.json",
+                  frameRate: FrameRate.max,
                   controller: _animationController,
                   onLoaded: (composition) {
                     _animationController
