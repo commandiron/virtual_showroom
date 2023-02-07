@@ -30,17 +30,17 @@ class _PlansPageState extends State<PlansPage> {
         ? SingleChildScrollView(
             child: Column(
               children: widget.apartments
-                  .map((apartment) => ApartmentItem(
-                      apartment: apartment,
-                      onSelect: (index) {
-                        _initialPage = index.toInt();
-                        setState(() {
-                          _selectedApartment = apartment;
-                          Provider.of<AppStateProvider>(context, listen: false)
-                              .setScreenStateExpanded(isAnimated: true);
-                        });
-                      }))
-                  .toList(),
+                .map((apartment) => ApartmentItem(
+                    apartment: apartment,
+                    onSelect: (index) {
+                      _initialPage = index.toInt();
+                      setState(() {
+                        _selectedApartment = apartment;
+                        Provider.of<AppStateProvider>(context, listen: false)
+                            .setScreenStateExpanded(isAnimated: true);
+                      });
+                    }))
+                .toList(),
             ),
           )
         : PlanDetail(
