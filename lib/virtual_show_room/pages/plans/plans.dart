@@ -59,8 +59,8 @@ class _PlansPageState extends State<PlansPage> {
             PhotoViewGallery.builder(
               pageController: _pageController,
               itemCount: _selectedApartment!.imagePaths.length,
-              backgroundDecoration: BoxDecoration(
-                color: const Color(0xff626262),
+              backgroundDecoration: const BoxDecoration(
+                color: Color(0xff626262),
               ),
               builder: (context, index) {
                 return PhotoViewGalleryPageOptions(
