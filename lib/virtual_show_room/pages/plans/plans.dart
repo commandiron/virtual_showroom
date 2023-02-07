@@ -29,7 +29,6 @@ class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    print("init");
     _animationController = AnimationController(vsync: this);
     _pageController.addListener(() {
       setState(() {
