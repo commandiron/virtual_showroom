@@ -117,7 +117,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
                           body: "${widget.apartment.netArea} m²"
                         ),
                         Padding(
-                          padding: AppPadding.verticalS!,
+                          padding: AppPadding.allS!,
                           child: const VerticalDivider(),
                         ),
                         PlanFeatureItem(
