@@ -15,7 +15,7 @@ class ApartmentItem extends StatefulWidget {
   ) : super(key: key);
 
   final Apartment apartment;
-  final Function onSelect;
+  final Function(double index) onSelect;
 
   @override
   State<ApartmentItem> createState() => _ApartmentItemState();
@@ -64,10 +64,10 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onDoubleTap: () {
-                          widget.onSelect();
+                          widget.onSelect(_currentIndex);
                         },
                         child: Image.asset(
-                            widget.apartment.imagePaths[index]
+                          widget.apartment.imagePaths[index]
                         )
                       );
                     },
@@ -79,7 +79,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
                   padding: AppPadding.allM,
                   child: InkWell(
                     onTap: () {
-                      widget.onSelect();
+                      widget.onSelect(_currentIndex);
                     },
                     child: Container(
                       padding: AppPadding.allS!,
