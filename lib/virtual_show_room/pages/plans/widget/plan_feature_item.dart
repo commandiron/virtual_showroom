@@ -26,14 +26,14 @@ class PlanFeatureItem extends StatelessWidget {
               aspectRatio: 1,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withAlpha(20),
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: const BorderRadius.all(
                       Radius.circular(12)
                   )
                 ),
                 child: Icon(
                   icon,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
             ),
