@@ -20,6 +20,7 @@ class PlansPage extends StatefulWidget {
 }
 
 class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
+
   Apartment? _selectedApartment;
 
   double _currentIndex = 0;
@@ -98,14 +99,13 @@ class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
                 ),
               ),
             ),
-
             Padding(
               padding: AppPadding.allS!,
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondaryContainer
                     .withOpacity(0.90),
-                  borderRadius: BorderRadius.all(Radius.circular(36))
+                  borderRadius: const BorderRadius.all(Radius.circular(36))
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back),
