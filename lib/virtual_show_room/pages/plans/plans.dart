@@ -103,9 +103,7 @@ class _PlansPageState extends State<PlansPage> with TickerProviderStateMixin {
               padding: AppPadding.allS!,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context)
-                    .colorScheme
-                    .secondaryContainer
+                  color: Theme.of(context).colorScheme.secondaryContainer
                     .withOpacity(0.90),
                   borderRadius: BorderRadius.all(Radius.circular(36))
                 ),
