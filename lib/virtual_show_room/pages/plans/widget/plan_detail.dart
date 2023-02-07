@@ -86,7 +86,7 @@ class _PlanDetailState extends State<PlanDetail> with TickerProviderStateMixin {
               decoration: BoxDecoration(
                   color: Theme.of(context)
                       .colorScheme
-                      .secondaryContainer
+                      .primary
                       .withOpacity(0.90),
                   borderRadius: const BorderRadius.all(Radius.circular(36))),
               child: IconButton(
