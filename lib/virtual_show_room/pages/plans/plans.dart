@@ -83,7 +83,8 @@ class _PlansPageState extends State<PlansPage> {
                     .withOpacity(0.90),
                   borderRadius: BorderRadius.all(Radius.circular(36))
                 ),
-                child: BackButton(
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back),
                   color: Theme.of(context).colorScheme.onSecondaryContainer,
                   onPressed: () {
                     setState(() {
