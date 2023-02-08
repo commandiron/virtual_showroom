@@ -45,12 +45,9 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         child: Padding(
           padding: AppPadding.allM!,
           child: Card(
-            color: Theme.of(context).colorScheme.secondaryContainer,
+            color: Theme.of(context).colorScheme.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(
-                  color: Theme.of(context).colorScheme.primaryContainer
-              ),
             ),
             child: InkWell(
               onTap: () {
@@ -65,7 +62,7 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
               child: Icon(
                 Icons.arrow_drop_up_outlined,
                 size: 36,
-                color: Theme.of(context).colorScheme.primary
+                color: Theme.of(context).colorScheme.onPrimary
               ),
             ),
           ),

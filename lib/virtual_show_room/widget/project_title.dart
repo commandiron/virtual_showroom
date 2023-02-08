@@ -16,7 +16,7 @@ class ProjectTitle extends StatelessWidget {
       child: FittedBox(
         child: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 24,
             ),
             Text(

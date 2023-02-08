@@ -19,7 +19,7 @@ class AppDotsIndicator extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context)
             .colorScheme
-            .secondaryContainer
+            .primary
             .withOpacity(0.90),
           borderRadius: const BorderRadius.all(Radius.circular(16))
         ),
@@ -32,8 +32,9 @@ class AppDotsIndicator extends StatelessWidget {
             activeShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0)
             ),
-            activeColor: Theme.of(context).colorScheme.primary,
-            color: Colors.white),
+            activeColor: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onPrimary
+          ),
         ),
       ),
     );
