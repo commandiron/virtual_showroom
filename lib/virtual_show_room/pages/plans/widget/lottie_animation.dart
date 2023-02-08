@@ -28,8 +28,8 @@ class _LottieAnimationState extends State<LottieAnimation> with TickerProviderSt
   Widget build(BuildContext context) {
     return IgnorePointer(
       child: Center(
-        child: Lottie.network(
-          "https://assets8.lottiefiles.com/packages/lf20_YJZ0dWUhOD.json",
+        child: Lottie.asset(
+          "assets/lottie/zoom_in_animation_lottie.json",
           controller: _animationController,
           onLoaded: (composition) {
             _animationController

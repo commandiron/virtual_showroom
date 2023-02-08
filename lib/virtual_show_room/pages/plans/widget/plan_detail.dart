@@ -44,31 +44,35 @@ class _PlanDetailState extends State<PlanDetail>{
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        children: [
-          PhotoViewGallery.builder(
-            pageController: _pageController,
-            itemCount: widget.apartment.imagePaths.length,
-            backgroundDecoration: const BoxDecoration(
-              color: Color(0xff626262),
-            ),
-            builder: (context, index) {
-              return PhotoViewGalleryPageOptions(
-                imageProvider: AssetImage(widget.apartment.imagePaths[index]),
-              );
-            },
+    return Stack(
+      children: [
+        Center(
+          child: Stack(
+            children: [
+              PhotoViewGallery.builder(
+                pageController: _pageController,
+                itemCount: widget.apartment.imagePaths.length,
+                backgroundDecoration: const BoxDecoration(
+                  color: Color(0xff626262),
+                ),
+                builder: (context, index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: AssetImage(widget.apartment.imagePaths[index]),
+                  );
+                },
+              ),
+              if (widget.apartment.imagePaths.length > 1)
+                AppDotsIndicator(
+                    dotsCount: widget.apartment.imagePaths.length,
+                    position: _currentIndex),
+              AppBackButton(
+                onPressed: widget.onBack,
+              )
+            ],
           ),
-          if (widget.apartment.imagePaths.length > 1)
-            AppDotsIndicator(
-                dotsCount: widget.apartment.imagePaths.length,
-                position: _currentIndex),
-          const LottieAnimation(),
-          AppBackButton(
-            onPressed: widget.onBack,
-          )
-        ],
-      ),
+        ),
+        const LottieAnimation(),
+      ],
     );
   }
 }
