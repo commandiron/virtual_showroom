@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/plan_feature_item.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/zoom_in_button.dart';
 import '../../../../configs/app_padding.dart';
 import '../../../../configs/app_text_style.dart';
 import '../../../../model/project.dart';
@@ -73,29 +74,10 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     },
                   )
                 ),
-                Container(
-                  height: 200,
-                  alignment: Alignment.topRight,
-                  padding: AppPadding.allM,
-                  child: InkWell(
-                    onTap: () {
-                      widget.onSelect(_currentIndex);
-                    },
-                    child: Container(
-                      padding: AppPadding.allS!,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(0.90),
-                        borderRadius: const BorderRadius.all(Radius.circular(32))
-                      ),
-                      child: Icon(
-                        Icons.zoom_in,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    ),
-                  )
+                ZoomInButton(
+                  onTap: () {
+                    widget.onSelect(_currentIndex);
+                  },
                 ),
                 if (widget.apartment.imagePaths.length > 1)
                   AppDotsIndicator(

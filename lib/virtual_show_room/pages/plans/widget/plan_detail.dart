@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/model/project.dart';
-
-import '../../../../configs/app_padding.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/app_back_button.dart';
+import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/lottie_animation.dart';
 import '../../../widget/app_dots_indicator.dart';
 
 class PlanDetail extends StatefulWidget {
@@ -21,14 +20,12 @@ class PlanDetail extends StatefulWidget {
   State<PlanDetail> createState() => _PlanDetailState();
 }
 
-class _PlanDetailState extends State<PlanDetail> with TickerProviderStateMixin {
+class _PlanDetailState extends State<PlanDetail>{
   double _currentIndex = 0;
   late final PageController _pageController;
-  late final AnimationController _animationController;
 
   @override
   void initState() {
-    _animationController = AnimationController(vsync: this);
     _pageController = PageController(initialPage: widget.initialPage);
     _currentIndex = widget.initialPage.toDouble();
     _pageController.addListener(() {
@@ -41,7 +38,6 @@ class _PlanDetailState extends State<PlanDetail> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    _animationController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -67,34 +63,10 @@ class _PlanDetailState extends State<PlanDetail> with TickerProviderStateMixin {
             AppDotsIndicator(
                 dotsCount: widget.apartment.imagePaths.length,
                 position: _currentIndex),
-          IgnorePointer(
-            child: Center(
-              child: Lottie.network(
-                "https://assets8.lottiefiles.com/packages/lf20_YJZ0dWUhOD.json",
-                controller: _animationController,
-                onLoaded: (composition) {
-                  _animationController
-                    ..duration = composition.duration
-                    ..forward();
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: AppPadding.allS!,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withOpacity(0.90),
-                borderRadius: const BorderRadius.all(Radius.circular(36))),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                color: Theme.of(context).colorScheme.onPrimary,
-                onPressed: widget.onBack),
-            ),
-          ),
+          const LottieAnimation(),
+          AppBackButton(
+            onPressed: widget.onBack,
+          )
         ],
       ),
     );
