@@ -64,7 +64,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     itemCount: widget.apartment.imagePaths.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onDoubleTap: () {
+                        onTap: () {
                           widget.onSelect(_currentIndex);
                         },
                         child: Image.asset(

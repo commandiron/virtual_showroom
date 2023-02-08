@@ -53,7 +53,7 @@ class _PlanDetailState extends State<PlanDetail>{
                 pageController: _pageController,
                 itemCount: widget.apartment.imagePaths.length,
                 backgroundDecoration: const BoxDecoration(
-                  color: Color(0xff626262),
+                  color: Colors.black,
                 ),
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
