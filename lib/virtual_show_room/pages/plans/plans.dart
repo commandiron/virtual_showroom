@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
-import 'package:virtual_showroom/configs/app_padding.dart';
 import 'package:virtual_showroom/model/project.dart';
 import 'package:virtual_showroom/provider/app_state_provider.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/apartment_item.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/plan_detail.dart';
-import 'package:virtual_showroom/virtual_show_room/widget/app_dots_indicator.dart';
 
 class PlansPage extends StatefulWidget {
   const PlansPage({required this.apartments, Key? key}) : super(key: key);

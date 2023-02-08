@@ -84,15 +84,15 @@ class _PlanDetailState extends State<PlanDetail> with TickerProviderStateMixin {
             padding: AppPadding.allS!,
             child: Container(
               decoration: BoxDecoration(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.90),
-                  borderRadius: const BorderRadius.all(Radius.circular(36))),
+                color: Theme.of(context)
+                  .colorScheme
+                  .primary
+                  .withOpacity(0.90),
+                borderRadius: const BorderRadius.all(Radius.circular(36))),
               child: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
-                  onPressed: widget.onBack),
+                icon: const Icon(Icons.arrow_back),
+                color: Theme.of(context).colorScheme.onPrimary,
+                onPressed: widget.onBack),
             ),
           ),
         ],

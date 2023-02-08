@@ -19,7 +19,7 @@ class CloseFullScreenButton extends StatelessWidget {
           ),
           padding: AppPadding.allS!,
           child: IconButton(
-              color: Theme.of(context).colorScheme.onSecondaryContainer,
+              color: Theme.of(context).colorScheme.onPrimary,
               onPressed: onPressed,
               icon: const Icon(Icons.close_fullscreen)
           ),
