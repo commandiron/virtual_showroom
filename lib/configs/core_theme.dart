@@ -10,7 +10,7 @@ final colorSchemeDark = ColorScheme.dark(
   primaryContainer: Colors.grey.shade50,
   onPrimaryContainer: Colors.black,
 
-  secondaryContainer: const Color(0xff242424),
+  secondaryContainer: const Color(0xFF111111),
   onSecondaryContainer: Colors.white,
 );
 

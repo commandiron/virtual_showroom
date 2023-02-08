@@ -14,9 +14,6 @@ class FeatureItem extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(16)
         ),
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.primaryContainer
-        )
       ),
       color: Theme.of(context).colorScheme.secondaryContainer,
       child: Stack(
@@ -36,9 +33,9 @@ class FeatureItem extends StatelessWidget {
             padding: AppPadding.allS!,
             alignment: Alignment.topRight,
             child: Icon(
-              Icons.check_circle,
+              Icons.check_circle_sharp,
               size: 16,
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.primary
             )
           )
         ],

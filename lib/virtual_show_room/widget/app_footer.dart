@@ -11,7 +11,7 @@ class AppFooter extends StatelessWidget {
     return Container(
       height: 20,
       width: double.infinity,
-      color: Theme.of(context).colorScheme.secondaryContainer,
+      color: Theme.of(context).colorScheme.primaryContainer,
       padding: AppPadding.allXS,
       alignment: Alignment.center,
       child: FittedBox(
@@ -24,13 +24,13 @@ class AppFooter extends StatelessWidget {
               Text(
                 "from ",
                 style: AppTextStyle.b1?.copyWith(
-                  color: Theme.of(context).colorScheme.onSecondaryContainer.withOpacity(0.3)
+                  color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.3)
                 ),
               ),
               Text(
                 "DEMIRLI",
                 style: AppTextStyle.b1?.copyWith(
-                  color: Theme.of(context).colorScheme.onSecondaryContainer
+                  color: Theme.of(context).colorScheme.onPrimaryContainer
                 ),
               ),
               Text(
