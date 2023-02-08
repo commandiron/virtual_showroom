@@ -32,10 +32,10 @@ dev_dependencies:
   flutter_launcher_icons: ^0.11.0
 
 flutter_icons:
-  image_path: "assets/demirli_tech_only_logo_web_icon.png"
+  image_path: "assets/qr_projem_logo.png"
   web:
     generate: true
-    image_path: "assets/demirli_tech_only_logo_web_icon.png"
+    image_path: "assets/qr_projem_logo.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
 
