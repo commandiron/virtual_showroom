@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/configs/app_padding.dart';
 import '../../../core/configs/app_text_style.dart';
 import '../../../core/helper/url_launcher.dart';
