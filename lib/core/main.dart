@@ -69,7 +69,6 @@ class MaterialChild extends StatelessWidget {
               primary: Color(project.primaryColorValue)
             )
           ),
-          themeMode: ThemeMode.system,
           routerConfig: GoRouter(
             routes: [
               GoRoute(
