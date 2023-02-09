@@ -5,7 +5,7 @@ class PageState {
 
   PageState(
     {
-      required this.index
+      required this.index,
     }
   );
 }
