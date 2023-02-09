@@ -33,7 +33,7 @@ class _PlansPageState extends State<PlansPage> {
                 _initialPage = index.toInt();
                 setState(() {
                   _selectedApartment = apartment;
-                  BlocProvider.of<AnimationCubit>(context).expandScreen();
+                  BlocProvider.of<AnimationCubit>(context, listen: false).expandScreen();
                 });
               }))
             .toList(),
@@ -45,7 +45,7 @@ class _PlansPageState extends State<PlansPage> {
         onBack: () {
           setState(() {
             _selectedApartment = null;
-            BlocProvider.of<AnimationCubit>(context).collapseScreen();
+            BlocProvider.of<AnimationCubit>(context, listen: false).collapseScreen();
           });
         },
       );

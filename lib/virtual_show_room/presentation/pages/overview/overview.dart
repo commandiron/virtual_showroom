@@ -50,9 +50,9 @@ class _OverviewPageState extends State<OverviewPage> {
               _photoViewScaleState = value;
             });
             if(value == PhotoViewScaleState.initial) {
-              BlocProvider.of<AnimationCubit>(context).collapseScreen();
+              BlocProvider.of<AnimationCubit>(context, listen: false).collapseScreen();
             } else {
-              BlocProvider.of<AnimationCubit>(context).expandScreen();
+              BlocProvider.of<AnimationCubit>(context, listen: false).expandScreen();
             }
           },
           builder: (context, index) {
