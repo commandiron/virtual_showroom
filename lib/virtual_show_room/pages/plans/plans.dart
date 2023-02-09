@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:virtual_showroom/model/project.dart';
-import 'package:virtual_showroom/provider/app_state_provider.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/apartment_item.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/plan_detail.dart';
+
+import '../../../bloc/app/app_cubit.dart';
 
 class PlansPage extends StatefulWidget {
   const PlansPage({required this.apartments, Key? key}) : super(key: key);
@@ -32,8 +33,7 @@ class _PlansPageState extends State<PlansPage> {
                       _initialPage = index.toInt();
                       setState(() {
                         _selectedApartment = apartment;
-                        Provider.of<AppStateProvider>(context, listen: false)
-                            .setScreenStateExpanded(isAnimated: true);
+                        BlocProvider.of<AppCubit>(context).expandScreen();
                       });
                     }))
                 .toList(),
@@ -45,8 +45,7 @@ class _PlansPageState extends State<PlansPage> {
             onBack: () {
               setState(() {
                 _selectedApartment = null;
-                Provider.of<AppStateProvider>(context, listen: false)
-                    .setScreenStateCollapsed();
+                BlocProvider.of<AppCubit>(context).collapseScreen();
               });
             },
           );

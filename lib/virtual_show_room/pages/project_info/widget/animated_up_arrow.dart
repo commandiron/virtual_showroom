@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../bloc/app/app_cubit.dart';
 import '../../../../configs/app_padding.dart';
-import '../../../../provider/app_state_provider.dart';
+
 
 class AnimatedUpArrow extends StatefulWidget {
   const AnimatedUpArrow({required this.scrollController, Key? key}) : super(key: key);
@@ -24,12 +24,12 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         setState(() {
           _upArrowOffset = Offset.zero;
         });
-        Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded(isAnimated: true);
+        BlocProvider.of<AppCubit>(context).expandScreen();
       } else {
         setState(() {
           _upArrowOffset = const Offset(0.5, 0);
         });
-        Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+        BlocProvider.of<AppCubit>(context).collapseScreen();
       }
     });
     super.initState();

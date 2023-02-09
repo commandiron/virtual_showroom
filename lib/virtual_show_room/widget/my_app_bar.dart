@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:virtual_showroom/bloc/app/app_cubit.dart';
 import 'package:virtual_showroom/configs/app_text_style.dart';
 import '../../configs/app_padding.dart';
 import '../../model/project.dart';
-import '../../provider/app_state_provider.dart';
 import 'dialog/app_dialog.dart';
 
 class MyAppBar extends StatefulWidget {
@@ -22,89 +22,62 @@ class MyAppBar extends StatefulWidget {
 }
 
 class _MyAppBarState extends State<MyAppBar> {
-
-  int _expandedAnimationDuration = 0;
-  Offset _offset = Offset.zero;
-  double _height = 60;
-
   @override
   Widget build(BuildContext context) {
-
-    final screenState = Provider.of<AppStateProvider>(context).screenState;
-
-    switch(screenState) {
-      case ScreenState.animatedCollapsed:
-        setState(() {
-          _offset = Offset.zero;
-          _height = 60;
-        });
-        break;
-      case ScreenState.expanded:
-        setState(() {
-          _expandedAnimationDuration = 0;
-          _offset = const Offset(0, -1);
-          _height = 0;
-        });
-        break;
-      case ScreenState.animatedExpanded:
-        setState(() {
-          _expandedAnimationDuration = 300;
-          _offset = const Offset(0, -1);
-          _height = 0;
-        });
-        break;
-    }
-
-    return AnimatedSlide(
-      offset: _offset,
-      duration: Duration(milliseconds: _offset == Offset.zero ? 600 : _expandedAnimationDuration),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: _offset == Offset.zero ? 300 : _expandedAnimationDuration),
-        height: _height,
-        color: Theme.of(context).colorScheme.primaryContainer,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
-                alignment: Alignment.centerLeft,
-                child: Image.asset(widget.project.companyLogoPath),
-              )
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: CupertinoButton(
-                  padding: AppPadding.zero,
-                  color: Theme.of(context).colorScheme.primary,
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AppDialog(
-                          phone: widget.project.companyPhone,
-                          mail: widget.project.companyMail,
-                          address: widget.project.companyAddress,
-                          locationUrl: widget.project.companyLocationUrl
-                        );
-                      },
-                    );
-                  },
-                  child: FittedBox(
-                    child: Text(
-                      "İletişim",
-                      style: AppTextStyle.b2?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary
-                      )
-                    )
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        return AnimatedSlide(
+          offset: state.appBarOffset,
+          duration: Duration(milliseconds: state.appBarAnimDuration),
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: state.appBarAnimDuration),
+            height: state.appBarHeight,
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(widget.project.companyLogoPath),
                   )
                 ),
-              )
-            ),
-          ],
-        )
-      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: CupertinoButton(
+                      padding: AppPadding.zero,
+                      color: Theme.of(context).colorScheme.primary,
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AppDialog(
+                              phone: widget.project.companyPhone,
+                              mail: widget.project.companyMail,
+                              address: widget.project.companyAddress,
+                              locationUrl: widget.project.companyLocationUrl
+                            );
+                          },
+                        );
+                      },
+                      child: FittedBox(
+                        child: Text(
+                          "İletişim",
+                          style: AppTextStyle.b2?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary
+                          )
+                        )
+                      )
+                    ),
+                  )
+                ),
+              ],
+            )
+          ),
+        );
+      },
     );
   }
 }

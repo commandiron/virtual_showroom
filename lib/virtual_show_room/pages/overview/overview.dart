@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:provider/provider.dart';
+import 'package:virtual_showroom/bloc/app/app_cubit.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/overview/widget/close_fullscreen_button.dart';
-import '../../../provider/app_state_provider.dart';
 import '../../widget/app_dots_indicator.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -50,9 +50,9 @@ class _OverviewPageState extends State<OverviewPage> {
               _photoViewScaleState = value;
             });
             if(value == PhotoViewScaleState.initial) {
-              Provider.of<AppStateProvider>(context, listen: false).setScreenStateCollapsed();
+              BlocProvider.of<AppCubit>(context).collapseScreen();
             } else {
-              Provider.of<AppStateProvider>(context, listen: false).setScreenStateExpanded();
+              BlocProvider.of<AppCubit>(context).expandScreen();
             }
           },
           builder: (context, index) {
