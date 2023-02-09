@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/model/project.dart';
-import '../page_item.dart';
-import '../pages/ar.dart';
-import '../pages/overview/overview.dart';
-import '../pages/plans/plans.dart';
-import '../pages/project_info/project_info.dart';
+import '../../../../core/model/project.dart';
+import '../ar.dart';
+import '../overview/overview.dart';
+import '../plans/plans.dart';
+import '../project_info/project_info.dart';
+import 'page_item.dart';
 
 class CurrentPage extends StatelessWidget {
   const CurrentPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
