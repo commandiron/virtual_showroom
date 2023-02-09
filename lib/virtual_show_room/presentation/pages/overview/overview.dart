@@ -4,7 +4,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/overview/widget/close_fullscreen_button.dart';
 import '../../../cubit/animation/animation_cubit.dart';
-import '../../widget/app_dots_indicator.dart';
+import '../../widget/custom_dots_indicator.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({required this.generalImagePaths, Key? key}) : super(key: key);
@@ -77,7 +77,7 @@ class _OverviewPageState extends State<OverviewPage> {
           )
         ),
         if(_photoViewScaleState == PhotoViewScaleState.initial)
-          AppDotsIndicator(
+          CustomDotsIndicator(
             dotsCount: widget.generalImagePaths.length,
             position: _currentIndex
           ),

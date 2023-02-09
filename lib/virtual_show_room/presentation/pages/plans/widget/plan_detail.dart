@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import '../../../../../core/model/project.dart';
-import '../../../widget/app_dots_indicator.dart';
+import '../../../widget/custom_dots_indicator.dart';
 import 'app_back_button.dart';
 import 'lottie_animation.dart';
 
@@ -62,7 +62,7 @@ class _PlanDetailState extends State<PlanDetail>{
                 },
               ),
               if (widget.apartment.imagePaths.length > 1)
-                AppDotsIndicator(
+                CustomDotsIndicator(
                     dotsCount: widget.apartment.imagePaths.length,
                     position: _currentIndex),
               AppBackButton(

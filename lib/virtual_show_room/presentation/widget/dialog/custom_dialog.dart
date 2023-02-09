@@ -5,8 +5,8 @@ import '../../../../core/configs/app_text_style.dart';
 import 'contact_item.dart';
 
 
-class AppDialog extends StatelessWidget {
-  const AppDialog({required this.phone, required this.mail, required this.address, required this.locationUrl, Key? key}) : super(key: key);
+class CustomDialog extends StatelessWidget {
+  const CustomDialog({required this.phone, required this.mail, required this.address, required this.locationUrl, Key? key}) : super(key: key);
 
   final String phone;
   final String mail;

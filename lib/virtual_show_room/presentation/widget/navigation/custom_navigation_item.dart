@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/configs/app_padding.dart';
 import '../../../../core/configs/app_text_style.dart';
 
-class AppNavigationItem extends StatefulWidget {
-  const AppNavigationItem(
+class CustomNavigationItem extends StatefulWidget {
+  const CustomNavigationItem(
     {
       required this.title,
       required this.iconPath,
@@ -19,10 +19,10 @@ class AppNavigationItem extends StatefulWidget {
   final void Function() onPressed;
 
   @override
-  State<AppNavigationItem> createState() => _AppNavigationItemState();
+  State<CustomNavigationItem> createState() => _CustomNavigationItemState();
 }
 
-class _AppNavigationItemState extends State<AppNavigationItem> {
+class _CustomNavigationItemState extends State<CustomNavigationItem> {
 
 
   @override

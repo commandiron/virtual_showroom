@@ -4,8 +4,8 @@ import '../../../core/configs/app_padding.dart';
 import '../../../core/configs/app_text_style.dart';
 import '../../../core/helper/url_launcher.dart';
 
-class AppFooter extends StatelessWidget {
-  const AppFooter({Key? key}) : super(key: key);
+class CustomFooter extends StatelessWidget {
+  const CustomFooter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

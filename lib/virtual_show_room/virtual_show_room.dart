@@ -1,64 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:virtual_showroom/virtual_show_room/cubit/animation/animation_cubit.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/widget/app_footer.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/widget/app_page.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/widget/my_app_bar.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/widget/navigation/app_navigation_bar.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/widget/custom_footer.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/widget/current_page.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/widget/custom_app_bar.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/widget/navigation/custom_navigation_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/widget/project_title.dart';
 import '../core/configs/app_config.dart';
 import '../core/model/project.dart';
+import 'cubit/page/page_cubit.dart';
 import 'presentation/page_item.dart';
 
-class VirtualShowRoom extends StatefulWidget {
+class VirtualShowRoom extends StatelessWidget {
   const VirtualShowRoom({required this.project, Key? key}) : super(key: key);
 
   final Project project;
 
   @override
-  State<VirtualShowRoom> createState() => _VirtualShowRoomState();
-}
-
-class _VirtualShowRoomState extends State<VirtualShowRoom> {
-
-  int _pageIndex = 0;
-
-  @override
   Widget build(BuildContext context) {
     AppConfig.init(context);
-    return BlocProvider<AnimationCubit>(
-      create: (context) => AnimationCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => PageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AnimationCubit(),
+        ),
+      ],
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        body: Column(
-          children: [
-            MyAppBar(
-              project: widget.project,
-            ),
-            ProjectTitle(
-              title: widget.project.name,
-              locationUrl: widget.project.locationUrl,
-            ),
-            AppPage(
-              pages: PageItem.pages.where(
-                (page) => widget.project.enabledPageRoutes.contains(page.route)
-              ).toList(),
-              project: widget.project,
-              pageIndex: _pageIndex
-            ),
-            AppNavigationBar(
-              pages: PageItem.pages.where(
-                (page) => widget.project.enabledPageRoutes.contains(page.route)
-              ).toList(),
-              pageIndex: _pageIndex,
-              onPressed: (index) {
-                setState(() {
-                  _pageIndex = index;
-                });
-              },
-            ),
-            const AppFooter()
-          ],
+        body: BlocBuilder<PageCubit, PageState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                CustomAppBar(
+                  project: project,
+                ),
+                ProjectTitle(
+                  title: project.name,
+                  locationUrl: project.locationUrl,
+                ),
+                CurrentPage(
+                  pages: PageItem.pages.where(
+                    (page) => project.enabledPageRoutes.contains(page.route)
+                  ).toList(),
+                  project: project,
+                  pageIndex: state.index
+                ),
+                CustomNavigationBar(
+                  pages: PageItem.pages.where(
+                    (page) => project.enabledPageRoutes.contains(page.route)
+                  ).toList(),
+                  pageIndex: state.index,
+                  onPressed: (index) {
+                    BlocProvider.of<PageCubit>(context, listen: false).jumpTo(index);
+                  },
+                ),
+                const CustomFooter()
+              ],
+            );
+          },
         )
       )
     );

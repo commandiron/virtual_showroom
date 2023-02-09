@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../core/configs/app_padding.dart';
 
 
-class AppDotsIndicator extends StatelessWidget {
-  const AppDotsIndicator({required this.dotsCount, required this.position, super.key});
+class CustomDotsIndicator extends StatelessWidget {
+  const CustomDotsIndicator({required this.dotsCount, required this.position, super.key});
 
   final int dotsCount;
   final double position;

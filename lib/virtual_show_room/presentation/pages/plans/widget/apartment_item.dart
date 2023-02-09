@@ -4,7 +4,7 @@ import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widg
 import '../../../../../core/configs/app_padding.dart';
 import '../../../../../core/configs/app_text_style.dart';
 import '../../../../../core/model/project.dart';
-import '../../../widget/app_dots_indicator.dart';
+import '../../../widget/custom_dots_indicator.dart';
 
 class ApartmentItem extends StatefulWidget {
   const ApartmentItem(
@@ -80,7 +80,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
                   },
                 ),
                 if (widget.apartment.imagePaths.length > 1)
-                  AppDotsIndicator(
+                  CustomDotsIndicator(
                     dotsCount: widget.apartment.imagePaths.length,
                     position: _currentIndex
                   ),

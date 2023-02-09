@@ -24,30 +24,30 @@ class _PlansPageState extends State<PlansPage> {
   @override
   Widget build(BuildContext context) {
     return _selectedApartment == null
-        ? SingleChildScrollView(
-            child: Column(
-              children: widget.apartments
-                .map((apartment) => ApartmentItem(
-                    apartment: apartment,
-                    onSelect: (index) {
-                      _initialPage = index.toInt();
-                      setState(() {
-                        _selectedApartment = apartment;
-                        BlocProvider.of<AnimationCubit>(context).expandScreen();
-                      });
-                    }))
-                .toList(),
-            ),
-          )
-        : PlanDetail(
-            initialPage: _initialPage,
-            apartment: _selectedApartment!,
-            onBack: () {
-              setState(() {
-                _selectedApartment = null;
-                BlocProvider.of<AnimationCubit>(context).collapseScreen();
-              });
-            },
-          );
+      ? SingleChildScrollView(
+        child: Column(
+          children: widget.apartments
+            .map((apartment) => ApartmentItem(
+              apartment: apartment,
+              onSelect: (index) {
+                _initialPage = index.toInt();
+                setState(() {
+                  _selectedApartment = apartment;
+                  BlocProvider.of<AnimationCubit>(context).expandScreen();
+                });
+              }))
+            .toList(),
+        ),
+      )
+      : PlanDetail(
+        initialPage: _initialPage,
+        apartment: _selectedApartment!,
+        onBack: () {
+          setState(() {
+            _selectedApartment = null;
+            BlocProvider.of<AnimationCubit>(context).collapseScreen();
+          });
+        },
+      );
   }
 }

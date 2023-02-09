@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/configs/app_padding.dart';
 import '../../../cubit/animation/animation_cubit.dart';
 import '../../page_item.dart';
-import 'app_navigation_item.dart';
+import 'custom_navigation_item.dart';
 
-class AppNavigationBar extends StatelessWidget {
-  const AppNavigationBar({
+class CustomNavigationBar extends StatelessWidget {
+  const CustomNavigationBar({
     required this.pages,
     required this.pageIndex,
     required this.onPressed,
@@ -31,7 +31,7 @@ class AppNavigationBar extends StatelessWidget {
             child: Row(
               children: pages.map(
                 (page) =>
-                AppNavigationItem(
+                CustomNavigationItem(
                   title: page.title,
                   iconPath: page.iconPath,
                   enabled: page.index == pageIndex,

@@ -5,23 +5,13 @@ import '../../../core/configs/app_padding.dart';
 import '../../../core/configs/app_text_style.dart';
 import '../../../core/model/project.dart';
 import '../../cubit/animation/animation_cubit.dart';
-import 'dialog/app_dialog.dart';
+import 'dialog/custom_dialog.dart';
 
-class MyAppBar extends StatefulWidget {
-  const MyAppBar(
-    {
-      required this.project,
-      Key? key
-    }
-  ) : super(key: key);
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({required this.project, Key? key}) : super(key: key);
 
   final Project project;
 
-  @override
-  State<MyAppBar> createState() => _MyAppBarState();
-}
-
-class _MyAppBarState extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnimationCubit, AnimationState>(
@@ -40,7 +30,7 @@ class _MyAppBarState extends State<MyAppBar> {
                   child: Container(
                     padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
                     alignment: Alignment.centerLeft,
-                    child: Image.asset(widget.project.companyLogoPath),
+                    child: Image.asset(project.companyLogoPath),
                   )
                 ),
                 Expanded(
@@ -53,11 +43,11 @@ class _MyAppBarState extends State<MyAppBar> {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return AppDialog(
-                              phone: widget.project.companyPhone,
-                              mail: widget.project.companyMail,
-                              address: widget.project.companyAddress,
-                              locationUrl: widget.project.companyLocationUrl
+                            return CustomDialog(
+                              phone: project.companyPhone,
+                              mail: project.companyMail,
+                              address: project.companyAddress,
+                              locationUrl: project.companyLocationUrl
                             );
                           },
                         );

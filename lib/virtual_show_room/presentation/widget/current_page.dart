@@ -6,8 +6,8 @@ import '../pages/overview/overview.dart';
 import '../pages/plans/plans.dart';
 import '../pages/project_info/project_info.dart';
 
-class AppPage extends StatelessWidget {
-  const AppPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
+class CurrentPage extends StatelessWidget {
+  const CurrentPage({required this.pages, required this.project, required this.pageIndex, Key? key}) : super(key: key);
 
   final List<PageItem> pages;
   final Project project;
