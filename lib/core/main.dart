@@ -34,7 +34,7 @@ class MaterialChild extends StatelessWidget {
 
     if(id == null) {
       return const MaterialApp(
-        home: ErrorScreen(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (id yok.)")
+        home: ErrorScreen(errorCause: "id yok.")
       );
     }
 
@@ -44,8 +44,8 @@ class MaterialChild extends StatelessWidget {
       builder: (context, state) {
         final project = state.project;
         if(project == null) {
-          return const MaterialApp(
-            home: ErrorScreen(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (Böyle bir proje bulunamadı.)")
+          return MaterialApp(
+            home: ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${id}")
           );
         }
 
