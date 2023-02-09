@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:virtual_showroom/model/project.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/apartment_item.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/plans/widget/plan_detail.dart';
-
-import '../../../bloc/app/app_cubit.dart';
+import '../../../cubit/app/app_cubit.dart';
 
 class PlansPage extends StatefulWidget {
   const PlansPage({required this.apartments, Key? key}) : super(key: key);

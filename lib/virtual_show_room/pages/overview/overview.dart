@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:virtual_showroom/bloc/app/app_cubit.dart';
 import 'package:virtual_showroom/virtual_show_room/pages/overview/widget/close_fullscreen_button.dart';
+import '../../../cubit/app/app_cubit.dart';
 import '../../widget/app_dots_indicator.dart';
 
 class OverviewPage extends StatefulWidget {

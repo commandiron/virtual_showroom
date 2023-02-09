@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:virtual_showroom/bloc/app/app_cubit.dart';
 import 'package:virtual_showroom/configs/app_padding.dart';
+import '../../../cubit/app/app_cubit.dart';
 import '../../../model/page_item.dart';
 import 'app_navigation_item.dart';
 

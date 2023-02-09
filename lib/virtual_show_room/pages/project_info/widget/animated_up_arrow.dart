@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../bloc/app/app_cubit.dart';
 import '../../../../configs/app_padding.dart';
+import '../../../../cubit/app/app_cubit.dart';
 
 
 class AnimatedUpArrow extends StatefulWidget {

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'package:virtual_showroom/bloc/app/app_cubit.dart';
 import 'package:virtual_showroom/virtual_show_room/error_page.dart';
 import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
-import 'bloc/project/project_cubit.dart';
 import 'configs/core_theme.dart';
+import 'cubit/app/app_cubit.dart';
+import 'cubit/project/project_cubit.dart';
 
 void main() {
   setPathUrlStrategy();
