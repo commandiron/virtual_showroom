@@ -55,7 +55,7 @@ class MaterialChild extends StatelessWidget {
 
         if(project == null) {
           return const MaterialApp(
-              home: ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (Böyle bir proje bulunamadı.)")
+            home: ErrorPage(message: "Qr kod adresi yanlış, lütfen iletişime geçin. (Böyle bir proje bulunamadı.)")
           );
         }
 
@@ -70,25 +70,25 @@ class MaterialChild extends StatelessWidget {
           ),
           title: 'Qr Projem - Virtual Showroom',
           theme: themeLight.copyWith(
-              colorScheme: colorSchemeLight.copyWith(
-                  primary: Color(project.primaryColorValue)
-              )
+            colorScheme: colorSchemeLight.copyWith(
+              primary: Color(project.primaryColorValue)
+            )
           ),
           darkTheme: themeDark.copyWith(
-              colorScheme: colorSchemeDark.copyWith(
-                  primary: Color(project.primaryColorValue)
-              )
+            colorScheme: colorSchemeDark.copyWith(
+              primary: Color(project.primaryColorValue)
+            )
           ),
           themeMode: ThemeMode.system,
           routerConfig: GoRouter(
-              routes: [
-                GoRoute(
-                  path: "/",
-                  builder: (context, state) {
-                    return VirtualShowRoom(project: project);
-                  },
-                )
-              ]
+            routes: [
+              GoRoute(
+                path: "/",
+                builder: (context, state) {
+                  return VirtualShowRoom(project: project);
+                },
+              )
+            ]
           ),
         );
       },
