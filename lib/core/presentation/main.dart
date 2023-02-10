@@ -28,7 +28,6 @@ class MaterialChild extends StatelessWidget {
   const MaterialChild({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     // final id = Uri.base.queryParameters["id"];
     final id = "0"; //For Test
 
