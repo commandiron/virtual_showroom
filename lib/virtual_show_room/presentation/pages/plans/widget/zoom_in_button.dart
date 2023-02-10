@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/configs/app_padding.dart';
+import '../../../../../core/presentation/config/app_padding.dart';
 
 
 class ZoomInButton extends StatelessWidget {

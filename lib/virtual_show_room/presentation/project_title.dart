@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/configs/app_text_style.dart';
-import '../../core/helper/url_launcher.dart';
+import '../../core/presentation/config/app_text_style.dart';
+import '../../core/presentation/helper/url_launcher.dart';
 
 class ProjectTitle extends StatelessWidget {
   const ProjectTitle({required this.title, required this.locationUrl, Key? key}) : super(key: key);

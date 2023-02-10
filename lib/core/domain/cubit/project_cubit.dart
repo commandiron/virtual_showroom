@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../model/project.dart';
+import '../model/project.dart';
 
 part 'project_state.dart';
 

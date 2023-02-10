@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/model/project.dart';
+import '../../../core/domain/model/project.dart';
 import '../../cubit/page/page_cubit.dart';
 import 'ar.dart';
 import 'overview/overview.dart';

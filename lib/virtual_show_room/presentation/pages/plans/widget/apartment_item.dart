@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_feature_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/zoom_in_button.dart';
-import '../../../../../core/configs/app_padding.dart';
-import '../../../../../core/configs/app_text_style.dart';
-import '../../../../../core/model/project.dart';
+import '../../../../../core/presentation/config/app_padding.dart';
+import '../../../../../core/presentation/config/app_text_style.dart';
+import '../../../../../core/domain/model/project.dart';
 import '../../../widget/custom_dots_indicator.dart';
 
 class ApartmentItem extends StatefulWidget {

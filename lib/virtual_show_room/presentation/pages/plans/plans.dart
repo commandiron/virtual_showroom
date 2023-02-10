@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/apartment_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_detail.dart';
 
-import '../../../../core/model/project.dart';
+import '../../../../core/domain/model/project.dart';
 import '../../../cubit/animation/animation_cubit.dart';
 
 class PlansPage extends StatefulWidget {

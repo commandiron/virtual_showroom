@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_showroom/core/helper/url_launcher.dart';
+import 'package:virtual_showroom/core/presentation/helper/url_launcher.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({required this.errorCause, Key? key}) : super(key: key);

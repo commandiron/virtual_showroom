@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import '../../../../../core/model/project.dart';
+import '../../../../../core/domain/model/project.dart';
 import '../../../widget/custom_dots_indicator.dart';
 import 'app_back_button.dart';
 import 'lottie_animation.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/configs/app_space.dart';
-import '../../../../../core/configs/app_text_style.dart';
+import '../../../../../core/presentation/config/app_space.dart';
+import '../../../../../core/presentation/config/app_text_style.dart';
 
 class PlanFeatureItem extends StatelessWidget {
   const PlanFeatureItem(

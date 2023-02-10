@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/configs/app_padding.dart';
-import '../../../../../core/configs/app_text_style.dart';
+import '../../../../../core/presentation/config/app_padding.dart';
+import '../../../../../core/presentation/config/app_text_style.dart';
 
 class FeatureItem extends StatelessWidget {
   const FeatureItem({required this.feature, Key? key}) : super(key: key);

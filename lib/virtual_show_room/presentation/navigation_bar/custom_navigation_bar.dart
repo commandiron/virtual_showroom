@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/configs/app_padding.dart';
+import '../../../core/presentation/config/app_padding.dart';
 import '../../cubit/animation/animation_cubit.dart';
 import '../../cubit/page/page_cubit.dart';
 import 'custom_navigation_item.dart';

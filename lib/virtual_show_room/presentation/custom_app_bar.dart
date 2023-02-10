@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/configs/app_padding.dart';
-import '../../core/configs/app_text_style.dart';
-import '../../core/model/project.dart';
+import '../../core/presentation/config/app_padding.dart';
+import '../../core/presentation/config/app_text_style.dart';
+import '../../core/domain/model/project.dart';
 import '../cubit/animation/animation_cubit.dart';
 import 'widget/dialog/custom_dialog.dart';
 

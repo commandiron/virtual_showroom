@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import '../../../core/configs/app_padding.dart';
+import '../../../core/presentation/config/app_padding.dart';
 
 
 class CustomDotsIndicator extends StatelessWidget {

@@ -4,9 +4,9 @@ import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_in
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/widget/feature_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/widget/progress_view.dart';
 
-import '../../../../core/configs/app_padding.dart';
-import '../../../../core/configs/app_space.dart';
-import '../../../../core/configs/app_text_style.dart';
+import '../../../../core/presentation/config/app_padding.dart';
+import '../../../../core/presentation/config/app_space.dart';
+import '../../../../core/presentation/config/app_text_style.dart';
 
 class ProjectInfoPage extends StatefulWidget {
   const ProjectInfoPage(

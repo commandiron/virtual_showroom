@@ -6,8 +6,8 @@ import 'package:virtual_showroom/virtual_show_room/presentation/custom_app_bar.d
 import 'package:virtual_showroom/virtual_show_room/presentation/navigation_bar/custom_navigation_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/project_title.dart';
-import '../core/configs/app_config.dart';
-import '../core/model/project.dart';
+import '../core/presentation/config/app_config.dart';
+import '../core/domain/model/project.dart';
 import 'cubit/page/page_cubit.dart';
 
 class VirtualShowRoom extends StatelessWidget {
