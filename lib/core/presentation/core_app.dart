@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
-import '../virtual_show_room/virtual_show_room.dart';
-import 'domain/cubit/project_cubit.dart';
+import '../../virtual_show_room/virtual_show_room.dart';
+import '../domain/cubit/project_cubit.dart';
 import 'error_screen.dart';
 
 class CoreApp extends StatelessWidget {
