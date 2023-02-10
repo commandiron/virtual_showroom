@@ -7,10 +7,13 @@ import 'lottie_animation.dart';
 
 class PlanDetail extends StatefulWidget {
   const PlanDetail(
-      {required this.apartment,
+    {
+      required this.apartment,
       required this.initialPage,
       this.onBack,
-      super.key});
+      super.key
+    }
+  );
 
   final Apartment apartment;
   final int initialPage;
@@ -21,17 +24,14 @@ class PlanDetail extends StatefulWidget {
 }
 
 class _PlanDetailState extends State<PlanDetail>{
-  double _currentIndex = 0;
+
   late final PageController _pageController;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: widget.initialPage);
-    _currentIndex = widget.initialPage.toDouble();
     _pageController.addListener(() {
-      setState(() {
-        _currentIndex = _pageController.page ?? 0;
-      });
+      setState(() {});
     });
     super.initState();
   }
@@ -63,8 +63,9 @@ class _PlanDetailState extends State<PlanDetail>{
               ),
               if (widget.apartment.imagePaths.length > 1)
                 CustomDotsIndicator(
-                    dotsCount: widget.apartment.imagePaths.length,
-                    position: _currentIndex),
+                  dotsCount: widget.apartment.imagePaths.length,
+                  position: _pageController.hasClients ? _pageController.page ?? 0 : 0
+                ),
               AppBackButton(
                 onPressed: widget.onBack,
               )

@@ -19,20 +19,25 @@ class OverviewPage extends StatefulWidget {
 
 class _OverviewPageState extends State<OverviewPage> {
 
-  double _currentIndex = 0;
   final PageController _pageController = PageController();
-  PhotoViewScaleState _photoViewScaleState = PhotoViewScaleState.initial;
-
   final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
 
   @override
   void initState() {
+    _photoViewScaleStateController.addIgnorableListener(() {
+      setState(() {});
+    });
     _pageController.addListener(() {
-      setState((){
-        _currentIndex = _pageController.page ?? 0;
-      });
+      setState((){});
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _photoViewScaleStateController.dispose();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,13 +47,11 @@ class _OverviewPageState extends State<OverviewPage> {
         PhotoViewGallery.builder(
           pageController: _pageController,
           itemCount: widget.generalImagePaths.length,
-          scrollPhysics: _photoViewScaleState != PhotoViewScaleState.initial
+          scrollPhysics:  _photoViewScaleStateController.scaleState != PhotoViewScaleState.initial
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
           scaleStateChangedCallback: (value) {
-            setState((){
-              _photoViewScaleState = value;
-            });
+            _photoViewScaleStateController.scaleState = value;
             if(value == PhotoViewScaleState.initial) {
               BlocProvider.of<AnimationCubit>(context, listen: false).collapseScreen();
             } else {
@@ -63,6 +66,7 @@ class _OverviewPageState extends State<OverviewPage> {
               minScale: PhotoViewComputedScale.contained * 1,
               maxScale: PhotoViewComputedScale.contained * 4,
               scaleStateCycle: (actual) {
+                print(actual);
                 switch (actual) {
                   case PhotoViewScaleState.initial:
                     return PhotoViewScaleState.originalSize;
@@ -76,12 +80,12 @@ class _OverviewPageState extends State<OverviewPage> {
             color: Theme.of(context).colorScheme.background,
           )
         ),
-        if(_photoViewScaleState == PhotoViewScaleState.initial)
+        if(_photoViewScaleStateController.scaleState == PhotoViewScaleState.initial)
           CustomDotsIndicator(
             dotsCount: widget.generalImagePaths.length,
-            position: _currentIndex
+            position: _pageController.hasClients ? _pageController.page ?? 0 : 0
           ),
-        if(_photoViewScaleState != PhotoViewScaleState.initial)
+        if(_photoViewScaleStateController.scaleState != PhotoViewScaleState.initial)
           CloseFullScreenButton(
             onPressed: () {
               _photoViewScaleStateController.scaleState = PhotoViewScaleState.initial;

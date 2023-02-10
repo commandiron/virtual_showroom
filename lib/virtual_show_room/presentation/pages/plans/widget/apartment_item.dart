@@ -23,17 +23,21 @@ class ApartmentItem extends StatefulWidget {
 }
 
 class _ApartmentItemState extends State<ApartmentItem> {
-  double _currentIndex = 0;
+
   final PageController _pageController = PageController();
 
   @override
   void initState() {
     _pageController.addListener(() {
-      setState(() {
-        _currentIndex = _pageController.page ?? 0;
-      });
+      setState(() {});
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,7 +69,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          widget.onSelect(_currentIndex);
+                          widget.onSelect(_pageController.page ?? 0);
                         },
                         child: Image.asset(
                           widget.apartment.imagePaths[index]
@@ -76,13 +80,13 @@ class _ApartmentItemState extends State<ApartmentItem> {
                 ),
                 ZoomInButton(
                   onTap: () {
-                    widget.onSelect(_currentIndex);
+                    widget.onSelect(_pageController.page ?? 0);
                   },
                 ),
                 if (widget.apartment.imagePaths.length > 1)
                   CustomDotsIndicator(
                     dotsCount: widget.apartment.imagePaths.length,
-                    position: _currentIndex
+                    position: _pageController.hasClients ? _pageController.page ?? 0 : 0
                   ),
               ],
             ),
