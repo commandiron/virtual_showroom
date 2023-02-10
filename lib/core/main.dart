@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'package:virtual_showroom/core/presentation/error_screen.dart';
+import 'package:virtual_showroom/core/error_screen.dart';
 import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
-import 'config/core_theme.dart';
-import '../domain/cubit/project_cubit.dart';
+import 'presentation/config/core_theme.dart';
+import 'domain/cubit/project_cubit.dart';
 
 void main() {
   setPathUrlStrategy();
