@@ -1,20 +1,15 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_strategy/url_strategy.dart';
-import 'package:virtual_showroom/core/error_screen.dart';
-import 'package:virtual_showroom/virtual_show_room/virtual_show_room.dart';
-import 'presentation/config/core_theme.dart';
+import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
+import '../virtual_show_room/virtual_show_room.dart';
 import 'domain/cubit/project_cubit.dart';
+import 'error_screen.dart';
 
-void main() {
-  setPathUrlStrategy();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CoreApp extends StatelessWidget {
+  const CoreApp({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProjectCubit>(
@@ -33,7 +28,7 @@ class MaterialChild extends StatelessWidget {
 
     if(id == null) {
       return const MaterialApp(
-        home: ErrorScreen(errorCause: "id yok.")
+          home: ErrorScreen(errorCause: "id yok.")
       );
     }
 
@@ -44,7 +39,7 @@ class MaterialChild extends StatelessWidget {
         final project = state.project;
         if(project == null) {
           return MaterialApp(
-            home: ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${id}")
+              home: ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${id}")
           );
         }
 
@@ -59,24 +54,24 @@ class MaterialChild extends StatelessWidget {
           ),
           title: 'Qr Projem - Virtual Showroom',
           theme: themeLight.copyWith(
-            colorScheme: colorSchemeLight.copyWith(
-              primary: Color(project.primaryColorValue)
-            )
+              colorScheme: colorSchemeLight.copyWith(
+                  primary: Color(project.primaryColorValue)
+              )
           ),
           darkTheme: themeDark.copyWith(
-            colorScheme: colorSchemeDark.copyWith(
-              primary: Color(project.primaryColorValue)
-            )
+              colorScheme: colorSchemeDark.copyWith(
+                  primary: Color(project.primaryColorValue)
+              )
           ),
           routerConfig: GoRouter(
-            routes: [
-              GoRoute(
-                path: "/",
-                builder: (context, state) {
-                  return VirtualShowRoom(project: project);
-                },
-              )
-            ]
+              routes: [
+                GoRoute(
+                  path: "/",
+                  builder: (context, state) {
+                    return VirtualShowRoom(project: project);
+                  },
+                )
+              ]
           ),
         );
       },
