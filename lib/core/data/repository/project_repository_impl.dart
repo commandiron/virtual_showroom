@@ -21,10 +21,7 @@ class ProjectRepositoryImpl extends ProjectRepository {
     http.put(
       databaseUri,
       body: json.encode(
-          {
-            "id": uuid,
-            "test": 2
-          }
+        project.toJson()
       )
     );
   }
