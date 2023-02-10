@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:virtual_showroom/core/data/repository/project_repository_impl.dart';
 import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
 import '../../virtual_show_room/virtual_show_room.dart';
 import '../domain/cubit/project_cubit.dart';
@@ -13,7 +14,7 @@ class CoreApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProjectCubit>(
-      create: (context) => ProjectCubit(),
+      create: (context) => ProjectCubit(ProjectRepositoryImpl()),
       child: const MaterialChild(),
     );
   }
@@ -23,6 +24,21 @@ class MaterialChild extends StatelessWidget {
   const MaterialChild({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    return MaterialApp(
+      home: Column(
+        children: [
+          Text("Test Screen"),
+          ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<ProjectCubit>(context).postProjectForTest();
+            },
+            child: Text("POST")
+          )
+        ],
+      ),
+    );
+
     // final id = Uri.base.queryParameters["id"];
     final id = "0"; //For Test
 

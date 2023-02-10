@@ -209,7 +209,7 @@ packages:
     source: hosted
     version: "4.0.3"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
@@ -557,6 +557,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.7"
   vector_math:
     dependency: transitive
     description:
