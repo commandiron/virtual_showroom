@@ -24,7 +24,6 @@ class CustomNavigationItem extends StatefulWidget {
 
 class _CustomNavigationItemState extends State<CustomNavigationItem> {
 
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
