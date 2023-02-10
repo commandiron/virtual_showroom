@@ -16,8 +16,7 @@ class ProjectRepositoryImpl extends ProjectRepository {
 
   @override
   void postProjectForTest(Project project) {
-    final uuid = const Uuid().v4();
-    final databaseUri = Uri.parse(databaseUrl +"/$uuid.json");
+    final databaseUri = Uri.parse(databaseUrl +"/0.json");
     http.put(
       databaseUri,
       body: json.encode(
