@@ -4,8 +4,7 @@ import 'package:virtual_showroom/virtual_show_room/cubit/animation/animation_cub
 import 'package:virtual_showroom/virtual_show_room/presentation/custom_footer.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/custom_app_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/navigation_bar/custom_navigation_bar.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page/current_page.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page/page_item.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/project_title.dart';
 import '../core/configs/app_config.dart';
 import '../core/model/project.dart';
@@ -42,17 +41,17 @@ class VirtualShowRoom extends StatelessWidget {
                   locationUrl: project.locationUrl,
                 ),
                 CurrentPage(
-                  pages: PageItem.pages.where(
+                  pages: state.pages.where(
                     (page) => project.enabledPageRoutes.contains(page.route)
                   ).toList(),
                   project: project,
-                  pageIndex: state.index
+                  pageIndex: state.pageIndex
                 ),
                 CustomNavigationBar(
-                  pages: PageItem.pages.where(
+                  pages: state.pages.where(
                     (page) => project.enabledPageRoutes.contains(page.route)
                   ).toList(),
-                  pageIndex: state.index,
+                  pageIndex: state.pageIndex,
                   onPressed: (index) {
                     BlocProvider.of<PageCubit>(context, listen: false).jumpTo(index);
                   },

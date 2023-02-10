@@ -1,8 +1,3 @@
-import '../../virtual_show_room/presentation/pages/ar.dart';
-import '../../virtual_show_room/presentation/pages/overview/overview.dart';
-import '../../virtual_show_room/presentation/pages/plans/plans.dart';
-import '../../virtual_show_room/presentation/pages/project_info/project_info.dart';
-
 class Project {
   String id;
   String companyLogoPath;
@@ -50,10 +45,10 @@ class Project {
       companyAddress: "Yıldızbakkal Taşköprü Cad. Demirli İş Merkezi Kadıköy - İSTANBUL",
       companyLocationUrl: "https://goo.gl/maps/pUvD8P7sWb4NzitK7",
       enabledPageRoutes: [
-        OverviewPage.route,
-        PlansPage.route,
-        ProjectInfoPage.route,
-        ArPage.route,
+        "overview",
+        "plans",
+        "project_info",
+        "ar",
       ],
       name: "Suadiye | Oran Apartmanı",
       locationUrl: "https://goo.gl/maps/HJdvb8UVM1TnqSx69",
