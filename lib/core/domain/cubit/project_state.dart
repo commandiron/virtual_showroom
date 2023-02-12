@@ -1,11 +1,24 @@
-part of 'project_cubit.dart';
+import '../model/project.dart';
 
-class ProjectState {
-  Project? project;
+abstract class ProjectState {
+  const ProjectState();
+}
 
-  ProjectState(
-    {
-      this.project
-    }
-  );
+class ProjectInitial extends ProjectState {
+  ProjectInitial();
+}
+
+class ProjectLoading extends ProjectState {
+  ProjectLoading();
+}
+
+class ProjectCompleted extends ProjectState {
+  final Project? response;
+
+  ProjectCompleted(this.response);
+}
+
+class ProjectError extends ProjectState {
+  final String message;
+  const ProjectError(this.message);
 }

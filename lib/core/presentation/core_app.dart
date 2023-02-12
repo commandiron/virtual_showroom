@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +6,7 @@ import 'package:virtual_showroom/core/data/repository/project_repository_impl.da
 import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
 import '../../virtual_show_room/virtual_show_room.dart';
 import '../domain/cubit/project_cubit.dart';
+import '../domain/cubit/project_state.dart';
 import 'error_screen.dart';
 
 class CoreApp extends StatelessWidget {
@@ -24,7 +24,6 @@ class MaterialChild extends StatelessWidget {
   const MaterialChild({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     // final id = Uri.base.queryParameters["id"];
     final id = "0"; //For Test
 
@@ -36,40 +35,52 @@ class MaterialChild extends StatelessWidget {
 
     return BlocBuilder<ProjectCubit, ProjectState>(
       builder: (context, state) {
-        final project = state.project;
-        if (project == null) {
-          return MaterialApp(
-            home: ErrorScreen(
-              errorCause: "Böyle bir proje bulunamadı. id:$id"
-            )
-          );
-        }
+        if (state is ProjectLoading) {
+          //Showroom yükleniyor şeklinde loading screen yaz.
+          return CircularProgressIndicator();
+        } else if(state is ProjectCompleted){
 
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: const MaterialScrollBehavior().copyWith(
-            dragDevices: {
-              PointerDeviceKind.mouse,
-              PointerDeviceKind.trackpad,
-              PointerDeviceKind.touch
-            },
-          ),
-          title: 'Qr Projem - Virtual Showroom',
-          theme: themeLight.copyWith(
-              colorScheme: colorSchemeLight.copyWith(
-                  primary: Color(project.primaryColorValue))),
-          darkTheme: themeDark.copyWith(
-              colorScheme: colorSchemeDark.copyWith(
-                  primary: Color(project.primaryColorValue))),
-          routerConfig: GoRouter(routes: [
-            GoRoute(
-              path: "/",
-              builder: (context, state) {
-                return VirtualShowRoom(project: project);
+          final project = state.response;
+
+          if (project == null) {
+            return MaterialApp(
+                home: ErrorScreen(
+                    errorCause: "Böyle bir proje bulunamadı. id:$id"));
+          }
+
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.touch
               },
-            )
-          ]),
-        );
+            ),
+            title: 'Qr Projem - Virtual Showroom',
+            theme: themeLight.copyWith(
+              colorScheme: colorSchemeLight.copyWith(
+                primary: Color(project.primaryColorValue)
+              )
+            ),
+            darkTheme: themeDark.copyWith(
+              colorScheme: colorSchemeDark.copyWith(
+                primary: Color(project.primaryColorValue)
+              )
+            ),
+            routerConfig: GoRouter(routes: [
+              GoRoute(
+                path: "/",
+                builder: (context, state) {
+                  return VirtualShowRoom(project: project);
+                },
+              )
+            ]),
+          );
+        } else {
+          final error = state as ProjectError;
+          return MaterialApp(home: ErrorScreen(errorCause: error.message));
+        }
       },
     );
   }
