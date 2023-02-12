@@ -36,8 +36,7 @@ class MaterialChild extends StatelessWidget {
     return BlocBuilder<ProjectCubit, ProjectState>(
       builder: (context, state) {
         if (state is ProjectLoading) {
-          //Showroom yükleniyor şeklinde loading screen yaz.
-          return CircularProgressIndicator();
+          return const SizedBox.shrink();
         } else if(state is ProjectCompleted){
 
           final project = state.response;

@@ -12,6 +12,7 @@ class ProjectCubit extends Cubit<ProjectState> {
   void fetchProjectById(String id) async {
     try {
       emit(ProjectLoading());
+      await Future.delayed(Duration(seconds: 5));
       final project = await _projectRepository.fetchProjectById(id);
       emit(ProjectCompleted(project));
     } catch (e) {
