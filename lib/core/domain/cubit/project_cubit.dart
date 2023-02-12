@@ -1,12 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:virtual_showroom/core/data/repository/project_repository_impl.dart';
 import 'package:virtual_showroom/core/domain/cubit/project_state.dart';
 import 'package:virtual_showroom/core/domain/repository/project_repository.dart';
 import '../model/project.dart';
 
 class ProjectCubit extends Cubit<ProjectState> {
-  ProjectCubit(this._projectRepository) : super(ProjectInitial());
+  ProjectCubit() : super(ProjectInitial());
 
-  final ProjectRepository _projectRepository;
+  final ProjectRepository _projectRepository = ProjectRepositoryImpl();
 
   void fetchProjectById(String id) async {
     try {

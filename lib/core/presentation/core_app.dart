@@ -14,7 +14,7 @@ class CoreApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProjectCubit>(
-      create: (context) => ProjectCubit(ProjectRepositoryImpl()),
+      create: (context) => ProjectCubit(),
       child: const MaterialChild(),
     );
   }
@@ -72,7 +72,11 @@ class MaterialChild extends StatelessWidget {
               GoRoute(
                 path: "/",
                 builder: (context, state) {
-                  return VirtualShowRoom(project: project);
+                  return Stack(
+                    children: [
+                      VirtualShowRoom(project: project),
+                    ],
+                  );
                 },
               )
             ]),
