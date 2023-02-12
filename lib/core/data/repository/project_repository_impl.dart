@@ -1,27 +1,25 @@
 import 'dart:convert';
 
-import 'package:uuid/uuid.dart';
 import 'package:virtual_showroom/core/domain/model/project.dart';
 import 'package:virtual_showroom/core/domain/repository/project_repository.dart';
 import 'package:http/http.dart' as http;
 
 class ProjectRepositoryImpl extends ProjectRepository {
-  
-  final String databaseUrl = "https://qr-projem-default-rtdb.europe-west1.firebasedatabase.app/projects";
-  
+  final String databaseUrl =
+      "https://qr-projem-default-rtdb.europe-west1.firebasedatabase.app/projects";
+
   @override
-  Future<Project> fetchProjectById(String id) {
-    throw UnimplementedError();
+  Future<Project?> fetchProjectById(String id) async {
+    final databaseUri = Uri.parse(databaseUrl + "/$id.json");
+    final response = await http.get(databaseUri);
+    final data = json.decode(response.body) as Map<String, dynamic>;
+    final project = Project.fromJson(data);
+    return project;
   }
 
   @override
   void postProjectForTest(Project project) {
-    final databaseUri = Uri.parse(databaseUrl +"/0.json");
-    http.put(
-      databaseUri,
-      body: json.encode(
-        project.toJson()
-      )
-    );
+    final databaseUri = Uri.parse(databaseUrl + "/0.json");
+    http.put(databaseUri, body: json.encode(project.toJson()));
   }
 }

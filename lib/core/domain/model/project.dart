@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Project {
   String id;
   String companyLogoPath;
@@ -34,22 +36,40 @@ class Project {
   });
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "companyLogoPath": companyLogoPath,
-        "primaryColorValue": primaryColorValue,
-        "companyPhone": companyPhone,
-        "companyMail": companyMail,
-        "companyAddress": companyAddress,
-        "companyLocationUrl": companyLocationUrl,
-        "enabledPageRoutes": enabledPageRoutes,
-        "name": name,
-        "locationUrl": locationUrl,
-        "generalImagePaths": generalImagePaths,
-        "apartments": apartments.map((apartment) => apartment.toJson()).toList(),
-        "startDate ": startDate.toIso8601String(),
-        "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
-        "features": features
-      };
+      "id": id,
+      "companyLogoPath": companyLogoPath,
+      "primaryColorValue": primaryColorValue,
+      "companyPhone": companyPhone,
+      "companyMail": companyMail,
+      "companyAddress": companyAddress,
+      "companyLocationUrl": companyLocationUrl,
+      "enabledPageRoutes": enabledPageRoutes,
+      "name": name,
+      "locationUrl": locationUrl,
+      "generalImagePaths": generalImagePaths,
+      "apartments":
+          apartments.map((apartment) => apartment.toJson()).toList(),
+      "startDate": startDate.toIso8601String(),
+      "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
+      "features": features
+    };
+
+  Project.fromJson(Map<String, dynamic> json)
+    : id = json["id"],
+      companyLogoPath = json["companyLogoPath"],
+      primaryColorValue = json["primaryColorValue"],
+      companyPhone = json["companyPhone"],
+      companyMail = json["companyMail"],
+      companyAddress = json["companyAddress"],
+      companyLocationUrl = json["companyLocationUrl"],
+      enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(), 
+      name = json["name"],
+      locationUrl = json["locationUrl"],
+      generalImagePaths = (json["generalImagePaths"] as List<dynamic>).map((e) => e.toString()).toList(),
+      apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
+      startDate = DateTime.parse(json["startDate"] as String),
+      estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
+      features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList();
 
   static List<Project> projects = [
     Project(
@@ -135,11 +155,19 @@ class Apartment {
   });
 
   Map<String, dynamic> toJson() => {
-    "id" : id,
-    "title" : title,
-    "imagePaths" : imagePaths,
-    "type" : type,
-    "netArea" : netArea,
-    "grossArea" : grossArea
-  };
+        "id": id,
+        "title": title,
+        "imagePaths": imagePaths,
+        "type": type,
+        "netArea": netArea,
+        "grossArea": grossArea
+      };
+
+  Apartment.fromJson(Map<String, dynamic> json)
+      : id = json["id"],
+        title = json["title"],
+        imagePaths = (json["imagePaths"] as List<dynamic>).map((e) => e.toString()).toList(),
+        type = json["type"],
+        netArea = json["netArea"],
+        grossArea = json["grossArea"];
 }

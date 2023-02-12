@@ -25,27 +25,11 @@ class MaterialChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      home: Column(
-        children: [
-          Text("Test Screen"),
-          ElevatedButton(
-            onPressed: () {
-              BlocProvider.of<ProjectCubit>(context).postProjectForTest();
-            },
-            child: Text("POST")
-          )
-        ],
-      ),
-    );
-
     // final id = Uri.base.queryParameters["id"];
     final id = "0"; //For Test
 
-    if(id == null) {
-      return const MaterialApp(
-          home: ErrorScreen(errorCause: "id yok.")
-      );
+    if (id == null) {
+      return const MaterialApp(home: ErrorScreen(errorCause: "id yok."));
     }
 
     BlocProvider.of<ProjectCubit>(context).fetchProjectById(id);
@@ -53,9 +37,11 @@ class MaterialChild extends StatelessWidget {
     return BlocBuilder<ProjectCubit, ProjectState>(
       builder: (context, state) {
         final project = state.project;
-        if(project == null) {
+        if (project == null) {
           return MaterialApp(
-              home: ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${id}")
+            home: ErrorScreen(
+              errorCause: "Böyle bir proje bulunamadı. id:$id"
+            )
           );
         }
 
@@ -71,24 +57,18 @@ class MaterialChild extends StatelessWidget {
           title: 'Qr Projem - Virtual Showroom',
           theme: themeLight.copyWith(
               colorScheme: colorSchemeLight.copyWith(
-                  primary: Color(project.primaryColorValue)
-              )
-          ),
+                  primary: Color(project.primaryColorValue))),
           darkTheme: themeDark.copyWith(
               colorScheme: colorSchemeDark.copyWith(
-                  primary: Color(project.primaryColorValue)
-              )
-          ),
-          routerConfig: GoRouter(
-              routes: [
-                GoRoute(
-                  path: "/",
-                  builder: (context, state) {
-                    return VirtualShowRoom(project: project);
-                  },
-                )
-              ]
-          ),
+                  primary: Color(project.primaryColorValue))),
+          routerConfig: GoRouter(routes: [
+            GoRoute(
+              path: "/",
+              builder: (context, state) {
+                return VirtualShowRoom(project: project);
+              },
+            )
+          ]),
         );
       },
     );
