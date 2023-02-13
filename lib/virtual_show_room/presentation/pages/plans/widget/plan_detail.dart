@@ -58,6 +58,9 @@ class _PlanDetailState extends State<PlanDetail>{
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
                     imageProvider: AssetImage(widget.apartment.imagePaths[index]),
+                    onTapUp: (context, details, controllerValue) {
+                      widget.onBack!();
+                    },
                   );
                 },
               ),
