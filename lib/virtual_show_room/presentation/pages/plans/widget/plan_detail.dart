@@ -49,20 +49,24 @@ class _PlanDetailState extends State<PlanDetail>{
         Center(
           child: Stack(
             children: [
-              PhotoViewGallery.builder(
-                pageController: _pageController,
-                itemCount: widget.apartment.imagePaths.length,
-                backgroundDecoration: const BoxDecoration(
-                  color: Colors.black,
-                ),
-                builder: (context, index) {
-                  return PhotoViewGalleryPageOptions(
-                    imageProvider: AssetImage(widget.apartment.imagePaths[index]),
-                    onTapUp: (context, details, controllerValue) {
-                      widget.onBack!();
-                    },
-                  );
+              GestureDetector(
+                onVerticalDragEnd: (details) {
+                  if(details.velocity.pixelsPerSecond.dy.abs() > 100){
+                    widget.onBack!();
+                  }
                 },
+                child: PhotoViewGallery.builder(
+                  pageController: _pageController,
+                  itemCount: widget.apartment.imagePaths.length,
+                  backgroundDecoration: const BoxDecoration(
+                    color: Colors.black,
+                  ),
+                  builder: (context, index) {
+                    return PhotoViewGalleryPageOptions(
+                      imageProvider: AssetImage(widget.apartment.imagePaths[index]),
+                    );
+                  },
+                ),
               ),
               if (widget.apartment.imagePaths.length > 1)
                 CustomDotsIndicator(
