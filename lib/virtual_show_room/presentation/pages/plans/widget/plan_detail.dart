@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import '../../../../../core/domain/model/project.dart';
 import '../../../widget/custom_dots_indicator.dart';
@@ -26,6 +27,7 @@ class PlanDetail extends StatefulWidget {
 class _PlanDetailState extends State<PlanDetail>{
 
   late final PageController _pageController;
+  final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
 
   @override
   void initState() {
@@ -52,7 +54,9 @@ class _PlanDetailState extends State<PlanDetail>{
               GestureDetector(
                 onVerticalDragEnd: (details) {
                   if(details.velocity.pixelsPerSecond.dy.abs() > 100){
-                    widget.onBack!();
+                    if(_photoViewScaleStateController.scaleState == PhotoViewScaleState.initial) {
+                      widget.onBack!();
+                    }
                   }
                 },
                 child: PhotoViewGallery.builder(
@@ -63,6 +67,7 @@ class _PlanDetailState extends State<PlanDetail>{
                   ),
                   builder: (context, index) {
                     return PhotoViewGalleryPageOptions(
+                      scaleStateController: _photoViewScaleStateController,
                       imageProvider: AssetImage(widget.apartment.imagePaths[index]),
                     );
                   },
