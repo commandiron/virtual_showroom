@@ -43,10 +43,11 @@ class VirtualShowRoom extends StatelessWidget {
                     CustomAppBar(
                       project: project,
                     ),
-                    ProjectTitle(
-                      title: project.name,
-                      locationUrl: project.locationUrl,
-                    ),
+                    if(BlocProvider.of<ScreenCubit>(context, listen: false).state.isTitleVisible)
+                      ProjectTitle(
+                        title: project.name,
+                        locationUrl: project.locationUrl,
+                      ),
                     CurrentPage(
                         pages: state.pages.where(
                                 (page) => project.enabledPageRoutes.contains(page.route)
