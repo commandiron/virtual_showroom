@@ -66,7 +66,6 @@ class _OverviewPageState extends State<OverviewPage> {
               minScale: PhotoViewComputedScale.contained * 1,
               maxScale: PhotoViewComputedScale.contained * 4,
               scaleStateCycle: (actual) {
-                print(actual);
                 switch (actual) {
                   case PhotoViewScaleState.initial:
                     return PhotoViewScaleState.originalSize;
