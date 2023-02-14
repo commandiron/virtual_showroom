@@ -25,7 +25,7 @@ class ErrorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8,),
             Text(
-              "HATA: $errorCause",
+              "Hata: $errorCause",
               textAlign: TextAlign.center,
             ),
             const Expanded(child: SizedBox(height: double.infinity,)),

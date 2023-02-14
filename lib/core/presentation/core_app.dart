@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:virtual_showroom/core/data/repository/project_repository_impl.dart';
 import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
 import '../../virtual_show_room/virtual_show_room.dart';
 import '../domain/cubit/project_cubit.dart';
@@ -15,23 +13,44 @@ class CoreApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<ProjectCubit>(
       create: (context) => ProjectCubit(),
-      child: const MaterialChild(),
+      child: MaterialChild(
+        projectId: "0" // Uri.base.queryParameters["id"],
+      ),
     );
   }
 }
 
-class MaterialChild extends StatelessWidget {
-  const MaterialChild({Key? key}) : super(key: key);
+class MaterialChild extends StatefulWidget {
+  const MaterialChild({required this.projectId, Key? key}) : super(key: key);
+
+  final String? projectId;
+
+  @override
+  State<MaterialChild> createState() => _MaterialChildState();
+}
+
+class _MaterialChildState extends State<MaterialChild> {
+
+  @override
+  void initState() {
+    if(widget.projectId != null) {
+      BlocProvider.of<ProjectCubit>(context).fetchProjectById(widget.projectId!);
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final id = Uri.base.queryParameters["id"];
-    final id = "0"; //For Test
 
-    if (id == null) {
-      return const MaterialApp(home: ErrorScreen(errorCause: "id yok."));
+    if (widget.projectId == null) {
+      return MaterialApp(
+        routes: {
+          "/" : (context) {
+            return const ErrorScreen(errorCause: "id yok.");
+          }
+        },
+      );
     }
-
-    BlocProvider.of<ProjectCubit>(context).fetchProjectById(id);
 
     return BlocBuilder<ProjectCubit, ProjectState>(
       builder: (context, state) {
@@ -43,11 +62,15 @@ class MaterialChild extends StatelessWidget {
 
           if (project == null) {
             return MaterialApp(
-                home: ErrorScreen(
-                    errorCause: "Böyle bir proje bulunamadı. id:$id"));
+              routes: {
+                "/?id=${widget.projectId}" : (context) {
+                  return ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${widget.projectId}");
+                }
+              },
+            );
           }
 
-          return MaterialApp.router(
+          return MaterialApp(
             debugShowCheckedModeBanner: false,
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
@@ -67,22 +90,22 @@ class MaterialChild extends StatelessWidget {
                 primary: Color(project.primaryColorValue)
               )
             ),
-            routerConfig: GoRouter(routes: [
-              GoRoute(
-                path: "/",
-                builder: (context, state) {
-                  return Stack(
-                    children: [
-                      VirtualShowRoom(project: project),
-                    ],
-                  );
-                },
-              )
-            ]),
+            initialRoute: "/?id=${widget.projectId}",
+            routes: {
+              "/?id=${widget.projectId}" : (context) {
+                return VirtualShowRoom(project: project);
+              }
+            },
           );
         } else {
           final error = state as ProjectError;
-          return MaterialApp(home: ErrorScreen(errorCause: error.message));
+          return MaterialApp(
+            routes: {
+              "/?id=${widget.projectId}" : (context) {
+                return ErrorScreen(errorCause: error.message);
+              }
+            },
+          );
         }
       },
     );
