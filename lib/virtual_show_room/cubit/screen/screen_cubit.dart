@@ -6,6 +6,15 @@ part 'screen_state.dart';
 class ScreenCubit extends Cubit<ScreenState> {
   ScreenCubit() : super(
     ScreenState(
+      navigationAnimSlideDuration: 0,
+      navigationAnimContainerDuration: 0,
+      navigationOffset: Offset.zero,
+      navigationHeight: 100,
+      appBarAnimDuration: 0,
+      appBarOffset: Offset.zero,
+      appBarHeight: 60,
+      isTitleVisible: true,
+      orientation: Orientation.portrait,
       isOnMobile: defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android
     )
   );
@@ -13,8 +22,16 @@ class ScreenCubit extends Cubit<ScreenState> {
   void setOrientation(Orientation orientation) {
     emit(
       ScreenState(
+        navigationAnimSlideDuration: state.navigationAnimSlideDuration,
+        navigationAnimContainerDuration: state.navigationAnimContainerDuration,
+        navigationOffset: state.navigationOffset,
+        navigationHeight: state.navigationHeight,
+        appBarAnimDuration: state.appBarAnimDuration,
+        appBarOffset: state.appBarOffset,
+        appBarHeight: state.appBarHeight,
         orientation: orientation,
         isTitleVisible: true,
+        isOnMobile: state.isOnMobile
       )
     );
 
@@ -41,6 +58,8 @@ class ScreenCubit extends Cubit<ScreenState> {
           appBarOffset: const Offset(0, -1),
           appBarHeight: 0,
           isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+          orientation: state.orientation,
+          isOnMobile: state.isOnMobile
         )
       );
     } else {
@@ -54,6 +73,8 @@ class ScreenCubit extends Cubit<ScreenState> {
           appBarOffset: const Offset(0, -1),
           appBarHeight: 0,
           isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+          orientation: state.orientation,
+          isOnMobile: state.isOnMobile
         )
       );
     }
@@ -72,6 +93,8 @@ class ScreenCubit extends Cubit<ScreenState> {
             appBarOffset: Offset.zero,
             appBarHeight: 60,
             isTitleVisible: true,
+            orientation: state.orientation,
+            isOnMobile: state.isOnMobile
           )
         );
       } else {
@@ -85,6 +108,8 @@ class ScreenCubit extends Cubit<ScreenState> {
             appBarOffset: Offset.zero,
             appBarHeight: 60,
             isTitleVisible: true,
+            orientation: state.orientation,
+            isOnMobile: state.isOnMobile
           )
         );
       }
@@ -101,6 +126,8 @@ class ScreenCubit extends Cubit<ScreenState> {
               appBarOffset: Offset.zero,
               appBarHeight: 60,
               isTitleVisible: true,
+              orientation: state.orientation,
+              isOnMobile: state.isOnMobile
             )
           );
         } else {
@@ -114,6 +141,8 @@ class ScreenCubit extends Cubit<ScreenState> {
               appBarOffset: Offset.zero,
               appBarHeight: 60,
               isTitleVisible: true,
+              orientation: state.orientation,
+              isOnMobile: state.isOnMobile
             )
           );
         }

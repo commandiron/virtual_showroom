@@ -14,16 +14,16 @@ class ScreenState {
 
   ScreenState(
     {
-      this.navigationAnimSlideDuration = 0,
-      this.navigationAnimContainerDuration = 0,
-      this.navigationOffset = Offset.zero,
-      this.navigationHeight = 100,
-      this.appBarAnimDuration = 0,
-      this.appBarOffset = Offset.zero,
-      this.appBarHeight = 60,
-      this.isTitleVisible = true,
-      this.orientation = Orientation.portrait,
-      this.isOnMobile = true
+      required this.navigationAnimSlideDuration,
+      required this.navigationAnimContainerDuration,
+      required this.navigationOffset,
+      required this.navigationHeight,
+      required this.appBarAnimDuration,
+      required this.appBarOffset,
+      required this.appBarHeight,
+      required this.isTitleVisible,
+      required this.orientation,
+      required this.isOnMobile
     }
   );
 }
