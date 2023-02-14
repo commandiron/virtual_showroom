@@ -4,7 +4,7 @@ import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widg
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_detail.dart';
 
 import '../../../../core/domain/model/project.dart';
-import '../../../cubit/animation/animation_cubit.dart';
+import '../../../cubit/screen/screen_cubit.dart';
 
 class ResponsivePlansPage extends StatefulWidget {
   const ResponsivePlansPage(
@@ -42,7 +42,7 @@ class _ResponsivePlansPageState extends State<ResponsivePlansPage> {
                 _initialPage = index.toInt();
                 setState(() {
                   _selectedApartment = apartment;
-                  BlocProvider.of<AnimationCubit>(context, listen: false).expandScreen();
+                  BlocProvider.of<ScreenCubit>(context, listen: false).expandScreen();
                 });
               }))
             .toList(),
@@ -54,7 +54,7 @@ class _ResponsivePlansPageState extends State<ResponsivePlansPage> {
         onBack: () {
           setState(() {
             _selectedApartment = null;
-            BlocProvider.of<AnimationCubit>(context, listen: false).collapseScreen();
+            BlocProvider.of<ScreenCubit>(context, listen: false).collapseScreen();
           });
         },
       );

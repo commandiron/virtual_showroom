@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:virtual_showroom/virtual_show_room/cubit/animation/animation_cubit.dart';
+import 'package:virtual_showroom/virtual_show_room/cubit/screen/screen_cubit.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/app_bar/custom_app_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/custom_footer.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/navigation_bar/custom_navigation_bar.dart';
@@ -26,7 +26,7 @@ class VirtualShowRoom extends StatelessWidget {
           create: (context) => PageCubit(),
         ),
         BlocProvider(
-          create: (context) => AnimationCubit(),
+          create: (context) => ScreenCubit(),
         ),
       ],
       child: Scaffold(
@@ -36,7 +36,7 @@ class VirtualShowRoom extends StatelessWidget {
             return OrientationBuilder(
               builder: (context, orientation) {
 
-                BlocProvider.of<AnimationCubit>(context, listen: false).setOrientation(orientation);
+                BlocProvider.of<ScreenCubit>(context, listen: false).setOrientation(orientation);
 
                 return Column(
                   children: [

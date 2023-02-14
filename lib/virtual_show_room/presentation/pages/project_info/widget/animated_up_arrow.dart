@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/presentation/config/app_padding.dart';
-import '../../../../cubit/animation/animation_cubit.dart';
+import '../../../../cubit/screen/screen_cubit.dart';
 
 
 class AnimatedUpArrow extends StatefulWidget {
@@ -25,12 +25,12 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         setState(() {
           _upArrowOffset = Offset.zero;
         });
-        BlocProvider.of<AnimationCubit>(context).expandScreen();
+        BlocProvider.of<ScreenCubit>(context).expandScreen();
       } else {
         setState(() {
           _upArrowOffset = const Offset(0.5, 0);
         });
-        BlocProvider.of<AnimationCubit>(context).collapseScreen();
+        BlocProvider.of<ScreenCubit>(context).collapseScreen();
       }
     });
     super.initState();

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/presentation/config/app_padding.dart';
 import '../../../core/presentation/config/app_text_style.dart';
 import '../../../core/domain/model/project.dart';
-import '../../cubit/animation/animation_cubit.dart';
+import '../../cubit/screen/screen_cubit.dart';
 import '../widget/dialog/custom_dialog.dart';
 
 class ResponsiveCustomAppBar extends StatelessWidget {
@@ -21,7 +21,7 @@ class ResponsiveCustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AnimationCubit, AnimationState>(
+    return BlocBuilder<ScreenCubit, ScreenState>(
       builder: (context, state) {
         return AnimatedSlide(
           offset: state.appBarOffset,

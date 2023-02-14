@@ -1,6 +1,6 @@
-part of 'animation_cubit.dart';
+part of '../screen/screen_cubit.dart';
 
-class AnimationState {
+class ScreenState {
   int navigationAnimSlideDuration;
   int navigationAnimContainerDuration;
   Offset navigationOffset;
@@ -9,8 +9,9 @@ class AnimationState {
   Offset appBarOffset;
   double appBarHeight;
   Orientation orientation;
+  bool isOnMobile;
 
-  AnimationState(
+  ScreenState(
     {
       required this.navigationAnimSlideDuration,
       required this.navigationAnimContainerDuration,
@@ -19,7 +20,8 @@ class AnimationState {
       required this.appBarAnimDuration,
       required this.appBarOffset,
       required this.appBarHeight,
-      required this.orientation
+      required this.orientation,
+      required this.isOnMobile
     }
   );
 }
