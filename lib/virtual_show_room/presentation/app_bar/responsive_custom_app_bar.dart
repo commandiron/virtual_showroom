@@ -1,16 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/presentation/config/app_padding.dart';
-import '../../core/presentation/config/app_text_style.dart';
-import '../../core/domain/model/project.dart';
-import '../cubit/animation/animation_cubit.dart';
-import 'widget/dialog/custom_dialog.dart';
+import '../../../core/presentation/config/app_padding.dart';
+import '../../../core/presentation/config/app_text_style.dart';
+import '../../../core/domain/model/project.dart';
+import '../../cubit/animation/animation_cubit.dart';
+import '../widget/dialog/custom_dialog.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({required this.project, Key? key}) : super(key: key);
+class ResponsiveCustomAppBar extends StatelessWidget {
+  const ResponsiveCustomAppBar(
+    {
+      required this.project,
+      required this.logoFlex,
+      Key? key
+    }
+  ) : super(key: key);
 
   final Project project;
+  final int logoFlex;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,7 @@ class CustomAppBar extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: logoFlex,
                   child: Container(
                     padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
                     alignment: Alignment.centerLeft,

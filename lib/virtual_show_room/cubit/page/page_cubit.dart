@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../presentation/pages/ar.dart';
+import '../../presentation/pages/ar/ar.dart';
 import '../../presentation/pages/overview/overview.dart';
 import '../../presentation/pages/plans/plans.dart';
 import '../../presentation/pages/project_info/project_info.dart';

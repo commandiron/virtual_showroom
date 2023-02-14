@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/plans.dart';
 import '../../../core/domain/model/project.dart';
 import '../../cubit/page/page_cubit.dart';
-import 'ar.dart';
+import 'ar/ar.dart';
 import 'overview/overview.dart';
-import 'plans/plans.dart';
 import 'project_info/project_info.dart';
 
 class CurrentPage extends StatelessWidget {

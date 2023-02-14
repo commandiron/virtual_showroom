@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/widget/animated_up_arrow.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/widget/feature_item.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/widget/progress_view.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/pages/project_info/responsive_project_info.dart';
 
-import '../../../../core/presentation/config/app_padding.dart';
-import '../../../../core/presentation/config/app_space.dart';
-import '../../../../core/presentation/config/app_text_style.dart';
+import '../../../../core/presentation/responsive/responsive.dart';
 
-class ProjectInfoPage extends StatefulWidget {
+class ProjectInfoPage extends StatelessWidget {
   const ProjectInfoPage(
     {
       required this.startDate,
@@ -25,71 +20,26 @@ class ProjectInfoPage extends StatefulWidget {
   final List<String> features;
 
   @override
-  State<ProjectInfoPage> createState() => _ProjectInfoPageState();
-}
-
-class _ProjectInfoPageState extends State<ProjectInfoPage> {
-
-  final ScrollController _scrollController = ScrollController();
-
-  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CustomScrollView(
-          controller: _scrollController,
-          slivers: [
-            SliverToBoxAdapter(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: [
-                    AppSpace.verticalL!,
-                    ProgressView(
-                      startDate: widget.startDate,
-                      estimatedFinishDate: widget.estimatedFinishDate
-                    ),
-                    AppSpace.verticalXL!,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Bitiş tarihi:", style: AppTextStyle.b1!,),
-                        Text(DateFormat("MM/yyyy").format(widget.estimatedFinishDate), style: AppTextStyle.b1b!,),
-                      ],
-                    ),
-                    AppSpace.verticalL!,
-                    Padding(
-                      padding: AppPadding.horizontalM!,
-                      child: Text("Proje Özellikleri", style: AppTextStyle.h3b!,)
-                    ),
-                    AppSpace.verticalL!,
-                  ],
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: AppPadding.horizontalS!,
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  childAspectRatio: 6,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  childCount: widget.features.length,
-                  (context, index) => FeatureItem(feature: widget.features[index])
-                )
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 300,
-              ),
-            )
-          ],
-        ),
-        AnimatedUpArrow(scrollController: _scrollController)
-      ],
+    return Responsive(
+      mobile: ResponsiveProjectInfoPage(
+        startDate: startDate,
+        estimatedFinishDate: estimatedFinishDate,
+        features: features,
+        listItemAspectRatio: 6,
+      ),
+      tablet: ResponsiveProjectInfoPage(
+        startDate: startDate,
+        estimatedFinishDate: estimatedFinishDate,
+        features: features,
+        listItemAspectRatio: 8,
+      ),
+      desktop: ResponsiveProjectInfoPage(
+        startDate: startDate,
+        estimatedFinishDate: estimatedFinishDate,
+        features: features,
+        listItemAspectRatio: 12,
+      ),
     );
   }
 }
-

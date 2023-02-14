@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:virtual_showroom/virtual_show_room/cubit/animation/animation_cubit.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/app_bar/custom_app_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/custom_footer.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/custom_app_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/navigation_bar/custom_navigation_bar.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/project_title.dart';

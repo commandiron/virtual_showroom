@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/apartment_item.dart';
-import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_detail.dart';
+import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/responsive_plans.dart';
 
 import '../../../../core/domain/model/project.dart';
-import '../../../cubit/animation/animation_cubit.dart';
+import '../../../../core/presentation/responsive/responsive.dart';
 
-class PlansPage extends StatefulWidget {
+class PlansPage extends StatelessWidget {
   const PlansPage({required this.apartments, Key? key}) : super(key: key);
 
   static const route = "plans";
@@ -14,40 +12,23 @@ class PlansPage extends StatefulWidget {
   final List<Apartment> apartments;
 
   @override
-  State<PlansPage> createState() => _PlansPageState();
-}
-
-class _PlansPageState extends State<PlansPage> {
-  Apartment? _selectedApartment;
-  int _initialPage = 0;
-
-  @override
   Widget build(BuildContext context) {
-    return _selectedApartment == null
-      ? SingleChildScrollView(
-        child: Column(
-          children: widget.apartments
-            .map((apartment) => ApartmentItem(
-              apartment: apartment,
-              onSelect: (index) {
-                _initialPage = index.toInt();
-                setState(() {
-                  _selectedApartment = apartment;
-                  BlocProvider.of<AnimationCubit>(context, listen: false).expandScreen();
-                });
-              }))
-            .toList(),
-        ),
-      )
-      : PlanDetail(
-        initialPage: _initialPage,
-        apartment: _selectedApartment!,
-        onBack: () {
-          setState(() {
-            _selectedApartment = null;
-            BlocProvider.of<AnimationCubit>(context, listen: false).collapseScreen();
-          });
-        },
-      );
+    return Responsive(
+      mobile: ResponsivePlansPage(
+          apartments: apartments,
+          imageHeight: 200,
+          footerHeight: 120
+      ),
+      tablet: ResponsivePlansPage(
+        apartments: apartments,
+        imageHeight: 300,
+        footerHeight: 140
+      ),
+      desktop: ResponsivePlansPage(
+        apartments: apartments,
+        imageHeight: 400,
+        footerHeight: 160
+      ),
+    );
   }
 }

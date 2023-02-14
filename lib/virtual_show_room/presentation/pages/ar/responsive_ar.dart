@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../core/presentation/config/app_space.dart';
-import '../../../core/presentation/config/app_text_style.dart';
-import '../../../core/presentation/helper/url_launcher.dart';
+import '../../../../core/presentation/config/app_space.dart';
+import '../../../../core/presentation/config/app_text_style.dart';
+import '../../../../core/presentation/helper/url_launcher.dart';
 
 
-class ArPage extends StatelessWidget {
-  const ArPage({Key? key}) : super(key: key);
+class ResponsiveArPage extends StatelessWidget {
+  const ResponsiveArPage({required this.imageWidthFactor, Key? key}) : super(key: key);
 
-  static const route = "ar";
+  final double imageWidthFactor;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ArPage extends StatelessWidget {
       children: [
         AppSpace.verticalExpanded!,
         FractionallySizedBox(
-          widthFactor: 0.75,
+          widthFactor: imageWidthFactor,
           child: Image.asset("assets/augmented_reality_soon_image.jpg")
         ),
         AppSpace.verticalL!,

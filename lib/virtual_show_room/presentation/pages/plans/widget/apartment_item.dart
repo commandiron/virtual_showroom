@@ -9,14 +9,20 @@ import '../../../widget/custom_dots_indicator.dart';
 class ApartmentItem extends StatefulWidget {
   const ApartmentItem(
     {
+      required this.imageHeight,
+      required this.footerHeight,
       required this.apartment,
       required this.onSelect,
       Key? key
     }
   ) : super(key: key);
 
+  final double imageHeight;
+  final double footerHeight;
   final Apartment apartment;
   final Function(double index) onSelect;
+
+
 
   @override
   State<ApartmentItem> createState() => _ApartmentItemState();
@@ -60,7 +66,7 @@ class _ApartmentItemState extends State<ApartmentItem> {
               alignment: Alignment.bottomCenter,
               children: [
                 Container(
-                  height: 200,
+                  height: widget.imageHeight,
                   color: const Color(0xff626262),
                   child: PageView.builder(
                     controller: _pageController,
@@ -91,12 +97,17 @@ class _ApartmentItemState extends State<ApartmentItem> {
               ],
             ),
             Container(
-              height: 120,
+              height: widget.footerHeight,
               padding: AppPadding.allM,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.apartment.title, style: AppTextStyle.b2,),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 8
+                    ),
+                    child: Text(widget.apartment.title, style: AppTextStyle.b2,),
+                  ),
                   Expanded(
                     child: Row(
                       children: [
