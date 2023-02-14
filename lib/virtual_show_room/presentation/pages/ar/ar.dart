@@ -11,9 +11,9 @@ class ArPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Responsive(
-      mobile: ResponsiveArPage(imageWidthFactor: 0.75,),
-      tablet: ResponsiveArPage(imageWidthFactor: 0.65,),
-      desktop: ResponsiveArPage(imageWidthFactor: 0.55,),
+      mobile: ResponsiveArPage(imageWidthFactor: 0.75, logoWidthFactor: 0.25,),
+      tablet: ResponsiveArPage(imageWidthFactor: 0.65, logoWidthFactor: 0.20,),
+      desktop: ResponsiveArPage(imageWidthFactor: 0.55, logoWidthFactor: 0.15,),
     );
   }
 }

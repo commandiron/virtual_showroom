@@ -5,24 +5,26 @@ import '../../../../core/presentation/helper/url_launcher.dart';
 
 
 class ResponsiveArPage extends StatelessWidget {
-  const ResponsiveArPage({required this.imageWidthFactor, Key? key}) : super(key: key);
+  const ResponsiveArPage({required this.imageWidthFactor, required this.logoWidthFactor, Key? key}) : super(key: key);
 
   final double imageWidthFactor;
+  final double logoWidthFactor;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppSpace.verticalExpanded!,
-        FractionallySizedBox(
-          widthFactor: imageWidthFactor,
-          child: Image.asset("assets/augmented_reality_soon_image.jpg")
-        ),
-        AppSpace.verticalL!,
-        Text("Yakında Sizlerle..", style: AppTextStyle.b1!),
-        Expanded(
-          child: FractionallySizedBox(
-            widthFactor: 0.25,
+    return  SingleChildScrollView(
+      child: Column(
+        children: [
+          AppSpace.verticalXL!,
+          FractionallySizedBox(
+            widthFactor: imageWidthFactor,
+            child: Image.asset("assets/augmented_reality_soon_image.jpg")
+          ),
+          AppSpace.verticalXL!,
+          Text("Yakında Sizlerle..", style: AppTextStyle.b1!),
+          AppSpace.verticalXL!,
+          FractionallySizedBox(
+            widthFactor: logoWidthFactor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -46,8 +48,8 @@ class ResponsiveArPage extends StatelessWidget {
               ],
             )
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }
