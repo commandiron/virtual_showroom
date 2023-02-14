@@ -17,7 +17,9 @@ class VirtualShowRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     AppConfig.init(context);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -31,33 +33,40 @@ class VirtualShowRoom extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: BlocBuilder<PageCubit, PageState>(
           builder: (context, state) {
-            return Column(
-              children: [
-                CustomAppBar(
-                  project: project,
-                ),
-                ProjectTitle(
-                  title: project.name,
-                  locationUrl: project.locationUrl,
-                ),
-                CurrentPage(
-                  pages: state.pages.where(
-                    (page) => project.enabledPageRoutes.contains(page.route)
-                  ).toList(),
-                  project: project,
-                  pageIndex: state.pageIndex
-                ),
-                CustomNavigationBar(
-                  pages: state.pages.where(
-                    (page) => project.enabledPageRoutes.contains(page.route)
-                  ).toList(),
-                  pageIndex: state.pageIndex,
-                  onPressed: (index) {
-                    BlocProvider.of<PageCubit>(context, listen: false).jumpTo(index);
-                  },
-                ),
-                const CustomFooter()
-              ],
+            return OrientationBuilder(
+              builder: (context, orientation) {
+
+                BlocProvider.of<AnimationCubit>(context, listen: false).setOrientation(orientation);
+
+                return Column(
+                  children: [
+                    CustomAppBar(
+                      project: project,
+                    ),
+                    ProjectTitle(
+                      title: project.name,
+                      locationUrl: project.locationUrl,
+                    ),
+                    CurrentPage(
+                        pages: state.pages.where(
+                                (page) => project.enabledPageRoutes.contains(page.route)
+                        ).toList(),
+                        project: project,
+                        pageIndex: state.pageIndex
+                    ),
+                    CustomNavigationBar(
+                      pages: state.pages.where(
+                              (page) => project.enabledPageRoutes.contains(page.route)
+                      ).toList(),
+                      pageIndex: state.pageIndex,
+                      onPressed: (index) {
+                        BlocProvider.of<PageCubit>(context, listen: false).jumpTo(index);
+                      },
+                    ),
+                    const CustomFooter()
+                  ],
+                );
+              },
             );
           },
         )

@@ -8,6 +8,7 @@ class AnimationState {
   int appBarAnimDuration;
   Offset appBarOffset;
   double appBarHeight;
+  Orientation orientation;
 
   AnimationState(
     {
@@ -18,6 +19,7 @@ class AnimationState {
       required this.appBarAnimDuration,
       required this.appBarOffset,
       required this.appBarHeight,
+      required this.orientation
     }
   );
 }
