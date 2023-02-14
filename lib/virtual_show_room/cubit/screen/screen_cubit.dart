@@ -21,10 +21,18 @@ class ScreenCubit extends Cubit<ScreenState> {
 
   void setOrientation(Orientation orientation) {
     emit(
-      state.copyWith(
+      ScreenState(
+        navigationAnimSlideDuration: state.navigationAnimSlideDuration,
+        navigationAnimContainerDuration: state.navigationAnimContainerDuration,
+        navigationOffset: state.navigationOffset,
+        navigationHeight: state.navigationHeight,
+        appBarAnimDuration: state.appBarAnimDuration,
+        appBarOffset: state.appBarOffset,
+        appBarHeight: state.appBarHeight,
         orientation: orientation,
-        isTitleVisible: true
-      ),
+        isTitleVisible: true,
+        isOnMobile: state.isOnMobile
+      )
     );
 
     if(orientation == Orientation.landscape && state.isOnMobile) {
@@ -41,7 +49,7 @@ class ScreenCubit extends Cubit<ScreenState> {
   void expandScreen({bool isAnimated = true}) {
     if(isAnimated) {
       emit(
-        state.copyWith(
+        ScreenState(
           navigationAnimSlideDuration: 300,
           navigationAnimContainerDuration: 600,
           navigationOffset: const Offset(0, 1),
@@ -50,11 +58,13 @@ class ScreenCubit extends Cubit<ScreenState> {
           appBarOffset: const Offset(0, -1),
           appBarHeight: 0,
           isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+          orientation: state.orientation,
+          isOnMobile: state.isOnMobile
         )
       );
     } else {
       emit(
-        state.copyWith(
+        ScreenState(
           navigationAnimSlideDuration: 0,
           navigationAnimContainerDuration: 0,
           navigationOffset: const Offset(0, 1),
@@ -63,6 +73,8 @@ class ScreenCubit extends Cubit<ScreenState> {
           appBarOffset: const Offset(0, -1),
           appBarHeight: 0,
           isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+          orientation: state.orientation,
+          isOnMobile: state.isOnMobile
         )
       );
     }
@@ -72,7 +84,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     if(!state.isOnMobile) {
       if(isAnimated) {
         emit(
-          state.copyWith(
+          ScreenState(
             navigationAnimSlideDuration: 600,
             navigationAnimContainerDuration: 300,
             navigationOffset: Offset.zero,
@@ -81,11 +93,13 @@ class ScreenCubit extends Cubit<ScreenState> {
             appBarOffset: Offset.zero,
             appBarHeight: 60,
             isTitleVisible: true,
+            orientation: state.orientation,
+            isOnMobile: state.isOnMobile
           )
         );
       } else {
         emit(
-          state.copyWith(
+          ScreenState(
             navigationAnimSlideDuration: 0,
             navigationAnimContainerDuration: 0,
             navigationOffset: Offset.zero,
@@ -94,6 +108,8 @@ class ScreenCubit extends Cubit<ScreenState> {
             appBarOffset: Offset.zero,
             appBarHeight: 60,
             isTitleVisible: true,
+            orientation: state.orientation,
+            isOnMobile: state.isOnMobile
           )
         );
       }
@@ -101,7 +117,7 @@ class ScreenCubit extends Cubit<ScreenState> {
       if(state.orientation == Orientation.portrait) {
         if(isAnimated) {
           emit(
-            state.copyWith(
+            ScreenState(
               navigationAnimSlideDuration: 600,
               navigationAnimContainerDuration: 300,
               navigationOffset: Offset.zero,
@@ -110,11 +126,13 @@ class ScreenCubit extends Cubit<ScreenState> {
               appBarOffset: Offset.zero,
               appBarHeight: 60,
               isTitleVisible: true,
+              orientation: state.orientation,
+              isOnMobile: state.isOnMobile
             )
           );
         } else {
           emit(
-            state.copyWith(
+            ScreenState(
               navigationAnimSlideDuration: 0,
               navigationAnimContainerDuration: 0,
               navigationOffset: Offset.zero,
@@ -123,6 +141,8 @@ class ScreenCubit extends Cubit<ScreenState> {
               appBarOffset: Offset.zero,
               appBarHeight: 60,
               isTitleVisible: true,
+              orientation: state.orientation,
+              isOnMobile: state.isOnMobile
             )
           );
         }
