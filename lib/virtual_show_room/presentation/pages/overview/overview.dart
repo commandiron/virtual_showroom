@@ -53,9 +53,9 @@ class _OverviewPageState extends State<OverviewPage> {
           scaleStateChangedCallback: (value) {
             _photoViewScaleStateController.scaleState = value;
             if(value == PhotoViewScaleState.initial) {
-              BlocProvider.of<ScreenCubit>(context, listen: false).collapseScreen();
+              BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
             } else {
-              BlocProvider.of<ScreenCubit>(context, listen: false).expandScreen();
+              BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
             }
           },
           builder: (context, index) {

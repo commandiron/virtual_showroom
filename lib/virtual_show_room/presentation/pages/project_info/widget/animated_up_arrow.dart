@@ -25,12 +25,12 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         setState(() {
           _upArrowOffset = Offset.zero;
         });
-        BlocProvider.of<ScreenCubit>(context).expandScreen();
+        BlocProvider.of<ScreenCubit>(context).animatedExpand();
       } else {
         setState(() {
           _upArrowOffset = const Offset(0.5, 0);
         });
-        BlocProvider.of<ScreenCubit>(context).collapseScreen();
+        BlocProvider.of<ScreenCubit>(context).animatedCollapse();
       }
     });
     super.initState();

@@ -42,7 +42,7 @@ class _ResponsivePlansPageState extends State<ResponsivePlansPage> {
                 _initialPage = index.toInt();
                 setState(() {
                   _selectedApartment = apartment;
-                  BlocProvider.of<ScreenCubit>(context, listen: false).expandScreen();
+                  BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
                 });
               }))
             .toList(),
@@ -54,7 +54,7 @@ class _ResponsivePlansPageState extends State<ResponsivePlansPage> {
         onBack: () {
           setState(() {
             _selectedApartment = null;
-            BlocProvider.of<ScreenCubit>(context, listen: false).collapseScreen();
+            BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
           });
         },
       );
