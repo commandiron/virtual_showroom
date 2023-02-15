@@ -51,7 +51,9 @@ class _OverviewPageState extends State<OverviewPage> {
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
           scaleStateChangedCallback: (value) {
-            _photoViewScaleStateController.scaleState = value;
+            setState(() {
+              _photoViewScaleStateController.scaleState = value;
+            });
             if(value == PhotoViewScaleState.initial) {
               BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
             } else {
