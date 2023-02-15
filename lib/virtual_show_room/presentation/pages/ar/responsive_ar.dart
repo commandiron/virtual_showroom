@@ -29,27 +29,27 @@ class ResponsiveArPage extends StatelessWidget {
             AppSpace.verticalXL!,
             FractionallySizedBox(
               widthFactor: logoWidthFactor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "from",
-                    style: AppTextStyle.b3!.copyWith(
-                      color: Colors.grey
+              child: InkWell(
+                onTap: () {
+                  openURL("https://www.demirli.tech");
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "from",
+                      style: AppTextStyle.b3!.copyWith(
+                        color: Colors.grey
+                      ),
                     ),
-                  ),
-                  AppSpace.verticalS!,
-                  InkWell(
-                    onTap: () {
-                      openURL("https://www.demirli.tech");
-                    },
-                    child: Image.asset(
+                    AppSpace.verticalS!,
+                    Image.asset(
                       Theme.of(context).brightness == Brightness.light
                         ? "assets/demirli_tech_text_logo_black.png"
                         : "assets/demirli_tech_text_logo_white.png"
-                    )
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               )
             ),
           ],
