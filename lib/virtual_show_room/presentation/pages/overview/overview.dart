@@ -49,7 +49,7 @@ class _OverviewPageState extends State<OverviewPage> {
           itemCount: widget.generalImagePaths.length,
           scrollPhysics:_photoViewScaleStateController.scaleState != PhotoViewScaleState.initial
             ? const NeverScrollableScrollPhysics()
-            : const ClampingScrollPhysics(),
+            : const AlwaysScrollableScrollPhysics(),
           scaleStateChangedCallback: (value) {
             setState(() {
               _photoViewScaleStateController.scaleState = value;
