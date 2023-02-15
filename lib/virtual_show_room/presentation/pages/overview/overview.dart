@@ -21,6 +21,7 @@ class _OverviewPageState extends State<OverviewPage> {
 
   final PageController _pageController = PageController();
   final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
+  int _pointerCount = 0;
 
   @override
   void initState() {
@@ -44,40 +45,50 @@ class _OverviewPageState extends State<OverviewPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        PhotoViewGallery.builder(
-          pageController: _pageController,
-          itemCount: widget.generalImagePaths.length,
-          scrollPhysics:  _photoViewScaleStateController.scaleState != PhotoViewScaleState.initial
-            ? const NeverScrollableScrollPhysics()
-            : const AlwaysScrollableScrollPhysics(),
-          scaleStateChangedCallback: (value) {
-            _photoViewScaleStateController.scaleState = value;
-            if(value == PhotoViewScaleState.initial) {
-              BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
-            } else {
-              BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
-            }
+        GestureDetector(
+          onScaleUpdate: (details) {
+            setState(() {
+              _pointerCount = details.pointerCount;
+            });
           },
-          builder: (context, index) {
-            return PhotoViewGalleryPageOptions(
-              scaleStateController: _photoViewScaleStateController,
-              imageProvider: AssetImage(widget.generalImagePaths[index]),
-              initialScale: PhotoViewComputedScale.contained * 1,
-              minScale: PhotoViewComputedScale.contained * 1,
-              maxScale: PhotoViewComputedScale.contained * 4,
-              scaleStateCycle: (actual) {
-                switch (actual) {
-                  case PhotoViewScaleState.initial:
-                    return PhotoViewScaleState.originalSize;
-                  default:
-                    return PhotoViewScaleState.initial;
-                }
-              },
-            );
-          },
-          backgroundDecoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
-          )
+          child: PhotoViewGallery.builder(
+            pageController: _pageController,
+            itemCount: widget.generalImagePaths.length,
+            scrollPhysics:
+            _pointerCount > 1
+              ? const NeverScrollableScrollPhysics()
+              : _photoViewScaleStateController.scaleState != PhotoViewScaleState.initial
+                ? const NeverScrollableScrollPhysics()
+                : const AlwaysScrollableScrollPhysics(),
+            scaleStateChangedCallback: (value) {
+              _photoViewScaleStateController.scaleState = value;
+              if(value == PhotoViewScaleState.initial) {
+                BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
+              } else {
+                BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
+              }
+            },
+            builder: (context, index) {
+              return PhotoViewGalleryPageOptions(
+                scaleStateController: _photoViewScaleStateController,
+                imageProvider: AssetImage(widget.generalImagePaths[index]),
+                initialScale: PhotoViewComputedScale.contained * 1,
+                minScale: PhotoViewComputedScale.contained * 1,
+                maxScale: PhotoViewComputedScale.contained * 4,
+                scaleStateCycle: (actual) {
+                  switch (actual) {
+                    case PhotoViewScaleState.initial:
+                      return PhotoViewScaleState.originalSize;
+                    default:
+                      return PhotoViewScaleState.initial;
+                  }
+                },
+              );
+            },
+            backgroundDecoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+            )
+          ),
         ),
         if(_photoViewScaleStateController.scaleState == PhotoViewScaleState.initial)
           CustomDotsIndicator(
