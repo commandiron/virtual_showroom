@@ -64,38 +64,24 @@ class ScreenCubit extends Cubit<ScreenState> {
   }
 
   void animatedCollapse() {
-    if(!state.isOnMobile) {
-      emit(
-        ScreenState(
-          navigationAnimSlideDuration: 600,
-          navigationAnimContainerDuration: 300,
-          navigationOffset: Offset.zero,
-          navigationHeight: 100,
-          appBarAnimDuration: 600,
-          appBarOffset: Offset.zero,
-          appBarHeight: 60,
-          isTitleVisible: true,
-          orientation: state.orientation,
-          isOnMobile: state.isOnMobile
-        )
-      );
-    } else {
-      if(state.orientation == Orientation.portrait) {
-        emit(
-          ScreenState(
-            navigationAnimSlideDuration: 600,
-            navigationAnimContainerDuration: 300,
-            navigationOffset: Offset.zero,
-            navigationHeight: 100,
-            appBarAnimDuration: 600,
-            appBarOffset: Offset.zero,
-            appBarHeight: 60,
-            isTitleVisible: true,
-            orientation: state.orientation,
-            isOnMobile: state.isOnMobile
-          )
-        );
-      }
+
+    if(state.isOnMobile && state.orientation == Orientation.landscape) {
+      return;
     }
+
+    emit(
+      ScreenState(
+        navigationAnimSlideDuration: 600,
+        navigationAnimContainerDuration: 300,
+        navigationOffset: Offset.zero,
+        navigationHeight: 100,
+        appBarAnimDuration: 600,
+        appBarOffset: Offset.zero,
+        appBarHeight: 60,
+        isTitleVisible: true,
+        orientation: state.orientation,
+        isOnMobile: state.isOnMobile
+      )
+    );
   }
 }
