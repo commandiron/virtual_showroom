@@ -66,7 +66,7 @@ class _OverviewPageState extends State<OverviewPage> {
               imageProvider: AssetImage(widget.generalImagePaths[index]),
               initialScale: PhotoViewComputedScale.contained * 1,
               minScale: PhotoViewComputedScale.contained * 1,
-              maxScale: PhotoViewComputedScale.contained * 4,
+              maxScale: PhotoViewComputedScale.contained * 6,
               scaleStateCycle: (actual) {
                 switch (actual) {
                   case PhotoViewScaleState.initial:
