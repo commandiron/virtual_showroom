@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ProjectRepositoryImpl extends ProjectRepository {
   final String databaseUrl =
-      "https://qr-projem-default-rtdb.europe-west1.firebasedatabase.app/projects";
+      "https://qrprojem-default-rtdb.europe-west1.firebasedatabase.app/projects";
 
   @override
   Future<Project?> fetchProjectById(String id) async {
