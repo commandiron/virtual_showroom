@@ -22,7 +22,7 @@ class ResponsiveArPage extends StatelessWidget {
             AppSpace.verticalXL!,
             FractionallySizedBox(
               widthFactor: imageWidthFactor,
-              child: Image.asset("assets/augmented_reality_soon_image.jpg")
+              child: Image.asset("assets/images/app/ar/augmented_reality_soon_image.jpg")
             ),
             AppSpace.verticalXL!,
             Text("Yakında Sizlerle..", style: AppTextStyle.b1!),
@@ -45,8 +45,8 @@ class ResponsiveArPage extends StatelessWidget {
                     AppSpace.verticalS!,
                     Image.asset(
                       Theme.of(context).brightness == Brightness.light
-                        ? "assets/demirli_tech_text_logo_black.png"
-                        : "assets/demirli_tech_text_logo_white.png"
+                        ? "assets/images/app/demirli_tech_logo/demirli_tech_text_logo_black.png"
+                        : "assets/images/app/demirli_tech_logo/demirli_tech_text_logo_white.png"
                     ),
                   ],
                 ),

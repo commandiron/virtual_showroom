@@ -39,7 +39,7 @@ class ErrorScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(16),
                     child: Image.asset(
-                      "assets/demirli_tech_text_logo_black.png"
+                      "assets/images/app/demirli_tech_logo/demirli_tech_text_logo_black.png"
                     ),
                   ),
                 ),

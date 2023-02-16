@@ -42,3 +42,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
+    - assets/images/app/
+    - assets/images/app/ar/
+    - assets/images/app/demirli_tech_logo/
+    - assets/images/app/navigation/

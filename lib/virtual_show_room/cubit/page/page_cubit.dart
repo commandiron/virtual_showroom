@@ -16,25 +16,25 @@ class PageCubit extends Cubit<PageState> {
           index: 0,
           title: "Görünüş",
           route: OverviewPage.route,
-          iconPath: "assets/general_images_icon.png"
+          iconPath: "assets/images/app/navigation/overview_icon.png"
         ),
         PageItem(
           index: 1,
           title: "Planlar",
           route: PlansPage.route,
-          iconPath: "assets/plan_images_icon.png"
+          iconPath: "assets/images/app/navigation/plan_images_icon.png"
         ),
         PageItem(
           index: 2,
           title: "Proje Bilgileri",
           route: ProjectInfoPage.route,
-          iconPath: "assets/project_info_icon.png"
+          iconPath: "assets/images/app/navigation/project_info_icon.png"
         ),
         PageItem(
           index: 3,
           title: "Arttırılmış Gerçeklik",
           route: ArPage.route,
-          iconPath: "assets/ar_icon.png"
+          iconPath: "assets/images/app/navigation/ar_icon.png"
         ),
       ]
     )
