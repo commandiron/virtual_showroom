@@ -14,7 +14,7 @@ class CoreApp extends StatelessWidget {
     return BlocProvider<ProjectCubit>(
       create: (context) => ProjectCubit(),
       child: MaterialChild(
-        projectId: "0" // Uri.base.queryParameters["id"],
+        projectId: Uri.base.queryParameters["id"],
       ),
     );
   }
