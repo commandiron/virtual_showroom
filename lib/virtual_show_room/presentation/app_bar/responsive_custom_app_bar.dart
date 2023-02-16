@@ -37,7 +37,7 @@ class ResponsiveCustomAppBar extends StatelessWidget {
                   child: Container(
                     padding: AppPadding.horizontalM!.add(AppPadding.verticalS!),
                     alignment: Alignment.centerLeft,
-                    child: Image.asset(project.companyLogoPath),
+                    child: Image.network(project.companyLogoUrl),
                   )
                 ),
                 Expanded(

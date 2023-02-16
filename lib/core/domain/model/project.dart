@@ -1,6 +1,6 @@
 class Project {
   String id;
-  String companyLogoPath;
+  String companyLogoUrl;
   int primaryColorValue;
   String companyPhone;
   String companyMail;
@@ -9,7 +9,7 @@ class Project {
   List<String> enabledPageRoutes;
   String name;
   String locationUrl;
-  List<String> generalImagePaths;
+  List<String> generalImageUrls;
   List<Apartment> apartments;
   DateTime startDate;
   DateTime estimatedFinishDate;
@@ -17,7 +17,7 @@ class Project {
 
   Project({
     required this.id,
-    required this.companyLogoPath,
+    required this.companyLogoUrl,
     required this.primaryColorValue,
     required this.companyPhone,
     required this.companyMail,
@@ -26,7 +26,7 @@ class Project {
     required this.enabledPageRoutes,
     required this.name,
     required this.locationUrl,
-    required this.generalImagePaths,
+    required this.generalImageUrls,
     required this.apartments,
     required this.startDate,
     required this.estimatedFinishDate,
@@ -35,7 +35,7 @@ class Project {
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "companyLogoPath": companyLogoPath,
+    "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
     "companyPhone": companyPhone,
     "companyMail": companyMail,
@@ -44,36 +44,36 @@ class Project {
     "enabledPageRoutes": enabledPageRoutes,
     "name": name,
     "locationUrl": locationUrl,
-    "generalImagePaths": generalImagePaths,
+    "generalImageUrls": generalImageUrls,
     "apartments":
-        apartments.map((apartment) => apartment.toJson()).toList(),
+    apartments.map((apartment) => apartment.toJson()).toList(),
     "startDate": startDate.toIso8601String(),
     "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
     "features": features
   };
 
   Project.fromJson(Map<String, dynamic> json)
-    : id = json["id"],
-      companyLogoPath = json["companyLogoPath"],
-      primaryColorValue = json["primaryColorValue"],
-      companyPhone = json["companyPhone"],
-      companyMail = json["companyMail"],
-      companyAddress = json["companyAddress"],
-      companyLocationUrl = json["companyLocationUrl"],
-      enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(), 
-      name = json["name"],
-      locationUrl = json["locationUrl"],
-      generalImagePaths = (json["generalImagePaths"] as List<dynamic>).map((e) => e.toString()).toList(),
-      apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
-      startDate = DateTime.parse(json["startDate"] as String),
-      estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
-      features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList();
+      : id = json["id"],
+        companyLogoUrl = json["companyLogoUrl"],
+        primaryColorValue = json["primaryColorValue"],
+        companyPhone = json["companyPhone"],
+        companyMail = json["companyMail"],
+        companyAddress = json["companyAddress"],
+        companyLocationUrl = json["companyLocationUrl"],
+        enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(),
+        name = json["name"],
+        locationUrl = json["locationUrl"],
+        generalImageUrls = (json["generalImageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
+        apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
+        startDate = DateTime.parse(json["startDate"] as String),
+        estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
+        features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList();
 }
 
 class Apartment {
   int id;
   String title;
-  List<String> imagePaths;
+  List<String> imageUrls;
   String type;
   String netArea;
   String grossArea;
@@ -81,7 +81,7 @@ class Apartment {
   Apartment({
     required this.id,
     required this.title,
-    required this.imagePaths,
+    required this.imageUrls,
     required this.type,
     required this.netArea,
     required this.grossArea,
@@ -90,17 +90,17 @@ class Apartment {
   Map<String, dynamic> toJson() => {
     "id": id,
     "title": title,
-    "imagePaths": imagePaths,
+    "imageUrls": imageUrls,
     "type": type,
     "netArea": netArea,
     "grossArea": grossArea
   };
 
   Apartment.fromJson(Map<String, dynamic> json)
-    : id = json["id"],
-      title = json["title"],
-      imagePaths = (json["imagePaths"] as List<dynamic>).map((e) => e.toString()).toList(),
-      type = json["type"],
-      netArea = json["netArea"],
-      grossArea = json["grossArea"];
+      : id = json["id"],
+        title = json["title"],
+        imageUrls = (json["imageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
+        type = json["type"],
+        netArea = json["netArea"],
+        grossArea = json["grossArea"];
 }

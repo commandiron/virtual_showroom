@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
@@ -7,11 +8,11 @@ import '../../../cubit/screen/screen_cubit.dart';
 import '../../widget/custom_dots_indicator.dart';
 
 class OverviewPage extends StatefulWidget {
-  const OverviewPage({required this.generalImagePaths, Key? key}) : super(key: key);
+  const OverviewPage({required this.generalImageUrls, Key? key}) : super(key: key);
 
   static const route = "overview";
 
-  final List<String> generalImagePaths;
+  final List<String> generalImageUrls;
 
   @override
   State<OverviewPage> createState() => _OverviewPageState();
@@ -46,7 +47,7 @@ class _OverviewPageState extends State<OverviewPage> {
       children: [
         PhotoViewGallery.builder(
           pageController: _pageController,
-          itemCount: widget.generalImagePaths.length,
+          itemCount: widget.generalImageUrls.length,
           scrollPhysics:_photoViewScaleStateController.scaleState != PhotoViewScaleState.initial
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
@@ -61,9 +62,14 @@ class _OverviewPageState extends State<OverviewPage> {
             }
           },
           builder: (context, index) {
-            return PhotoViewGalleryPageOptions(
+            return PhotoViewGalleryPageOptions.customChild(
+              child: CachedNetworkImage(
+                imageUrl: widget.generalImageUrls[index],
+                placeholder: (context, url) {
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
               scaleStateController: _photoViewScaleStateController,
-              imageProvider: AssetImage(widget.generalImagePaths[index]),
               initialScale: PhotoViewComputedScale.contained * 1,
               minScale: PhotoViewComputedScale.contained * 1,
               maxScale: PhotoViewComputedScale.contained * 6,
@@ -83,7 +89,7 @@ class _OverviewPageState extends State<OverviewPage> {
         ),
         if(_photoViewScaleStateController.scaleState == PhotoViewScaleState.initial)
           CustomDotsIndicator(
-            dotsCount: widget.generalImagePaths.length,
+            dotsCount: widget.generalImageUrls.length,
             position: _pageController.hasClients ? _pageController.page ?? 0 : 0
           ),
         if(_photoViewScaleStateController.scaleState != PhotoViewScaleState.initial)

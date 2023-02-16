@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_feature_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/zoom_in_button.dart';
@@ -71,14 +72,17 @@ class _ApartmentItemState extends State<ApartmentItem> {
                   child: PageView.builder(
                     controller: _pageController,
                     scrollDirection: Axis.horizontal,
-                    itemCount: widget.apartment.imagePaths.length,
+                    itemCount: widget.apartment.imageUrls.length,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
                           widget.onSelect(_pageController.page ?? 0);
                         },
-                        child: Image.asset(
-                          widget.apartment.imagePaths[index]
+                        child: CachedNetworkImage(
+                          imageUrl: widget.apartment.imageUrls[index],
+                          placeholder: (context, url) {
+                            return const Center(child: CircularProgressIndicator());
+                          },
                         )
                       );
                     },
@@ -89,9 +93,9 @@ class _ApartmentItemState extends State<ApartmentItem> {
                     widget.onSelect(_pageController.page ?? 0);
                   },
                 ),
-                if (widget.apartment.imagePaths.length > 1)
+                if (widget.apartment.imageUrls.length > 1)
                   CustomDotsIndicator(
-                    dotsCount: widget.apartment.imagePaths.length,
+                    dotsCount: widget.apartment.imageUrls.length,
                     position: _pageController.hasClients ? _pageController.page ?? 0 : 0
                   ),
               ],
