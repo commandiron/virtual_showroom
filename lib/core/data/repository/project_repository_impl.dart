@@ -10,16 +10,10 @@ class ProjectRepositoryImpl extends ProjectRepository {
 
   @override
   Future<Project?> fetchProjectById(String id) async {
-    final databaseUri = Uri.parse(databaseUrl + "/$id.json");
+    final databaseUri = Uri.parse("$databaseUrl/$id.json");
     final response = await http.get(databaseUri);
     final data = json.decode(response.body) as Map<String, dynamic>;
     final project = Project.fromJson(data);
     return project;
-  }
-
-  @override
-  void postProjectForTest(Project project) {
-    final databaseUri = Uri.parse(databaseUrl + "/0.json");
-    http.put(databaseUri, body: json.encode(project.toJson()));
   }
 }
