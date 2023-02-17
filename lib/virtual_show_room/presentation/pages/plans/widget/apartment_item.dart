@@ -87,6 +87,9 @@ class _ApartmentItemState extends State<ApartmentItem> {
                         ),
                       );
                     },
+                    backgroundDecoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
+                    )
                   )
                 ),
                 ZoomInButton(
