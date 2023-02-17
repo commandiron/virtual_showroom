@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_feature_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/zoom_in_button.dart';
@@ -78,11 +77,8 @@ class _ApartmentItemState extends State<ApartmentItem> {
                         onTap: () {
                           widget.onSelect(_pageController.page ?? 0);
                         },
-                        child: CachedNetworkImage(
-                          imageUrl: widget.apartment.imageUrls[index],
-                          placeholder: (context, url) {
-                            return const Center(child: CircularProgressIndicator());
-                          },
+                        child: Image.network(
+                          widget.apartment.imageUrls[index],
                         )
                       );
                     },
