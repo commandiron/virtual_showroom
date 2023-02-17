@@ -64,43 +64,44 @@ class _ApartmentItemState extends State<ApartmentItem> {
         borderOnForeground: true,
         child: Column(
           children: [
-            Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  height: widget.imageHeight,
-                  color: const Color(0xff626262),
-                  child: PhotoViewGallery.builder(
-                    pageController: _pageController,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: widget.apartment.imageUrls.length,
-                    scaleStateChangedCallback: (value) {
-                      widget.onSelect(_pageController.page ?? 0);
-                    },
-                    loadingBuilder: (context, event) {
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                    builder: (context, index) {
-                      return PhotoViewGalleryPageOptions(
-                        imageProvider: CachedNetworkImageProvider(widget.apartment.imageUrls[index]),
-                      );
-                    },
-                    backgroundDecoration: const BoxDecoration(
-                        color: const Color(0xff626262)
-                    ),
-                  )
-                ),
-                ZoomInButton(
-                  onTap: () {
-                    widget.onSelect(_pageController.page ?? 0);
-                  },
-                ),
-                if (widget.apartment.imageUrls.length > 1)
-                  CustomDotsIndicator(
-                    dotsCount: widget.apartment.imageUrls.length,
-                    position: _pageController.hasClients ? _pageController.page ?? 0 : 0
+            InkWell(
+              onTap: () {
+                widget.onSelect(_pageController.page ?? 0);
+              },
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    height: widget.imageHeight,
+                    color: const Color(0xff626262),
+                    child: PhotoViewGallery.builder(
+                      pageController: _pageController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: widget.apartment.imageUrls.length,
+                      scaleStateChangedCallback: (value) {
+                        widget.onSelect(_pageController.page ?? 0);
+                      },
+                      loadingBuilder: (context, event) {
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                      builder: (context, index) {
+                        return PhotoViewGalleryPageOptions(
+                          imageProvider: CachedNetworkImageProvider(widget.apartment.imageUrls[index]),
+                        );
+                      },
+                      backgroundDecoration: const BoxDecoration(
+                        color: Color(0xff626262)
+                      ),
+                    )
                   ),
-              ],
+                  const ZoomInButton(),
+                  if (widget.apartment.imageUrls.length > 1)
+                    CustomDotsIndicator(
+                      dotsCount: widget.apartment.imageUrls.length,
+                      position: _pageController.hasClients ? _pageController.page ?? 0 : 0
+                    ),
+                ],
+              ),
             ),
             Container(
               height: widget.footerHeight,
