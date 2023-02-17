@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/plan_feature_item.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/plans/widget/zoom_in_button.dart';
 import '../../../../../core/presentation/config/app_padding.dart';
@@ -68,18 +71,20 @@ class _ApartmentItemState extends State<ApartmentItem> {
                 Container(
                   height: widget.imageHeight,
                   color: const Color(0xff626262),
-                  child: PageView.builder(
-                    controller: _pageController,
+                  child: PhotoViewGallery.builder(
+                    pageController: _pageController,
                     scrollDirection: Axis.horizontal,
                     itemCount: widget.apartment.imageUrls.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          widget.onSelect(_pageController.page ?? 0);
-                        },
-                        child: Image.network(
-                          widget.apartment.imageUrls[index],
-                        )
+                    scaleStateChangedCallback: (value) {
+                      if(value != PhotoViewScaleState.initial) {
+                        widget.onSelect(_pageController.page ?? 0);
+                      }
+                    },
+                    builder: (context, index) {
+                      return PhotoViewGalleryPageOptions(
+                        imageProvider: CachedNetworkImageProvider(
+                          widget.apartment.imageUrls[index]
+                        ),
                       );
                     },
                   )
