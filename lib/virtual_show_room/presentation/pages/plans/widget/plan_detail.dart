@@ -27,7 +27,7 @@ class PlanDetail extends StatefulWidget {
 class _PlanDetailState extends State<PlanDetail>{
 
   late final PageController _pageController;
-  final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
+  late final PhotoViewScaleStateController _photoViewScaleStateController;
 
   @override
   void initState() {
@@ -35,12 +35,14 @@ class _PlanDetailState extends State<PlanDetail>{
     _pageController.addListener(() {
       setState(() {});
     });
+    _photoViewScaleStateController = PhotoViewScaleStateController();
     super.initState();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _photoViewScaleStateController.dispose();
     super.dispose();
   }
 
