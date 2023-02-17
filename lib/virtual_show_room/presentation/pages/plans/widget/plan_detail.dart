@@ -64,14 +64,9 @@ class _PlanDetailState extends State<PlanDetail>{
                 color: Colors.black,
               ),
               builder: (context, index) {
-                return PhotoViewGalleryPageOptions.customChild(
+                return PhotoViewGalleryPageOptions(
                   scaleStateController: _photoViewScaleStateController,
-                  child: CachedNetworkImage(
-                    imageUrl: widget.apartment.imageUrls[index],
-                    placeholder: (context, url) {
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                  ),
+                  imageProvider: CachedNetworkImageProvider(widget.apartment.imageUrls[index]),
                 );
               },
             ),
