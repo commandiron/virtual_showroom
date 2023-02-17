@@ -62,9 +62,12 @@ class _OverviewPageState extends State<OverviewPage> {
             }
           },
           builder: (context, index) {
-            return PhotoViewGalleryPageOptions(
-              imageProvider: CachedNetworkImageProvider(
-                widget.generalImageUrls[index]
+            return PhotoViewGalleryPageOptions.customChild(
+              child: CachedNetworkImage(
+                imageUrl: widget.generalImageUrls[index],
+                placeholder: (context, url) {
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
               scaleStateController: _photoViewScaleStateController,
               initialScale: PhotoViewComputedScale.contained * 1,
@@ -99,3 +102,5 @@ class _OverviewPageState extends State<OverviewPage> {
     );
   }
 }
+
+
