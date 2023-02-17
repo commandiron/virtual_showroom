@@ -61,14 +61,12 @@ class _OverviewPageState extends State<OverviewPage> {
               BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
             }
           },
+          loadingBuilder: (context, event) {
+            return const Center(child: CircularProgressIndicator());
+          },
           builder: (context, index) {
-            return PhotoViewGalleryPageOptions.customChild(
-              child: CachedNetworkImage(
-                imageUrl: widget.generalImageUrls[index],
-                placeholder: (context, url) {
-                  return const Center(child: CircularProgressIndicator());
-                },
-              ),
+            return PhotoViewGalleryPageOptions(
+              imageProvider: CachedNetworkImageProvider(widget.generalImageUrls[index]),
               scaleStateController: _photoViewScaleStateController,
               initialScale: PhotoViewComputedScale.contained * 1,
               minScale: PhotoViewComputedScale.contained * 1,
@@ -84,8 +82,8 @@ class _OverviewPageState extends State<OverviewPage> {
             );
           },
           backgroundDecoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
-          )
+            color: Colors.transparent
+          ),
         ),
         if(_photoViewScaleStateController.scaleState == PhotoViewScaleState.initial)
           CustomDotsIndicator(
