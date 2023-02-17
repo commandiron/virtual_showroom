@@ -51,12 +51,12 @@ class ScreenCubit extends Cubit<ScreenState> {
   void animatedExpand() {
     emit(
       ScreenState(
-        navigationAnimSlideDuration: 300,
-        navigationAnimContainerDuration: 0,
+        navigationAnimSlideDuration: 600,
+        navigationAnimContainerDuration: 300,
         navigationOffset: const Offset(0, 1),
         navigationHeight: 0,
-        appBarAnimSlideDuration: 300,
-        appBarAnimContainerDuration: 0,
+        appBarAnimSlideDuration: 600,
+        appBarAnimContainerDuration: 300,
         appBarOffset: const Offset(0, -1),
         appBarHeight: 0,
         isTitleAndFooterVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
@@ -74,12 +74,12 @@ class ScreenCubit extends Cubit<ScreenState> {
 
     emit(
       ScreenState(
-        navigationAnimSlideDuration: 300,
-        navigationAnimContainerDuration: 0,
+        navigationAnimSlideDuration: 600,
+        navigationAnimContainerDuration: 300,
         navigationOffset: Offset.zero,
         navigationHeight: 100,
-        appBarAnimSlideDuration: 300,
-        appBarAnimContainerDuration: 0,
+        appBarAnimSlideDuration: 600,
+        appBarAnimContainerDuration: 300,
         appBarOffset: Offset.zero,
         appBarHeight: 60,
         isTitleAndFooterVisible: true,
