@@ -92,4 +92,23 @@ class ScreenCubit extends Cubit<ScreenState> {
       )
     );
   }
+
+  void setTitleVisibility(bool isVisible) {
+    emit(
+      ScreenState(
+        navigationAnimSlideDuration: state.navigationAnimSlideDuration,
+        navigationAnimContainerDuration: state.navigationAnimContainerDuration,
+        navigationOffset: state.navigationOffset,
+        navigationHeight: state.navigationHeight,
+        appBarAnimSlideDuration: state.appBarAnimSlideDuration,
+        appBarAnimContainerDuration: state.appBarAnimContainerDuration,
+        appBarOffset: state.appBarOffset,
+        appBarHeight: state.appBarHeight,
+        orientation: state.orientation,
+        isTitleVisible: isVisible,
+        isFooterVisible: state.isFooterVisible,
+        isOnMobile: state.isOnMobile
+      )
+    );
+  }
 }
