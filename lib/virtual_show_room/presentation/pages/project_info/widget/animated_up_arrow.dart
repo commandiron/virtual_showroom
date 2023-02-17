@@ -30,7 +30,7 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         setState(() {
           _upArrowOffset = const Offset(0.5, 0);
         });
-        BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse();
+        BlocProvider.of<ScreenCubit>(context, listen: false).animatedCollapse(isTitleVisible: true);
       }
     });
     super.initState();

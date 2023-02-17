@@ -50,7 +50,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     }
   }
 
-  void animatedExpand({bool isTitleVisible = true, bool isFooterVisible = true}) {
+  void animatedExpand({bool? isTitleVisible, bool? isFooterVisible}) {
     emit(
       ScreenState(
         navigationAnimSlideDuration: 150,
@@ -61,15 +61,15 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarAnimContainerDuration: 300,
         appBarOffset: const Offset(0, -1),
         appBarHeight: 0,
-        isTitleVisible: isTitleVisible,
-        isFooterVisible: isFooterVisible,
+        isTitleVisible: isTitleVisible ?? state.isTitleVisible,
+        isFooterVisible: isFooterVisible ?? state.isFooterVisible,
         orientation: state.orientation,
         isOnMobile: state.isOnMobile
       )
     );
   }
 
-  void animatedCollapse({bool isTitleVisible = true, bool isFooterVisible = true}) {
+  void animatedCollapse({bool? isTitleVisible, bool? isFooterVisible}) {
 
     if(state.isOnMobile && state.orientation == Orientation.landscape) {
       return;
@@ -85,8 +85,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarAnimContainerDuration: 300,
         appBarOffset: Offset.zero,
         appBarHeight: 60,
-        isTitleVisible: isTitleVisible,
-        isFooterVisible: isFooterVisible,
+        isTitleVisible: isTitleVisible ?? state.isTitleVisible,
+        isFooterVisible: isFooterVisible ?? state.isFooterVisible,
         orientation: state.orientation,
         isOnMobile: state.isOnMobile
       )
