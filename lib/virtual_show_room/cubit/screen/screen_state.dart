@@ -5,7 +5,8 @@ class ScreenState {
   int navigationAnimContainerDuration;
   Offset navigationOffset;
   double navigationHeight;
-  int appBarAnimDuration;
+  int appBarAnimSlideDuration;
+  int appBarAnimContainerDuration;
   Offset appBarOffset;
   double appBarHeight;
   bool isTitleAndFooterVisible;
@@ -18,7 +19,8 @@ class ScreenState {
       required this.navigationAnimContainerDuration,
       required this.navigationOffset,
       required this.navigationHeight,
-      required this.appBarAnimDuration,
+      required this.appBarAnimSlideDuration,
+      required this.appBarAnimContainerDuration,
       required this.appBarOffset,
       required this.appBarHeight,
       required this.isTitleAndFooterVisible,

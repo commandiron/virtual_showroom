@@ -25,9 +25,9 @@ class ResponsiveCustomAppBar extends StatelessWidget {
       builder: (context, state) {
         return AnimatedSlide(
           offset: state.appBarOffset,
-          duration: Duration(milliseconds: state.appBarAnimDuration),
+          duration: Duration(milliseconds: state.appBarAnimSlideDuration),
           child: AnimatedContainer(
-            duration: Duration(milliseconds: state.appBarAnimDuration),
+            duration: Duration(milliseconds: state.appBarAnimContainerDuration),
             height: state.appBarHeight,
             color: Theme.of(context).colorScheme.primaryContainer,
             child: Row(
