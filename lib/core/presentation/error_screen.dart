@@ -31,16 +31,17 @@ class ErrorScreen extends StatelessWidget {
             const Expanded(child: SizedBox(height: double.infinity,)),
             FractionallySizedBox(
               widthFactor: 0.5,
-              child: InkWell(
-                onTap: () => openURL("https://www.demirli.tech"),
-                splashColor: const Color(0xffF48B0B),
-                child: Card(
-                  color: Colors.grey.shade50,
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Image.asset(
-                      "assets/images/app/demirli_tech_logo/demirli_tech_text_logo_black.png"
-                    ),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.grey.shade50
+                  )
+                ),
+                onPressed: () => openURL("https://www.demirli.tech"),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Image.asset(
+                    "assets/images/app/demirli_tech_logo/demirli_tech_text_logo_black.png"
                   ),
                 ),
               ),

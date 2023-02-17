@@ -44,6 +44,7 @@ class _MaterialChildState extends State<MaterialChild> {
 
     if (widget.projectId == null) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         routes: {
           "/" : (context) {
             return const ErrorScreen(errorCause: "id yok.");
@@ -62,6 +63,7 @@ class _MaterialChildState extends State<MaterialChild> {
 
           if (project == null) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               routes: {
                 "/?id=${widget.projectId}" : (context) {
                   return ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${widget.projectId}");
