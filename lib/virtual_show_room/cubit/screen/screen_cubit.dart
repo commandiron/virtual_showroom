@@ -40,7 +40,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     );
 
     if(orientation == Orientation.landscape && state.isOnMobile) {
-      animatedExpand();
+      animatedExpand(isTitleVisible: false, isFooterVisible: false);
       return;
     }
 
@@ -50,7 +50,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     }
   }
 
-  void animatedExpand() {
+  void animatedExpand({bool isTitleVisible = true, bool isFooterVisible = true}) {
     emit(
       ScreenState(
         navigationAnimSlideDuration: 150,
@@ -61,8 +61,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarAnimContainerDuration: 300,
         appBarOffset: const Offset(0, -1),
         appBarHeight: 0,
-        isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
-        isFooterVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+        isTitleVisible: isTitleVisible,
+        isFooterVisible: isFooterVisible,
         orientation: state.orientation,
         isOnMobile: state.isOnMobile
       )
