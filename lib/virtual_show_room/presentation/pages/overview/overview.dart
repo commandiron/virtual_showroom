@@ -81,7 +81,7 @@ class _OverviewPageState extends State<OverviewPage> {
               },
             );
           },
-          backgroundDecoration: BoxDecoration(
+          backgroundDecoration: const BoxDecoration(
             color: Colors.transparent
           ),
         ),
