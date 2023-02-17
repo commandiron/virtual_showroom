@@ -35,9 +35,7 @@ class VirtualShowRoom extends StatelessWidget {
           builder: (context, state) {
             return OrientationBuilder(
               builder: (context, orientation) {
-
                 BlocProvider.of<ScreenCubit>(context, listen: false).setOrientation(orientation);
-
                 return Column(
                   children: [
                     CustomAppBar(
