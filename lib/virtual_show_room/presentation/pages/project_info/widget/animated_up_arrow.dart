@@ -25,7 +25,7 @@ class _AnimatedUpArrowState extends State<AnimatedUpArrow> {
         setState(() {
           _upArrowOffset = Offset.zero;
         });
-        BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
+        BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand(isTitleVisible: false);
       } else {
         setState(() {
           _upArrowOffset = const Offset(0.5, 0);
