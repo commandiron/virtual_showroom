@@ -20,14 +20,16 @@ class OverviewPage extends StatefulWidget {
 
 class _OverviewPageState extends State<OverviewPage> {
 
-  final PageController _pageController = PageController();
-  final PhotoViewScaleStateController _photoViewScaleStateController = PhotoViewScaleStateController();
+  late final PageController _pageController;
+  late final PhotoViewScaleStateController _photoViewScaleStateController;
 
   @override
   void initState() {
+    _photoViewScaleStateController = PhotoViewScaleStateController();
     _photoViewScaleStateController.addIgnorableListener(() {
       setState(() {});
     });
+    _pageController = PageController();
     _pageController.addListener(() {
       setState((){});
     });

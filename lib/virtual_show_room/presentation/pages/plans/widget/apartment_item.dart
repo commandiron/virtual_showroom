@@ -32,10 +32,11 @@ class ApartmentItem extends StatefulWidget {
 
 class _ApartmentItemState extends State<ApartmentItem> {
 
-  final PageController _pageController = PageController();
+  late final PageController _pageController;
 
   @override
   void initState() {
+    _pageController = PageController();
     _pageController.addListener(() {
       setState(() {});
     });

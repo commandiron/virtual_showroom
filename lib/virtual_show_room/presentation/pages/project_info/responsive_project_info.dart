@@ -30,7 +30,19 @@ class ResponsiveProjectInfoPage extends StatefulWidget {
 
 class _ResponsiveProjectInfoPageState extends State< ResponsiveProjectInfoPage> {
 
-  final ScrollController _scrollController = ScrollController();
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
