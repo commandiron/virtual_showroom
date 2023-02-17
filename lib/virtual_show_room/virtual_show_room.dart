@@ -43,7 +43,7 @@ class VirtualShowRoom extends StatelessWidget {
                     CustomAppBar(
                       project: project,
                     ),
-                    if(BlocProvider.of<ScreenCubit>(context, listen: false).state.isTitleAndFooterVisible)
+                    if(BlocProvider.of<ScreenCubit>(context, listen: false).state.isTitleVisible)
                       ProjectTitle(
                         title: project.name,
                         locationUrl: project.locationUrl,
@@ -57,14 +57,14 @@ class VirtualShowRoom extends StatelessWidget {
                     ),
                     CustomNavigationBar(
                       pages: state.pages.where(
-                              (page) => project.enabledPageRoutes.contains(page.route)
+                        (page) => project.enabledPageRoutes.contains(page.route)
                       ).toList(),
                       pageIndex: state.pageIndex,
                       onPressed: (index) {
                         BlocProvider.of<PageCubit>(context, listen: false).jumpTo(index);
                       },
                     ),
-                    if(BlocProvider.of<ScreenCubit>(context, listen: false).state.isTitleAndFooterVisible)
+                    if(BlocProvider.of<ScreenCubit>(context, listen: false).state.isFooterVisible)
                       const CustomFooter()
                   ],
                 );

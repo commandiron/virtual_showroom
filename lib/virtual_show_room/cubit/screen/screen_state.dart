@@ -9,7 +9,8 @@ class ScreenState {
   int appBarAnimContainerDuration;
   Offset appBarOffset;
   double appBarHeight;
-  bool isTitleAndFooterVisible;
+  bool isTitleVisible;
+  bool isFooterVisible;
   Orientation orientation;
   bool isOnMobile;
 
@@ -23,7 +24,8 @@ class ScreenState {
       required this.appBarAnimContainerDuration,
       required this.appBarOffset,
       required this.appBarHeight,
-      required this.isTitleAndFooterVisible,
+      required this.isTitleVisible,
+      required this.isFooterVisible,
       required this.orientation,
       required this.isOnMobile
     }

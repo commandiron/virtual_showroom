@@ -14,7 +14,8 @@ class ScreenCubit extends Cubit<ScreenState> {
       appBarAnimContainerDuration: 0,
       appBarOffset: Offset.zero,
       appBarHeight: 60,
-      isTitleAndFooterVisible: true,
+      isTitleVisible: true,
+      isFooterVisible: true,
       orientation: Orientation.portrait,
       isOnMobile: defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android
     )
@@ -32,7 +33,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarOffset: state.appBarOffset,
         appBarHeight: state.appBarHeight,
         orientation: orientation,
-        isTitleAndFooterVisible: true,
+        isTitleVisible: true,
+        isFooterVisible: true,
         isOnMobile: state.isOnMobile
       )
     );
@@ -59,7 +61,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarAnimContainerDuration: 300,
         appBarOffset: const Offset(0, -1),
         appBarHeight: 0,
-        isTitleAndFooterVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+        isTitleVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
+        isFooterVisible: !(state.isOnMobile && state.orientation == Orientation.landscape),
         orientation: state.orientation,
         isOnMobile: state.isOnMobile
       )
@@ -82,7 +85,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarAnimContainerDuration: 300,
         appBarOffset: Offset.zero,
         appBarHeight: 60,
-        isTitleAndFooterVisible: true,
+        isTitleVisible: true,
+        isFooterVisible: true,
         orientation: state.orientation,
         isOnMobile: state.isOnMobile
       )
