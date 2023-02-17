@@ -33,8 +33,8 @@ class ScreenCubit extends Cubit<ScreenState> {
         appBarOffset: state.appBarOffset,
         appBarHeight: state.appBarHeight,
         orientation: orientation,
-        isTitleVisible: true,
-        isFooterVisible: true,
+        isTitleVisible: state.isTitleVisible,
+        isFooterVisible: state.isFooterVisible,
         isOnMobile: state.isOnMobile
       )
     );
@@ -45,7 +45,7 @@ class ScreenCubit extends Cubit<ScreenState> {
     }
 
     if(orientation == Orientation.portrait) {
-      animatedCollapse();
+      animatedCollapse(isTitleVisible: true, isFooterVisible: true);
       return;
     }
   }
