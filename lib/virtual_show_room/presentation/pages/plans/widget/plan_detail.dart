@@ -66,6 +66,9 @@ class _PlanDetailState extends State<PlanDetail>{
               builder: (context, index) {
                 return PhotoViewGalleryPageOptions(
                   scaleStateController: _photoViewScaleStateController,
+                  initialScale: PhotoViewComputedScale.contained * 1,
+                  minScale: PhotoViewComputedScale.contained * 1,
+                  maxScale: PhotoViewComputedScale.contained * 6,
                   imageProvider: CachedNetworkImageProvider(widget.apartment.imageUrls[index]),
                 );
               },
