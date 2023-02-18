@@ -7,6 +7,7 @@ import 'package:virtual_showroom/virtual_show_room/presentation/navigation_bar/c
 import 'package:virtual_showroom/virtual_show_room/presentation/pages/current_page.dart';
 import 'package:virtual_showroom/virtual_show_room/presentation/project_title.dart';
 import '../core/domain/model/project.dart';
+import '../core/presentation/config/app_config.dart';
 import 'cubit/page/page_cubit.dart';
 
 class VirtualShowRoom extends StatelessWidget {
@@ -16,6 +17,9 @@ class VirtualShowRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    AppConfig.init(context);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
