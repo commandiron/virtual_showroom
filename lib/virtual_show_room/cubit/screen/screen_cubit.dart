@@ -6,7 +6,7 @@ part 'screen_state.dart';
 class ScreenCubit extends Cubit<ScreenState> {
   ScreenCubit() : super(
     ScreenState(
-      animationEnabled: false,
+      animationEnabled: true,
       navigationAnimSlideDuration: 0,
       navigationAnimContainerDuration: 0,
       navigationOffset: Offset.zero,
