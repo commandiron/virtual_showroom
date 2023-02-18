@@ -5,12 +5,16 @@ import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
 import '../../virtual_show_room/virtual_show_room.dart';
 import '../domain/cubit/project_cubit.dart';
 import '../domain/cubit/project_state.dart';
+import 'config/app_config.dart';
 import 'error_screen.dart';
 
 class CoreApp extends StatelessWidget {
   const CoreApp({super.key});
   @override
   Widget build(BuildContext context) {
+
+    AppConfig.init(context);
+
     return BlocProvider<ProjectCubit>(
       create: (context) => ProjectCubit(),
       child: MaterialChild(
@@ -41,7 +45,6 @@ class _MaterialChildState extends State<MaterialChild> {
 
   @override
   Widget build(BuildContext context) {
-
     if (widget.projectId == null) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
