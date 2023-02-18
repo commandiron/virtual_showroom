@@ -31,22 +31,26 @@ class _ResponsivePlansPageState extends State<ResponsivePlansPage> {
   @override
   Widget build(BuildContext context) {
     return _selectedApartment == null
-      ? SingleChildScrollView(
-        child: Column(
-          children: widget.apartments
-            .map((apartment) => ApartmentItem(
-              imageHeight: widget.imageHeight,
-              footerHeight: widget.footerHeight,
-              apartment: apartment,
-              onSelect: (index) {
-                _initialPage = index.toInt();
-                setState(() {
-                  _selectedApartment = apartment;
-                  BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
-                });
-              }))
-            .toList(),
-        ),
+      ? CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: widget.apartments
+                .map((apartment) => ApartmentItem(
+                imageHeight: widget.imageHeight,
+                footerHeight: widget.footerHeight,
+                apartment: apartment,
+                onSelect: (index) {
+                  _initialPage = index.toInt();
+                  setState(() {
+                    _selectedApartment = apartment;
+                    BlocProvider.of<ScreenCubit>(context, listen: false).animatedExpand();
+                  });
+                })
+              ).toList(),
+            ),
+          )
+        ]
       )
       : PlanDetail(
         initialPage: _initialPage,
