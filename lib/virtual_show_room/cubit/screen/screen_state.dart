@@ -1,6 +1,7 @@
 part of '../screen/screen_cubit.dart';
 
 class ScreenState {
+  bool animationEnabled;
   int navigationAnimSlideDuration;
   int navigationAnimContainerDuration;
   Offset navigationOffset;
@@ -16,6 +17,7 @@ class ScreenState {
 
   ScreenState(
     {
+      required this.animationEnabled,
       required this.navigationAnimSlideDuration,
       required this.navigationAnimContainerDuration,
       required this.navigationOffset,

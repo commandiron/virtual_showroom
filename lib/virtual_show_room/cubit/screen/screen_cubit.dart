@@ -6,6 +6,7 @@ part 'screen_state.dart';
 class ScreenCubit extends Cubit<ScreenState> {
   ScreenCubit() : super(
     ScreenState(
+      animationEnabled: false,
       navigationAnimSlideDuration: 0,
       navigationAnimContainerDuration: 0,
       navigationOffset: Offset.zero,
@@ -24,6 +25,7 @@ class ScreenCubit extends Cubit<ScreenState> {
   void setOrientation(Orientation orientation) {
     emit(
       ScreenState(
+        animationEnabled: state.animationEnabled,
         navigationAnimSlideDuration: state.navigationAnimSlideDuration,
         navigationAnimContainerDuration: state.navigationAnimContainerDuration,
         navigationOffset: state.navigationOffset,
@@ -53,12 +55,13 @@ class ScreenCubit extends Cubit<ScreenState> {
   void animatedExpand({bool? isTitleVisible, bool? isFooterVisible}) {
     emit(
       ScreenState(
-        navigationAnimSlideDuration: 150,
-        navigationAnimContainerDuration: 300,
+        animationEnabled: state.animationEnabled,
+        navigationAnimSlideDuration: state.animationEnabled == true ? 150 : 0,
+        navigationAnimContainerDuration:  state.animationEnabled == true ? 300 : 0,
         navigationOffset: const Offset(0, 1),
         navigationHeight: 0,
-        appBarAnimSlideDuration: 150,
-        appBarAnimContainerDuration: 300,
+        appBarAnimSlideDuration: state.animationEnabled == true ? 150 : 0,
+        appBarAnimContainerDuration: state.animationEnabled == true ? 300 : 0,
         appBarOffset: const Offset(0, -1),
         appBarHeight: 0,
         isTitleVisible: isTitleVisible ?? state.isTitleVisible,
@@ -77,12 +80,13 @@ class ScreenCubit extends Cubit<ScreenState> {
 
     emit(
       ScreenState(
-        navigationAnimSlideDuration: 600,
-        navigationAnimContainerDuration: 300,
+        animationEnabled: state.animationEnabled,
+        navigationAnimSlideDuration: state.animationEnabled == true ? 600 : 0,
+        navigationAnimContainerDuration: state.animationEnabled == true ? 300 : 0,
         navigationOffset: Offset.zero,
         navigationHeight: 100,
-        appBarAnimSlideDuration: 600,
-        appBarAnimContainerDuration: 300,
+        appBarAnimSlideDuration: state.animationEnabled == true ? 600 : 0,
+        appBarAnimContainerDuration: state.animationEnabled == true ? 300 : 0,
         appBarOffset: Offset.zero,
         appBarHeight: 60,
         isTitleVisible: isTitleVisible ?? state.isTitleVisible,
@@ -96,6 +100,7 @@ class ScreenCubit extends Cubit<ScreenState> {
   void setTitleVisibility(bool isVisible) {
     emit(
       ScreenState(
+        animationEnabled: state.animationEnabled,
         navigationAnimSlideDuration: state.navigationAnimSlideDuration,
         navigationAnimContainerDuration: state.navigationAnimContainerDuration,
         navigationOffset: state.navigationOffset,
