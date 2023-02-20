@@ -14,15 +14,23 @@ class CoreApp extends StatelessWidget {
     return BlocProvider<ProjectCubit>(
       create: (context) => ProjectCubit(),
       child: MaterialChild(
-        projectId: Uri.base.queryParameters["id"],
+        uid: Uri.base.queryParameters["uid"],
+        projectId: Uri.base.queryParameters["projectId"],
       ),
     );
   }
 }
 
 class MaterialChild extends StatefulWidget {
-  const MaterialChild({required this.projectId, Key? key}) : super(key: key);
+  const MaterialChild(
+      {
+        required this.uid,
+        required this.projectId,
+        Key? key
+      }
+    ) : super(key: key);
 
+  final String? uid;
   final String? projectId;
 
   @override
@@ -33,8 +41,8 @@ class _MaterialChildState extends State<MaterialChild> {
 
   @override
   void initState() {
-    if(widget.projectId != null) {
-      BlocProvider.of<ProjectCubit>(context).fetchProjectById(widget.projectId!);
+    if(widget.uid != null && widget.projectId != null) {
+      BlocProvider.of<ProjectCubit>(context).fetchProjectById(widget.uid!, widget.projectId!);
     }
     super.initState();
   }
@@ -46,7 +54,7 @@ class _MaterialChildState extends State<MaterialChild> {
         debugShowCheckedModeBanner: false,
         routes: {
           "/" : (context) {
-            return const ErrorScreen(errorCause: "id yok.");
+            return const ErrorScreen(errorCause: "projectId yok.");
           }
         },
       );
@@ -64,8 +72,8 @@ class _MaterialChildState extends State<MaterialChild> {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               routes: {
-                "/?id=${widget.projectId}" : (context) {
-                  return ErrorScreen(errorCause: "Böyle bir proje bulunamadı. id:${widget.projectId}");
+                "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
+                  return ErrorScreen(errorCause: "Böyle bir proje bulunamadı. projectId:${widget.projectId}");
                 }
               },
             );
@@ -91,9 +99,9 @@ class _MaterialChildState extends State<MaterialChild> {
                 primary: Color(project.primaryColorValue)
               )
             ),
-            initialRoute: "/?id=${widget.projectId}",
+            initialRoute: "/?uid=${widget.uid}&projectId=${widget.projectId}",
             routes: {
-              "/?id=${widget.projectId}" : (context) {
+              "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
                 return VirtualShowRoom(project: project);
               }
             },
@@ -102,7 +110,7 @@ class _MaterialChildState extends State<MaterialChild> {
           final error = state as ProjectError;
           return MaterialApp(
             routes: {
-              "/?id=${widget.projectId}" : (context) {
+              "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
                 return ErrorScreen(errorCause: error.message);
               }
             },

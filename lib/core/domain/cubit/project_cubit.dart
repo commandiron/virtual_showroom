@@ -8,10 +8,10 @@ class ProjectCubit extends Cubit<ProjectState> {
 
   final ProjectRepository _projectRepository = ProjectRepositoryImpl();
 
-  void fetchProjectById(String id) async {
+  void fetchProjectById(String uid, String id) async {
     try {
       emit(ProjectLoading());
-      final project = await _projectRepository.fetchProjectById(id);
+      final project = await _projectRepository.fetchProjectById(uid, id);
       emit(ProjectCompleted(project));
     } catch (e) {
       emit(const ProjectError("Couldn't get response"));
