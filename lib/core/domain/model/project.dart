@@ -1,4 +1,5 @@
 class Project {
+  String templateVersion;
   String companyLogoUrl;
   int primaryColorValue;
   String companyPhone;
@@ -15,6 +16,7 @@ class Project {
   List<String> features;
 
   Project({
+    required this.templateVersion,
     required this.companyLogoUrl,
     required this.primaryColorValue,
     required this.companyPhone,
@@ -32,6 +34,7 @@ class Project {
   });
 
   Map<String, dynamic> toJson() => {
+    "templateVersion": templateVersion,
     "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
     "companyPhone": companyPhone,
@@ -50,7 +53,8 @@ class Project {
   };
 
   Project.fromJson(Map<String, dynamic> json)
-      : companyLogoUrl = json["companyLogoUrl"],
+      : templateVersion = json["templateVersion"],
+        companyLogoUrl = json["companyLogoUrl"],
         primaryColorValue = json["primaryColorValue"],
         companyPhone = json["companyPhone"],
         companyMail = json["companyMail"],
