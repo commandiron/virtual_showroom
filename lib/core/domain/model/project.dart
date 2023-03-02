@@ -71,7 +71,6 @@ class Project {
 }
 
 class Apartment {
-  int id;
   String title;
   List<String> imageUrls;
   String type;
@@ -79,7 +78,6 @@ class Apartment {
   String grossArea;
 
   Apartment({
-    required this.id,
     required this.title,
     required this.imageUrls,
     required this.type,
@@ -88,7 +86,6 @@ class Apartment {
   });
 
   Map<String, dynamic> toJson() => {
-    "id": id,
     "title": title,
     "imageUrls": imageUrls,
     "type": type,
@@ -97,8 +94,7 @@ class Apartment {
   };
 
   Apartment.fromJson(Map<String, dynamic> json)
-      : id = json["id"],
-        title = json["title"],
+      : title = json["title"],
         imageUrls = (json["imageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
         type = json["type"],
         netArea = json["netArea"],
