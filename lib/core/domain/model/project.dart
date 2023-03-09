@@ -16,7 +16,7 @@ class Project {
   int primaryColorValue;
   List<String> enabledPageRoutes;
 
-  bool isPaymentApproved;
+  PaymentStatus paymentStatus;
 
   Project({
     required this.name,
@@ -41,7 +41,7 @@ class Project {
       "project_info",
       "ar",
     ],
-    this.isPaymentApproved = false
+    this.paymentStatus = PaymentStatus.selectPlan
   });
 
   Map<String, dynamic>  toJson() => {
@@ -61,7 +61,7 @@ class Project {
     "templateVersion": templateVersion,
     "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
-    "isPaymentApproved": isPaymentApproved
+    "paymentStatus": paymentStatus.name
   };
 
   Project.fromJson(Map<String, dynamic> json)
@@ -81,7 +81,7 @@ class Project {
         templateVersion = json["templateVersion"],
         primaryColorValue = json["primaryColorValue"],
         enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(),
-        isPaymentApproved = json["isPaymentApproved"];
+        paymentStatus = PaymentStatus.values.firstWhere((value) => value.name == json["paymentStatus"]);
 }
 
 class Apartment {
@@ -109,4 +109,8 @@ class Apartment {
         title = json["title"],
         type = json["type"],
         netArea = json["netArea"];
+}
+
+enum PaymentStatus {
+  selectPlan, pending, approved,
 }
