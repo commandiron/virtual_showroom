@@ -61,7 +61,7 @@ class Project {
     "templateVersion": templateVersion,
     "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
-    "isPaymentApproved": false
+    "isPaymentApproved": isPaymentApproved
   };
 
   Project.fromJson(Map<String, dynamic> json)
