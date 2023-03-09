@@ -1,42 +1,50 @@
 class Project {
-  String templateVersion;
-  String companyLogoUrl;
-  int primaryColorValue;
+  String name;
+  DateTime startDate;
+  DateTime estimatedFinishDate;
+  String locationUrl;
   String companyPhone;
   String companyMail;
   String companyAddress;
   String companyLocationUrl;
-  List<String> enabledPageRoutes;
-  String name;
-  String locationUrl;
-  List<String> generalImageUrls;
+  String companyLogoUrl;
+  List<String> projectImageUrls;
   List<Apartment> apartments;
-  DateTime startDate;
-  DateTime estimatedFinishDate;
   List<String> features;
 
+  String templateVersion;
+  int primaryColorValue;
+  List<String> enabledPageRoutes;
+
+  bool isPaymentApproved;
+
   Project({
-    required this.templateVersion,
-    required this.companyLogoUrl,
-    required this.primaryColorValue,
+    required this.name,
+    required this.startDate,
+    required this.estimatedFinishDate,
+    required this.locationUrl,
     required this.companyPhone,
     required this.companyMail,
     required this.companyAddress,
     required this.companyLocationUrl,
-    required this.enabledPageRoutes,
-    required this.name,
-    required this.locationUrl,
-    required this.generalImageUrls,
+    required this.companyLogoUrl,
+    required this.projectImageUrls,
     required this.apartments,
-    required this.startDate,
-    required this.estimatedFinishDate,
     required this.features,
+
+    //Default Values
+    this.templateVersion = "v1",
+    this.primaryColorValue = 0xffFF5D12,
+    this.enabledPageRoutes = const [
+      "overview",
+      "plans",
+      "project_info",
+      "ar",
+    ],
+    this.isPaymentApproved = false
   });
 
-  Map<String, dynamic> toJson() => {
-    "templateVersion": templateVersion,
-    "companyLogoUrl": companyLogoUrl,
-    "primaryColorValue": primaryColorValue,
+  Map<String, dynamic>  toJson() => {
     "companyPhone": companyPhone,
     "companyMail": companyMail,
     "companyAddress": companyAddress,
@@ -44,45 +52,49 @@ class Project {
     "enabledPageRoutes": enabledPageRoutes,
     "name": name,
     "locationUrl": locationUrl,
-    "generalImageUrls": generalImageUrls,
-    "apartments":
-    apartments.map((apartment) => apartment.toJson()).toList(),
+    "projectImageUrls": projectImageUrls,
+    "apartments": apartments.map((apartment) => apartment.toJson()).toList(),
     "startDate": startDate.toIso8601String(),
     "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
-    "features": features
+    "features": features,
+
+    "templateVersion": templateVersion,
+    "companyLogoUrl": companyLogoUrl,
+    "primaryColorValue": primaryColorValue,
+    "isPaymentApproved": false
   };
 
   Project.fromJson(Map<String, dynamic> json)
-      : templateVersion = json["templateVersion"],
-        companyLogoUrl = json["companyLogoUrl"],
-        primaryColorValue = json["primaryColorValue"],
+      : name = json["name"],
+        startDate = DateTime.parse(json["startDate"] as String),
+        estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
+        locationUrl = json["locationUrl"],
         companyPhone = json["companyPhone"],
         companyMail = json["companyMail"],
         companyAddress = json["companyAddress"],
         companyLocationUrl = json["companyLocationUrl"],
-        enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(),
-        name = json["name"],
-        locationUrl = json["locationUrl"],
-        generalImageUrls = (json["generalImageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
+        companyLogoUrl = json["companyLogoUrl"],
+        projectImageUrls = (json["projectImageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
         apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
-        startDate = DateTime.parse(json["startDate"] as String),
-        estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
-        features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList();
+        features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList(),
+
+        templateVersion = json["templateVersion"],
+        primaryColorValue = json["primaryColorValue"],
+        enabledPageRoutes = (json["enabledPageRoutes"] as List<dynamic>).map((e) => e.toString()).toList(),
+        isPaymentApproved = json["isPaymentApproved"];
 }
 
 class Apartment {
-  String title;
   List<String> imageUrls;
+  String title;
   String type;
   String netArea;
-  String grossArea;
 
   Apartment({
-    required this.title,
     required this.imageUrls,
+    required this.title,
     required this.type,
     required this.netArea,
-    required this.grossArea,
   });
 
   Map<String, dynamic> toJson() => {
@@ -90,13 +102,11 @@ class Apartment {
     "imageUrls": imageUrls,
     "type": type,
     "netArea": netArea,
-    "grossArea": grossArea
   };
 
   Apartment.fromJson(Map<String, dynamic> json)
-      : title = json["title"],
-        imageUrls = (json["imageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
+      : imageUrls = (json["imageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
+        title = json["title"],
         type = json["type"],
-        netArea = json["netArea"],
-        grossArea = json["grossArea"];
+        netArea = json["netArea"];
 }

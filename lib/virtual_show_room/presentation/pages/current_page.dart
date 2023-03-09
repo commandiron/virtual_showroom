@@ -33,7 +33,7 @@ class CurrentPage extends StatelessWidget {
     switch(pages.firstWhere((page) => page.index == pageIndex).route) {
       case OverviewPage.route :
         return OverviewPage(
-          generalImageUrls: project.generalImageUrls,
+          generalImageUrls: project.projectImageUrls,
         );
       case PlansPage.route :
         return PlansPage(
@@ -49,7 +49,7 @@ class CurrentPage extends StatelessWidget {
         return const ArPage();
       default:
         return OverviewPage(
-          generalImageUrls: project.generalImageUrls,
+          generalImageUrls: project.projectImageUrls,
         );
     }
   }
