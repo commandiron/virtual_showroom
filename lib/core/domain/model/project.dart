@@ -12,6 +12,8 @@ class Project {
   List<Apartment> apartments;
   List<String> features;
 
+  DateTime qrExpirationDate;
+
   String templateVersion;
   int primaryColorValue;
   List<String> enabledPageRoutes;
@@ -31,6 +33,8 @@ class Project {
     required this.projectImageUrls,
     required this.apartments,
     required this.features,
+
+    required this.qrExpirationDate,
 
     //Default Values
     this.templateVersion = "v1",
@@ -58,6 +62,8 @@ class Project {
     "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
     "features": features,
 
+    "qrExpirationDate": qrExpirationDate.toIso8601String(),
+
     "templateVersion": templateVersion,
     "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
@@ -77,6 +83,8 @@ class Project {
         projectImageUrls = (json["projectImageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
         apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
         features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList(),
+
+        qrExpirationDate = DateTime.parse(json["qrExpirationDate"] as String),
 
         templateVersion = json["templateVersion"],
         primaryColorValue = json["primaryColorValue"],
