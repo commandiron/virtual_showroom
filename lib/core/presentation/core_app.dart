@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:virtual_showroom/core/domain/model/project.dart';
 import 'package:virtual_showroom/core/presentation/config/core_theme.dart';
 import '../../virtual_show_room/virtual_show_room.dart';
 import '../domain/cubit/project_cubit.dart';
@@ -74,6 +75,28 @@ class _MaterialChildState extends State<MaterialChild> {
               routes: {
                 "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
                   return ErrorScreen(errorCause: "Böyle bir proje bulunamadı. projectId:${widget.projectId}");
+                }
+              },
+            );
+          }
+
+          if(project.paymentStatus != PaymentStatus.approved) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              routes: {
+                "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
+                  return ErrorScreen(errorCause: "Proje henüz onaylanmadı. projectId:${widget.projectId}");
+                }
+              },
+            );
+          }
+
+          if(project.qrExpirationDate.isBefore(DateTime.now())) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              routes: {
+                "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
+                  return ErrorScreen(errorCause: "Proje süresi sonlandı. projectId:${widget.projectId}");
                 }
               },
             );
