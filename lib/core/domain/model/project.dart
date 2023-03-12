@@ -112,5 +112,5 @@ class Apartment {
 }
 
 enum PaymentStatus {
-  selectPlan, pending, approved,
+  selectPlan, pendingStandardPlan, pendingPersonalizedPlan, approved,
 }
