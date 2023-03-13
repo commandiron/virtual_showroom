@@ -1,4 +1,5 @@
 class Project {
+  String id;
   String name;
   DateTime startDate;
   DateTime estimatedFinishDate;
@@ -21,6 +22,7 @@ class Project {
   PaymentStatus paymentStatus;
 
   Project({
+    required this.id,
     required this.name,
     required this.startDate,
     required this.estimatedFinishDate,
@@ -49,29 +51,31 @@ class Project {
   });
 
   Map<String, dynamic>  toJson() => {
+    "id": id,
+    "name": name,
+    "startDate": startDate.toIso8601String(),
+    "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
+    "locationUrl": locationUrl,
     "companyPhone": companyPhone,
     "companyMail": companyMail,
     "companyAddress": companyAddress,
     "companyLocationUrl": companyLocationUrl,
-    "enabledPageRoutes": enabledPageRoutes,
-    "name": name,
-    "locationUrl": locationUrl,
+    "companyLogoUrl": companyLogoUrl,
     "projectImageUrls": projectImageUrls,
     "apartments": apartments.map((apartment) => apartment.toJson()).toList(),
-    "startDate": startDate.toIso8601String(),
-    "estimatedFinishDate": estimatedFinishDate.toIso8601String(),
     "features": features,
 
     "qrExpirationDate": qrExpirationDate.toIso8601String(),
 
     "templateVersion": templateVersion,
-    "companyLogoUrl": companyLogoUrl,
     "primaryColorValue": primaryColorValue,
+    "enabledPageRoutes": enabledPageRoutes,
     "paymentStatus": paymentStatus.name
   };
 
   Project.fromJson(Map<String, dynamic> json)
-      : name = json["name"],
+      : id = json["id"],
+        name = json["name"],
         startDate = DateTime.parse(json["startDate"] as String),
         estimatedFinishDate = DateTime.parse(json["estimatedFinishDate"]),
         locationUrl = json["locationUrl"],
