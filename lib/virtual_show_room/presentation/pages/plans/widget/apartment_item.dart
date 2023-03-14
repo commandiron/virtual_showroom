@@ -121,7 +121,10 @@ class _ApartmentItemState extends State<ApartmentItem> {
                               color: Theme.of(context).colorScheme.primary,
                               child: Padding(
                                 padding: AppPadding.horizontalM!.add(AppPadding.verticalXS!),
-                                child: Text("${widget.apartment.price} TL", style: AppTextStyle.b2,),
+                                child: Text(
+                                  "${widget.apartment.price} TL",
+                                  style: AppTextStyle.b2!.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                ),
                               )
                             )
                           ),
