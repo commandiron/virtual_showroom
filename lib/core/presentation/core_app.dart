@@ -16,11 +16,11 @@ class CoreApp extends StatelessWidget {
       create: (context) => ProjectCubit(),
       child: MaterialChild(
         uid:
-        // Uri.base.queryParameters["uid"],
-        "We6kFC7cKVgAtPa8zV0SukNPCnH3",
+        Uri.base.queryParameters["uid"],
+        // "We6kFC7cKVgAtPa8zV0SukNPCnH3",
         projectId:
-        // Uri.base.queryParameters["projectId"],
-        "0",
+        Uri.base.queryParameters["projectId"],
+        // "0",
       ),
     );
   }
