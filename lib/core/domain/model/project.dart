@@ -105,12 +105,14 @@ class Apartment {
   String title;
   String type;
   String netArea;
+  String price;
 
   Apartment({
     required this.imageUrls,
     required this.title,
     required this.type,
     required this.netArea,
+    required this.price,
   });
 
   Map<String, dynamic> toJson() => {
@@ -118,13 +120,15 @@ class Apartment {
     "imageUrls": imageUrls,
     "type": type,
     "netArea": netArea,
+    "price": price,
   };
 
   Apartment.fromJson(Map<String, dynamic> json)
       : imageUrls = (json["imageUrls"] as List<dynamic>).map((e) => e.toString()).toList(),
         title = json["title"],
         type = json["type"],
-        netArea = json["netArea"];
+        netArea = json["netArea"],
+        price = json["price"];
 }
 
 enum PaymentStatus {

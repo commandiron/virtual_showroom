@@ -110,11 +110,23 @@ class _ApartmentItemState extends State<ApartmentItem> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 8
-                    ),
-                    child: Text(widget.apartment.title, style: AppTextStyle.b2,),
+                  Row(
+                    children: [
+                      Expanded(child: Text(widget.apartment.title, style: AppTextStyle.b2,),),
+                      if(widget.apartment.price.isNotEmpty)
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Card(
+                              color: Theme.of(context).colorScheme.primary,
+                              child: Padding(
+                                padding: AppPadding.horizontalM!.add(AppPadding.verticalXS!),
+                                child: Text("${widget.apartment.price} TL", style: AppTextStyle.b2,),
+                              )
+                            )
+                          ),
+                        ),
+                    ],
                   ),
                   Expanded(
                     child: Row(
