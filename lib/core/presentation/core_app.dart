@@ -80,26 +80,28 @@ class _MaterialChildState extends State<MaterialChild> {
             );
           }
 
-          if(project.paymentStatus != PaymentStatus.approved) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              routes: {
-                "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
-                  return ErrorScreen(errorCause: "Proje henüz onaylanmadı. projectId:${widget.projectId}");
-                }
-              },
-            );
-          }
+          if(project.trialExpirationDate.isBefore(DateTime.now())) {
+            if(project.paymentStatus != PaymentStatus.approved) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                routes: {
+                  "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
+                    return ErrorScreen(errorCause: "Proje henüz onaylanmadı. projectId:${widget.projectId}");
+                  }
+                },
+              );
+            }
 
-          if(project.qrExpirationDate.isBefore(DateTime.now())) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              routes: {
-                "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
-                  return ErrorScreen(errorCause: "Proje süresi sonlandı. projectId:${widget.projectId}");
-                }
-              },
-            );
+            if(project.expirationDate.isBefore(DateTime.now())) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                routes: {
+                  "/?uid=${widget.uid}&projectId=${widget.projectId}" : (context) {
+                    return ErrorScreen(errorCause: "Proje süresi sonlandı. projectId:${widget.projectId}");
+                  }
+                },
+              );
+            }
           }
 
           return MaterialApp(

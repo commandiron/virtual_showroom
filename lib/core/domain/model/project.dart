@@ -13,7 +13,8 @@ class Project {
   List<Apartment> apartments;
   List<String> features;
 
-  DateTime qrExpirationDate;
+  DateTime trialExpirationDate;
+  DateTime expirationDate;
 
   String templateVersion;
   int primaryColorValue;
@@ -36,7 +37,8 @@ class Project {
     required this.apartments,
     required this.features,
 
-    required this.qrExpirationDate,
+    required this.trialExpirationDate,
+    required this.expirationDate,
 
     //Default Values
     this.templateVersion = "v1",
@@ -65,7 +67,8 @@ class Project {
     "apartments": apartments.map((apartment) => apartment.toJson()).toList(),
     "features": features,
 
-    "qrExpirationDate": qrExpirationDate.toIso8601String(),
+    "trialExpirationDate": trialExpirationDate.toIso8601String(),
+    "expirationDate": expirationDate.toIso8601String(),
 
     "templateVersion": templateVersion,
     "primaryColorValue": primaryColorValue,
@@ -88,7 +91,8 @@ class Project {
         apartments = (json["apartments"] as List<dynamic>).map((e) => Apartment.fromJson(e)).toList(),
         features = (json["features"]  as List<dynamic>).map((e) => e.toString()).toList(),
 
-        qrExpirationDate = DateTime.parse(json["qrExpirationDate"] as String),
+        trialExpirationDate = DateTime.parse(json["trialExpirationDate"] as String),
+        expirationDate = DateTime.parse(json["expirationDate"] as String),
 
         templateVersion = json["templateVersion"],
         primaryColorValue = json["primaryColorValue"],
